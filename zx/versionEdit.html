@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>版本管理</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link href="js/iCheck/skins/square/green.css" rel="stylesheet">
+</head>
+<body>
+
+<section id="container" class="format">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row second-head">
+                <div class="col-lg-12">
+                    <div class="head-panel clearfix">
+                        <h2 class=" pull-left">版本管理</h2>
+                        <div class=" pull-right">
+                            <ul class="breadcrumb">
+                                <li><a href="#"><i class="fa fa-home"></i> 主页</a></li>
+                                <li class="active">版本管理</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- page start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            版本管理
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal " id="signupForm">
+                                    <div class="form-group ">
+                                        <label for="androidMinEnvir" class="control-label col-lg-3 col-sm-3">安卓最低运行系统</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="androidMinEnvir" name="androidMinEnvir" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="androidMinVersion" class="control-label col-lg-3 col-sm-3">安卓最小可使用版本</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="androidMinVersion" name="androidMinVersion" type="text" value="13688888888"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="androidNewVersion" class="control-label col-lg-3 col-sm-3">安卓最新版本</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="androidNewVersion" name="androidNewVersion" type="text" value="13688888888"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="androidNewVersionUrl" class="control-label col-lg-3 col-sm-3">安卓最新版本地址</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="androidNewVersionUrl" name="androidNewVersionUrl" type="text" value="52221588888888888888"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="androidUpdateNote" class="control-label col-lg-3 col-sm-3">安卓更新说明</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <textarea class="form-control" id="androidUpdateNote" name="androidUpdateNote"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="iosMinEnvir" class="control-label col-lg-3 col-sm-3">ios最低运行系统</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="iosMinEnvir" name="iosMinEnvir" type="text" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group ">
+                                        <label for="iosMinVersion" class="control-label col-lg-3 col-sm-3">ios最小可使用版本</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="iosMinVersion" name="iosMinVersion" type="text" value="13688888888"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="iosNewVersion" class="control-label col-lg-3 col-sm-3">ios最新版本</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="iosNewVersion" name="iosNewVersion" type="text" value="13688888888"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="iosNewVersionUrl" class="control-label col-lg-3 col-sm-3">ios最新版本地址</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="iosNewVersionUrl" name="iosNewVersionUrl" type="text" value="52221588888888888888"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="iosUpdateNote" class="control-label col-lg-3 col-sm-3">ios更新说明</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <textarea class="form-control" id="iosUpdateNote" name="iosUpdateNote"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-lg-6 col-sm-6">
+                                            <button class="btn btn-primary col-sm-3" id="versionEdit" type="button">保存</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/versionEdit.js"></script>
+</body>
+</html>

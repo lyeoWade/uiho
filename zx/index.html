@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png" />
+	
+	<!-- 自己添加的样式文件 -->
+	<link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <title>Q驾后台管理平台</title>
+    <!--Core CSS -->
+    <link rel="stylesheet" href="bs3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-reset.css" />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" />
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-responsive.css" />
+</head>
+
+<body>
+
+<section id="container">
+	<!--header start-->
+	<header class="header fixed-top clearfix">
+		<!--logo start-->
+		<div class="brand">
+	
+			<a href="index.html" class="logo">
+				<img src="" height="60" />
+			</a>
+			<div class="sidebar-toggle-box">
+				<div class="fa fa-bars"></div>
+			</div>
+		</div>
+		<!--logo end-->
+		<div class="nav notify-row" id="top_menu">
+			智巡后台管理平台
+		</div>
+		<div class="top-nav clearfix">
+			<!--search & user info start-->
+			<ul class="nav pull-right top-menu">
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+						<img alt="" src="images/avatar1_small.jpg">
+						<span class="username"></span>
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu extended logout">
+						<li><a data-url="changepaddword.html"><i class=" fa fa-suitcase"></i>修改密码</a></li>
+						<li><a  data-url="showManagerEdit.html"><i class="fa fa-cog"></i> 个人资料</a></li>
+						<li><a href="login.html"><i class="fa fa-key"></i> 退出</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<!--header end-->
+	<aside>
+		<div id="sidebar" class="nav-collapse">
+			<!-- sidebar menu start-->            
+			<div class="leftside-navigation">
+				<ul class="sidebar-menu" id="nav-accordion">
+					<li class="active">
+						<a  data-url="right.html">
+							<i class="fa fa-home"></i>
+							<span>主页</span>
+						</a>
+					</li>
+					
+					<li class="sub-menu" id="managewarp">
+						<a href="javascript:;">
+							<i class="fa fa-group"></i>
+							<span>管理员管理</span>
+						</a>
+						<ul class="sub">
+							<li id="addmanager"><a data-url="addManager.html" ><i class="fa fa-angle-right"></i>新增管理员</a></li>
+							<li><a data-url="showManager.html" ><i class="fa fa-angle-right"></i>查看管理员</a></li>
+						</ul>
+					</li>
+
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-laptop"></i>
+							<span>菜单管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="menuAdd.html"><i class="fa fa-angle-right"></i>新增父菜单</a></li>
+							<li><a data-url="menuList.html"><i class="fa fa-angle-right"></i>父菜单列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-home"></i>
+							<span>公司管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="companyEdit.html" ><i class="fa fa-angle-right"></i>查看公司信息</a></li>
+							
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-map-marker"></i>
+							<span>场地管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="addSpaceManspace.html" ><i class="fa fa-angle-right"></i>新增场地</a></li>
+							<li><a data-url="spaceManspace.html" ><i class="fa fa-angle-right"></i>查看场地列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-building-o"></i>
+							<span>排课管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="courseArrayingAdd.html" ><i class="fa fa-angle-right"></i> 排课</a></li>
+							<li><a data-url="courseArraying.html" ><i class="fa fa-angle-right"></i> 排课列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-edit"></i>
+							<span>预付保证金管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="deposit.html" ><i class="fa fa-angle-right"></i> 预付保证金设置</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-bullhorn"></i>
+							<span>课程发布管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="pushtime.html"><i class="fa fa-angle-right"></i>设置发布时间</a></li>  
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-user-md"></i>
+							<span>教练管理</span>
+							<span class="badge bg-warning" id="txsq"></span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="coachAdd.html" ><i class="fa fa-angle-right"></i>新增教练</a></li>
+							<li><a data-url="coach.html" ><i class="fa fa-angle-right"></i>查看教练</a></li>
+							<li><a data-url="cash.html" ><i class="fa fa-angle-right"></i>提现申请列表</a></li>
+							<li><a data-url="ResCourseRanking.html" ><i class="fa fa-angle-right"></i>上月课程预约排行</a></li>
+							<li><a data-url="getCoachAccountRanking.html" ><i class="fa fa-angle-right"></i>上月课程收入排行</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-edit"></i>
+							<span>保证金/佣金比例管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="bondset.html" ><i class="fa fa-angle-right"></i> 保证金比例设置</a></li>
+							<li><a data-url="commission.html" ><i class="fa fa-angle-right"></i> 佣金比例设置</a></li>
+						</ul>
+					</li>
+
+
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-male"></i>
+							<span>用户管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="enroll.html" ><i class="fa fa-angle-right"></i>查看普通用户&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="usermanagement.html" ><i class="fa fa-angle-right"></i>已报名用户&nbsp;<span class="badge bg-warning" id="allu"></span></a></li>
+							<!-- <li><a data-url="sparring.html" ><i class="fa fa-angle-right"></i>陪练记录</a></li> -->
+							<li><a data-url="experience.html" ><i class="fa fa-angle-right"></i>申请体验记录&nbsp;<span class="badge bg-warning" id="ty"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="examMsg">
+							<i class="fa fa-user"></i>
+							<span>学员管理</span>
+							
+						</a>
+						<ul class="sub" id="examMsgChild">
+							<li><a data-url="student.html" ><i class="fa fa-angle-right"></i>查看学员</a></li>
+							
+							<li><a data-url="examAppo.html" ><i class="fa fa-angle-right"></i> 查看考试预约信息&nbsp;<span class="badge bg-warning" id="reserveExam"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-heart"></i>
+							<span>爱车服务管理</span>
+							<span class="badge bg-warning" id="ac"></span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="carService.html" ><i class="fa fa-angle-right"></i>信息提交列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-comment"></i>
+							<span>消息推送</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="messagesAdd.html" ><i class="fa fa-angle-right"></i>新增消息</a></li>
+							<li><a data-url="messages.html" ><i class="fa fa-angle-right"></i>消息列表</a></li>
+						</ul>
+					</li>
+					
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-exclamation"></i>
+							<span>反馈/举报管理</span>
+							<span class="badge bg-warning" id="fk"></span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="feedback.html" ><i class="fa fa-angle-right"></i>查看反馈/举报</a></li>
+						</ul>
+					</li>
+					
+					
+					
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-map-marker"></i>
+							<span>版本管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="versionEdit.html" ><i class="fa fa-angle-right"></i>版本管理</a></li>
+						</ul>
+					</li>
+					
+					
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-sun-o"></i>
+							<span>操作日志管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="operaLog.html" ><i class="fa fa-angle-right"></i>操作日志</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+			</div>        
+	<!-- sidebar menu end-->
+		</div>
+	</aside>
+	<!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content">
+		<section class="wrapper">
+		<!-- 	<a href="javascript:;" id="deleteCookie">删除cookie</a>
+			 -->
+			<!-- page start-->
+			<div class="row">
+				<section class="gray panel">
+					<iframe width="100%" border="0" frameborder="0" src="right.html" name="frame" id="frame" title="frame" scrolling="no"  onLoad="iFrameHeight()" ></iframe>
+				</section>
+			<div>
+			<!-- page end-->
+		</section>
+    </section>
+    <!--main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/jquery.scrollTo.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("[data-url]").on('click',function(){
+		$("[data-url]").parent('li').removeClass('active');
+		$(this).parent('li').addClass('active')
+		$("#frame").attr('src',$(this).attr("data-url"));
+	});
+});
+</script>
+<script type="text/javascript">
+function iFrameHeight() {   
+	setTimeout(function(){
+		var ifm= document.getElementById("frame");   
+		var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
+		if(ifm != null && subWeb != null) {
+		   ifm.height = subWeb.body.scrollHeight;
+		} 
+	},500)
+	  
+};  
+</script>
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal  in" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="false" style="display: ">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               升级学员
+            </h4>
+         </div>
+         <div class="modal-body">
+            <input class="form-control " id="money" name="money" type="text" placeholder="保证金金额" />
+         </div>
+         <div class="modal-footer">
+         	<span class="addtip pull-left red"></span>
+            <button type="button" class="btn btn-default close2" 
+               data-dismiss="modal">
+               关闭
+            </button>
+            <button type="button" class="btn btn-primary subBtn">
+               提交
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal-backdrop in" id="modal-backdrop" style="display: none"></div>
+
+<script type="text/javascript">
+	// window.onload=function(){
+	// 	var oDeleteCookie=document.getElementById('deleteCookie');
+	// 	oDeleteCookie.onclick=function(){
+	// 		Uiho.cookies.removeCookie('userinfo');
+	// 		console.log(Uiho.cookies.getCookie('userinfo'));
+	// 	};
+	// }
+</script>
+</body>
+</html>

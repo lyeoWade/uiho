@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>新增消息</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<section id="container" class="format">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row second-head">
+                <div class="col-lg-12">
+                    <div class="head-panel clearfix">
+                        <h2 class=" pull-left">新增消息</h2>
+                        <div class=" pull-right">
+                            <ul class="breadcrumb">
+                                <li><a href="#"><i class="fa fa-home"></i> 主页</a></li>
+                                <li class="active">新增消息</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- page start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            新增消息
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal " id="signupForm" method="get" action="">
+                                    
+                                    <div class="form-group ">
+                                        <label for="bondset" class="control-label col-lg-3 col-sm-3">消息内容</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <textarea class="form-control " id="msgcontent" placeholder="消息内容"></textarea>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="bondset" class="control-label col-lg-3 col-sm-3">消息类型</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <select class="form-control" id="msgtype">
+                                                <option value="1">学生端消息</option>
+                                                <option value="5">教练端消息</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-lg-6 col-sm-6">
+                                            <button class="btn btn-primary col-sm-3" id="msgbtn" type="button">发布</button>
+                                            <span class="addtip"></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/messagesAdd.js"></script>
+
+</body>
+</html>

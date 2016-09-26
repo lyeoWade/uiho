@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>教练管理</title>
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <!--responsive table-->
+    <link href="css/table-responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap-switch.css" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/tool.js"></script>
+</head>
+<body style="height: 1065px;">
+<!-- <a name="top" href=""></href>  -->
+<div class="hiddenss"></div>
+<section id="container" class="format" style="overflow-y: auto;">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+
+            <div class="row second-head">
+                <div class="col-lg-12">
+                    <div class="head-panel clearfix">
+                        <h2 class=" pull-left">教练管理</h2>
+                        <div class=" pull-right">
+                            <ul class="breadcrumb">
+                                <li><a href="#"><i class="fa fa-home"></i> 主页</a></li>
+                                <li><a href="#">教练管理</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- page start-->
+        <div class="row">
+            <div class="col-sm-12 table-set">
+                <section class="panel">
+                    <header class="panel-heading">
+                        教练列表
+                        <div class="pull-right">
+                            <select class="form-control input-sm m-bot15" id="selectNum">
+                                <option value="10">每页 10 条</option>
+                                <option value="20">每页 20 条</option>
+                                <option value="50">每页 50 条</option>
+                                <option value="100">每页 100 条</option>
+                            </select>
+
+                         </div>
+                    </header>
+                    <header class="panel-heading clearfix searchpanel">
+                        <div class="pull-left col-sm-11  col-lg-11">
+                            <div class="form-group pull-left col-lg-2 col-sm-2">
+                                <label for="disabledState" class="control-label col-lg-3 col-sm-3">状态</label>
+                                <div class="col-lg-8 col-sm-8">
+                                    <select class="form-control input-sm m-bot15" id="disabledState">
+                                        <option value="">所有教练</option>
+                                        <option value="1">启用</option>
+                                        <option value="0">禁用</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-2 col-sm-2">
+                                <label for="ralename" class="control-label col-lg-3 col-sm-3">姓名</label>
+                                <div class="col-lg-8 col-sm-8">
+                                    <input class="form-control " id="ralename" name="ralename" type="text" placeholder="姓名" />
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-2 col-sm-3">
+                                <label for="mobile" class="control-label col-lg-3 col-sm-3">手机</label>
+                                <div class="col-lg-8 col-sm-8">
+                                    <input class="form-control " id="mobile" name="mobile" type="text" placeholder="手机" />
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-3 col-sm-4">
+                                <label for="idcard" class="control-label col-lg-4 col-sm-3">身份证</label>
+                                <div class="col-lg-8 col-sm-9">
+                                    <input class="form-control " id="idcard" name="idcard" type="text" placeholder="身份证" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <input type="button" class="btn btn-success" id="SelectQueryBtn" value="查询">
+                        </div>
+                    </header>
+                    <div class="panel-body">
+                        <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <thead class="thead">
+                                    <tr>
+                                        <th><i class=""></i>教练名称</th>
+                                        <th><i class="fa  fa-mobile-phone"></i>手机号码</th>
+                                        <th>年龄</th>
+                                        <th class="numeric"><i class="fa fa-clock-o"></i>创建时间</th>
+                                        <th><i class="fa fa-star-half-empty"></i>状态</th>
+                                        <th class="numeric"><i class="fa fa-wrench"></i>操作</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tbody">
+                                   
+                                </tbody>
+                            </table>
+                        </section>
+                        <div class="box-footer clearfix" id="pagination">
+
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+        <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+<!-- <div class="h250"></div> -->
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/coach.js"></script>
+</body>
+</html>
