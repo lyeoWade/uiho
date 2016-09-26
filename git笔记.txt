@@ -21,7 +21,6 @@
 	
 	git commit -a -m "注释"  
 	
-	
 	git log  // 查看操作记录 查看 提交历史
 	
 	
@@ -60,5 +59,4 @@
 	
 	git push 仓库名  分支(master) // 推送到远程仓库
 	
-
 */
