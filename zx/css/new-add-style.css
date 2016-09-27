@@ -630,11 +630,13 @@ clear:both;
 	color: #000 !important;
 	background: #fafafa;
 }
+
 .resetsidebar ul.sidebar-menu li ul.sub li a{
 	color: #000 !important;
 	background: #fff;
 }
-.resetsidebar ul.sidebar-menu li ul.sub li a:hover{
+.resetsidebar ul.sidebar-menu li ul.sub li a:hover,
+ .resetsidebar ul.sidebar-menu li ul.sub li.active a{
 	color: #000 !important;
 	background: #f4f4f4;
 }
@@ -652,9 +654,15 @@ clear:both;
 }
 
 
+.parentHandleIcon{
+	padding: 0px 0 0 8px;
+	display: inline-block;
+	vertical-align: middle;
+}
 
-
-
+.HandleJsClass{
+	display: none;
+}
 
 
 

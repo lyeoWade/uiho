@@ -83,14 +83,10 @@
 					</li>
 
 					<li class="sub-menu">
-						<a href="javascript:;">
+						<a href="javascript:;"  data-url="menuList.html">
 							<i class="fa fa-laptop"></i>
 							<span>菜单管理</span>
 						</a>
-						<ul class="sub">
-							<li><a data-url="menuAdd.html"><i class="fa fa-angle-right"></i>新增父菜单</a></li>
-							<li><a data-url="menuList.html"><i class="fa fa-angle-right"></i>父菜单列表</a></li>
-						</ul>
 					</li>
 					<li class="sub-menu">
 						<a href="javascript:;">
@@ -99,7 +95,6 @@
 						</a>
 						<ul class="sub">
 							<li><a data-url="companyEdit.html" ><i class="fa fa-angle-right"></i>查看公司信息</a></li>
-							
 						</ul>
 					</li>
 					<li class="sub-menu">
@@ -287,17 +282,16 @@ $(function(){
 	});
 });
 </script>
-<script type="text/javascript">
-function iFrameHeight() {   
-	setTimeout(function(){
-		var ifm= document.getElementById("frame");   
-		var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
-		if(ifm != null && subWeb != null) {
-		   ifm.height = subWeb.body.scrollHeight;
-		} 
-	},500)
+<script type="text/javascript"> 
+setInterval(function(){
+	var ifm= document.getElementById("frame");   
+	var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
+	if(ifm != null && subWeb != null) {
+	   ifm.height = subWeb.body.scrollHeight;
+	} 
+},500)
 	  
-};  
+
 </script>
 <script type="text/javascript" src="js/tool.js"></script>
 <script type="text/javascript" src="js/public.js"></script>
