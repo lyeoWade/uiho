@@ -19,7 +19,7 @@ if(Uiho.cookies.getCookie('userinfo')==undefined){
 	//window.location.href="login.html";
 }
 //获取得到登陆之后的cookie
-var cookieValue=$.parseJSON(Uiho.cookies.getCookie('userinfo'));
+//var cookieValue=$.parseJSON(Uiho.cookies.getCookie('userinfo'));
 
 //console.log(cookieValue)
 //------------------------------------////////////-----------------------------------------

@@ -76,6 +76,25 @@ Uiho.tool.toZero=function(n){
 	return n<10?n='0'+n:n;
 };
 
+Uiho.tool.getByClass=function(oParent, sClass) {
+
+	if (document.addEventListener) {
+		return oParent.getElementsByClassName(sClass);
+	};
+
+	var aEle = oParent.getElementsByTagName('*');
+	var re = new RegExp('\\b' + sClass + '\\b');
+	var result = [];
+
+	for (var i = 0; i < aEle.length; i++) {
+		if (re.test(aEle[i].className)) {
+			result.push(aEle[i]);
+		}
+	};
+
+	return result;
+};
+
 Uiho.tool.geturldata=function(url){
 	var urldata=url.split('?')[1].split('&');
 	var result=[];

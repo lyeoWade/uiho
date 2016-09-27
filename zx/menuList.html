@@ -43,11 +43,11 @@
                             <li class="sub-menu" id="managewarp">
                                 <a href="javascript:;">
                                     <span>管理员管理</span>
-                                    <span class="parentHandleIcon HandleJsClass"><i class="fa fa-search-plus" title="新增子菜单"></i><i class="fa fa-pencil-square" title="查看父菜单"></i><i class="fa fa-times" title="删除父菜单"></i></span>
+                                    <span class="parentHandleIcon HandleJsClass"><i class="fa fa-search-plus"  data-url="AddChildMenu.html" title="查看父菜单"></i><i class="fa fa-pencil-square" data-url="AddChildMenu.html" title="新增子菜单"></i><i class="fa fa-times" title="删除父菜单"></i></span>
                                 </a>
                                 <ul class="sub">
-                                    <li id="addmanager"><a data-url="addManager.html" ><i class="fa fa-angle-right"></i>新增管理员<i class="fa fa-pencil-square"></i>
-                                    <i class="fa fa-times"></i></a></li>
+                                    <li id="addmanager"><a data-url="addManager.html" ><i class="fa fa-angle-right"></i>新增管理员
+                                    <span class="parentHandleIcon HandleJsClass"><i class="fa fa-times"></i></span></a></li>
                                     <li><a data-url="showManager.html" ><i class="fa fa-angle-right"></i>查看管理员</a></li>
                                 </ul>
                             </li>
@@ -79,7 +79,7 @@
             <div class=" rightcontent row">
                 <div class="col-sm-12 table-set">
                     <section class="panel" style="background: transparent;">
-                        <iframe width="100%" border="0" frameborder="0" src="right.html" name="frame" id="frame" title="frame" scrolling="no"  onLoad="iFrameHeight()" ></iframe>
+                        <iframe width="100%" border="0" frameborder="0" src="right.html" name="frame" id="frame" title="frame" scrolling="no" ></iframe>
                     </section>
                 </div>
             </div>
@@ -94,7 +94,7 @@
 <script src="bs3/js/bootstrap.min.js"></script>
 
 <script src="js/scripts.js"></script>
-<script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="js/jquery.scrollTo.min.js"></script>
 <script src="js/jquery.nicescroll.js"></script>
 
@@ -109,13 +109,37 @@ $(function(){
     });
 });
 
-setInterval(function(){
-    var ifm= document.getElementById("frame");   
-    var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
-    if(ifm != null && subWeb != null) {
-       ifm.height = subWeb.body.scrollHeight;
-    } 
-},2500);
+// setInterval(function(){
+//     var ifm= document.getElementById("frame");   
+//     var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
+//     if(ifm != null && subWeb != null) {
+//        ifm.height = subWeb.body.scrollHeight;
+//     } 
+// },2500);
+
+</script>
+
+<script type="text/javascript">
+    
+
+var oLi=document.getElementById('nav-accordion').getElementsByTagName('li');
+
+for(var i=0; i<oLi.length; i++){
+
+    oLi[i].onmouseover=function(){
+
+        var oHandleJsClass=Uiho.tool.getByClass(this,'HandleJsClass')[0];
+        console.log(oHandleJsClass)
+        oHandleJsClass.style.display='inline-block';
+    }
+
+    oLi[i].onmouseout=function(){
+        var oHandleJsClass=this.getElementsByClassName('HandleJsClass')[0];
+        oHandleJsClass.style.display='none';
+    }
+
+}
+
 </script>
 </body>
 </html>

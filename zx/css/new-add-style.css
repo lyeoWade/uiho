@@ -659,8 +659,7 @@ clear:both;
 	display: inline-block;
 	vertical-align: middle;
 }
-
-.HandleJsClass{
+ul.sidebar-menu li a span.HandleJsClass{
 	display: none;
 }
 
