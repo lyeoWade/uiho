@@ -358,18 +358,3 @@ function ChildMsg(){
 		}
 	})
 };
-
-
-// if(window.frames["frame"]==undefined){
-// 	//window.parent.onscroll=function(){
-// 	window.parent.document.getElementById('frame').offsetTop=0;
-// 	//}
-// }
-//console.log(window.location.href)
-if(window.location.href.indexOf('#top')!=-1){
-	window.location.href=window.location.href;
-}else{
-	window.location.href=window.location.href+'#top';
-}
-
-//console.log(window.location.href)

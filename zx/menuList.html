@@ -72,7 +72,7 @@
                             </li>
                         </ul>
                     </div>        
-            <!-- sidebar menu end-->
+                    <!-- sidebar menu end-->
                 </div>
             </aside>
 
@@ -109,13 +109,13 @@ $(function(){
     });
 });
 
-// setInterval(function(){
-//     var ifm= document.getElementById("frame");   
-//     var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
-//     if(ifm != null && subWeb != null) {
-//        ifm.height = subWeb.body.scrollHeight;
-//     } 
-// },2500);
+setInterval(function(){
+    var ifm= document.getElementById("frame");   
+    var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
+    if(ifm != null && subWeb != null) {
+       ifm.height = subWeb.body.scrollHeight;
+    } 
+},2500);
 
 </script>
 
