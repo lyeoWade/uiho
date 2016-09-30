@@ -264,8 +264,6 @@ function $_(arg) {
 ///////工具
 $_.tool = {};
 
-//children
-
 $_.tool.getChild = function(obj) {
 
 		if (obj.getElementsByClassName) {
@@ -289,13 +287,12 @@ $_.tool.roundNum = function(s, b) {
 };
 //随机颜色
 $_.tool.roundColor = function() {
-		var str = parseInt(Math.random() * 16777215).toString(16);
-
-		if (str.length < 6) {
-			str = '0' + str;
-		}
-		return str;
+	var str = parseInt(Math.random() * 16777215).toString(16);
+	if (str.length < 6) {
+		str = '0' + str;
 	}
+	return str;
+}
 	// 装逼的写法
 $_.tool.roundColor2 = function() {
 	(~~(Math.random() * (1 << 24))).toString(16); // ~~  相当于 parseInt
