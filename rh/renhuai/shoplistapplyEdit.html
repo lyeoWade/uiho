@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>申请商户详情</title>
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet"/>
+    <link href="css/mycss.css" rel="stylesheet">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yaDRGoon5YoRzAAwH781yUgn"></script>
+</head>
+<body>
+
+<section id="container">
+    <section class="wrapper" style="margin-top: 0 !important;">
+        <!-- page start-->
+
+        <!-- 项目列表 -->
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading title">
+                        <span><i class="fa fa-inbox"></i>&nbsp;&nbsp;申请商户详情</span>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    
+                    <div class="panel-body" id="projectwarp">
+                        <div class="childproject">
+                            <div class="form" style="position: relative;">
+                                <form class="cmxform form-horizontal " id="commentForm" method="get" action="" novalidate="novalidate">
+                                    <div class="form-group ">
+                                        <label for="projectList" class="control-label col-lg-2  col-sm-2">商家名称</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="name" name="name" type="text" disabled="">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-group ">
+                                        <label for="shoptypename" class="control-label col-lg-2  col-sm-2">商家类型名称</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="shoptypename" name="shoptypename" type="text"  disabled="">
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group ">
+                                        <label for="shopchildname" class="control-label col-lg-2  col-sm-2">商家类型/子类名称</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="shopchildname" name="shopchildname" type="text" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="nickname" class="control-label col-lg-2  col-sm-2">商家微信名称</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="nickname" name="nickname" type="text" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="updateDatetime" class="control-label col-lg-2  col-sm-2">申请时间</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="updateDatetime" name="updateDatetime" type="text" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="worktime" class="control-label col-lg-2  col-sm-2">营业时间</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="worktime" name="worktime" type="text" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="tel" class="control-label col-lg-2  col-sm-2">联系方式</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="tel" name="tel" type="text" required="" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="intor" class="control-label col-lg-2  col-sm-2">商户介绍</label>
+                                        <div class="col-sm-5 col-lg-5">
+                                            <textarea class="form-control " id="intor" name="intor" required="" disabled></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="bulletin" class="control-label col-lg-2  col-sm-2">商家公告</label>
+                                        <div class="col-sm-5 col-lg-5">
+                                            <textarea class="form-control " id="bulletin" name="bulletin" required="" disabled></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div id="ewmwrap">
+                                        <div class="form-group ">
+                                            <label for="phone" class="control-label col-lg-2 col-sm-2">二维码</label>
+                                           <!--  <div class="col-lg-5 col-sm-5">
+                                                <input type="file" id="fileInput1" name="fileInput1" class="form-control ewmFile fileInput2 hiddentag">
+                                                <div class="marktag">点击更换二维码</div>
+                                                <button class="btn btn-primary col-sm-3 rt00 uploadOnePic" id="ewmUpload" type="button">上传</button>
+                                            </div> -->
+
+                                            <div class="col-lg-6 col-sm-6 coverImgWrap" id="ewm">
+                                                <img src="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                   <!--  <div class="form-group ">
+                                        <label for="" class="control-label col-lg-2 col-sm-2">&nbsp;</label>
+                                        <div class="col-lg-6 col-sm-6 coverImgWrap" id="ewm">
+                                            <img src="">
+                                        </div>
+                                    </div> -->
+
+                                    <div class="form-group ">
+                                        <label for="apiUrl" class="control-label col-lg-2  col-sm-2">商家渠道</label>
+                                        <div class="col-sm-7 col-lg-7 qdchannel">
+                                            <!-- <div class="qdchannelList">
+                                                <input class="form-control " id="apiUrl" type="text" name="apiUrl" required="">
+                                                <input class="form-control " id="apiUrl" type="text" name="apiUrl" required="">
+                                            </div> -->
+                                        </div>
+                                    </div>
+
+
+                                    <div id="filewarp2">
+                                        <div class="form-group ">
+                                            <label for="coverImg" class="control-label col-lg-2 col-sm-2">商家封面图</label>
+                                            <!-- <div class="col-lg-6 col-sm-6">
+                                                <input type="file" id="fileInput1" name="fileInput1" class="form-control fileInput2 hiddentag">
+                                                <div class="marktag">点击上传头像</div>
+                                                <button class="btn btn-primary col-sm-3 rt00 uploadOnePic" id="uploadBanner2" type="button">上传</button>
+                                            </div> -->
+
+                                            <div class="col-lg-6 col-sm-6 coverImgWrap" id="coverImgWrap">
+                                                <img src="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                   <!--  <div class="form-group ">
+                                        <label for="" class="control-label col-lg-2 col-sm-2">&nbsp;</label>
+                                        <div class="col-lg-6 col-sm-6 coverImgWrap" id="coverImgWrap">
+                                            <img src="">
+                                        </div>
+                                    </div> -->
+
+                                    <div id="filewarp">
+                                        <div class="form-group ">
+                                            <label for="phone" class="control-label col-lg-2 col-sm-2">商家图片集</label>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <!-- <input type="file" id="fileInput" name="fileInput" class="form-control fileInput"> -->
+
+                                                <div id="thumbnail">
+                                                    <div class="form-group ">
+                                                        <div class="col-lg-8 col-sm-8">
+                                                            <div id="oldthumb"></div>
+                                                            <div id="thumbs"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <div class="col-sm-offset-2 col-lg-6 col-sm-6">
+                                            <button class="btn btn-warning col-sm-2" type="button" id="addbanner">新增</button>
+                                            <button class="btn btn-primary col-sm-3 col-md-offset-1 col-sm-offset-1" type="button" id="upload">上传</button>
+                                        </div>
+                                    </div> -->
+                                    
+                                    <!-- <div id="thumbnail">
+                                        <div class="form-group ">
+                                            <label for="thumbnail" class="control-label col-lg-2 col-sm-2"></label>
+                                            <div class="col-lg-8 col-sm-8">
+                                                <div id="oldthumb"></div>
+                                                <div id="thumbs"></div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+
+
+                                    <div class="form-group ">
+                                        <label for="address" class="control-label col-lg-2  col-sm-2">地址</label>
+                                        <div class="col-sm-6 col-lg-6 ">
+                                            <input class="form-control " id="address" type="text" name="address" required="" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="apiUrl" class="control-label col-lg-2  col-sm-2">处理状态</label>
+                                        <div class="col-sm-6 col-lg-6 ">
+                                            <select class="form-control" id="isRecommend">
+                                                <option value="1">通过</option> 
+                                                <option value="0">拒绝通过</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="refuse" class="control-label col-lg-2  col-sm-2">&nbsp;</label>
+                                        <div class="col-sm-6 col-lg-6" id="refuseText" style="display: none;">
+                                            <textarea class="form-control " id="refuse" name="refuse" required="" placeholder="请填写拒绝理由"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="mapwrap" style="position:absolute; right: 0; top: 18px; ">
+                                        <div id="allmap" style="width: 340px; height: 340px;"></div>
+                                        <div class="addresspos">
+                                            <p>经度：<input type="text" class="lng" disabled></p>
+                                            <p>纬度：<input type="text" class="lat" disabled></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group clearfix" style="margin-top: 20px;">
+                                        <div class="col-lg-offset-2 col-sm-offset-2 col-sm-8 col-lg-8">
+                                            <button class="btn btn-primary noroot" type="button" id="refuseBtn"  style="display: none"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;</button>
+
+                                            <button class="btn btn-primary noroot" type="button" id="saveBtn" style="display: block"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;</button>
+                                            
+                                             <span class="addtip"></span>
+                                           
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+</section>
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/tool.js"></script>
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+
+<script type="text/javascript" src="js/shoplistapplyEdit.js"></script>
+<!-- <script src="js/apigroup.js"></script> -->
+<!--script for this page-->
+<script type="text/javascript">
+window.onload=function(){
+    parent.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

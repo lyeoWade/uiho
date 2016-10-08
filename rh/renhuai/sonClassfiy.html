@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>子类列表</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <!--responsive table-->
+    <link href="css/table-responsive.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link href="css/mycss.css" rel="stylesheet">
+</head>
+<body>
+<section id="container" class="format">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-sm-12 table-set">
+                <section class="panel">
+                    <header class="panel-heading title">
+                        <span><i class="fa fa-code"></i>&nbsp;&nbsp;子类列表</span>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    <header class="panel-heading clearfix searchpanel" style="padding-bottom: 0;">
+                        <div class="pull-left col-sm-11  col-lg-11">
+                          
+                            <div class="form-group pull-left col-lg-3 col-sm-3" style="padding: 0;" >
+                                <label for="title" class="control-label col-lg-4 col-sm-4">所属分类</label>
+                                <div class="col-lg-8 col-sm-8">
+                                    <select class="form-control input-sm" id="zid">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <input type="button" id="SelectQueryBtn" class="btn btn-success" value="查询">
+                        </div>
+                    </header>
+                    <div class="panel-body">
+                        <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <thead class="thead">
+                                    <tr>
+                                        <th>序号</th>
+                                        <th class="numeric">分类名称</th>
+                                        <th class="numeric"><i class="fa fa-clock-o"></i>&nbsp;更新时间</th>
+
+                                        <th class="numeric"><i class="fa fa-wrench"></i>&nbsp;操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                    <!-- <tr>
+                                        <td>6666666</td>
+                                        <td>6666666</td>
+                                        <td>6666666</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="recoveryerrorListInfo.html" class="btn btn-primary btn-sm backpage">编辑&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a>
+
+                                                <a href="javascript:;" class="btn btn-warning btn-sm "><i class="fa fa-times"></i>&nbsp;&nbsp;删除</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>888888</td>
+                                        <td>888888</td>
+                                        <td>888888</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="recoveryerrorListInfo.html" class="btn btn-primary btn-sm backpage">编辑&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a>
+                                                <a href="javascript:;" class="btn btn-warning btn-sm "><i class="fa fa-times"></i>&nbsp;&nbsp;删除</a>
+                                            </div>
+                                        </td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </section>
+                        <div class="box-footer clearfix" id="pagination">
+                           
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    <!-- page end-->
+    </section>
+    <!--main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/sonclassfiy.js"></script>
+</body>
+</html>

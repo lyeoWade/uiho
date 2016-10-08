@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>新增微信关键词</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/mycss.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<section id="container" class="format">
+    <!--main content start-->
+        <section class="wrapper">
+            <!-- page start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                     <header class="panel-heading title">
+                        <span><i class="fa fa-cog"></i>&nbsp;&nbsp;新增微信关键词</span>
+                        <span></span>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal ">
+                                    <div class="form-group ">
+                                        <label for="realname" class="control-label col-lg-3 col-sm-3">关键词</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <!-- <input class="form-control " id="realname" name="realname" type="text" /> -->
+                                            <textarea class="form-control " rows="7" id="realname" placeholder="多个关键词请用中文的逗号(，)隔开"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="linkUrl" class="control-label col-lg-3 col-sm-3">跳转地址</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="linkUrl" name="linkUrl" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-lg-6 col-sm-6">
+                                            <button class="btn btn-primary" id="editMyInfo" type="button"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;保存</button>
+                                            <span class="addtip"></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    <!--main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript">
+/* 获取登陆用户信息 */
+
+$(function(){
+    $('#editMyInfo').on('click',function(){
+        var name=$('#realname').val();
+        if(name==''){
+            alert('请输入关键字');
+            return false;
+        }
+        var keyArr=name.split('，');
+
+        var linkUrl=encodeURIComponent($('#linkUrl').val());
+
+        for(var i=0; i<keyArr.length; i++){
+            var datas='data={"action":"addWxKeyword","params":{"name":"'+keyArr[i]+'","linkUrl":"'+linkUrl+'"},"source":"backstage","target":"wxKeyword"}';
+            $.ajax({
+                url:requrl,
+                type:"POST",
+                data:datas,
+                success:function(str){
+                    responseInfo(str);
+                    setTimeout(function(){
+                        history.go(0);
+                    },800)
+                }
+            })
+        }
+        
+    })
+
+});
+</script>
+</body>
+</html>

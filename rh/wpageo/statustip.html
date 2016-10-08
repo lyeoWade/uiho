@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>状态</title>
+
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+
+<!-- 审核中 -->
+<section class="statusing">
+	<div class="statusTipWrap progress"></div>
+	<div class="statusTip">您的入驻申请还在审核中,请耐心等待!</div>
+	<div class="contact">如有需要，请联系我们0851-28787171</div>
+	<div class="btn"><a href="index.html">到主页逛逛</a></div>
+</section>
+
+<!-- 审核未通过 -->
+<section class="statusing" style="display: none;">
+	<div class="statusTipWrap error"></div>
+	<div class="statusTip">您的入驻申请审核失败,请查看原因!</div>
+	<div class="contact">如有需要，请联系我们0851-28787171</div>
+	<div class="btn"><a href="">查看原因</a></div>
+</section>
+
+
+<section class="statusing" style="display: none;">
+	<div class="statusTipWrap">原因:1,图片失真，无法正常显示!</div>
+	<div class="contact">如有需要，请联系我们0851-28787171</div>
+	<div class="btn"><a href="">重新提交</a></div>
+</section>
+
+
+
+
+<section class="statusing" style="display: none;">
+	<div class="statusTipWrap">原因:1,图片失真，无法正常显示!</div>
+	<div class="contact">如有需要，请联系我们0851-28787171</div>
+	<div class="btn"><a href="">联系客服</a></div>
+</section>
+
+<div id="fixednav"></div>
+<section id="nav">
+	<a href="index.html" class="comnav home"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+	<a href="nearby.html" class="comnav neary">附近</a>
+	<a href="push.html" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+
+</body>
+</html>

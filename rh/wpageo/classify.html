@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5xYtj38G0vQ2vqGvNk66HpBz2GqCZzrY"></script>
+</head>
+<body>
+<!-- 筛选分类 -->
+<section id="filterClassify">
+	<ul class="filterBar clearfix" style="position: fixed; left: 0; top: 0;">
+		<li><span id="sortSon"></span><i class="downicon"></i>
+			<div class="flterDown SonSortWrap" style="display: none;"></div>
+		</li>
+		<li><span id="truble" sortid="1">最新</span><i class="downicon"></i>
+			<div class="flterDown" id="" style="left: -100%;">
+				<em>最新</em>
+				<em>最热门</em>
+				<em>最近</em>
+			</div>
+		</li>
+	</ul>
+	<!-- 列表 -->
+	<div id="fixednav"></div>
+	<div class="flterList">
+		<ul id="ListWrap">
+			<!-- <li>
+				<div class="listdetail clearfix">
+					<a href="" class="imgwrap fl"><img src="image/2.jpg"></a>
+					<div class="fl">
+						<h3>仁怀地瓜老火锅</h3>
+						<p>本店已接入：<a href=""><img src="image/shop/meituan.png"></a><a href=""><img src="image/shop/dzdp.png"></a></p>
+					</div>
+					<span class="km ">45.7km</span>
+				</div>
+				<div class="marquee">
+					<i></i><span>全场8.8折优惠新店开张,全场8.8折优惠！！！！</span>
+				</div>
+			</li> -->
+			
+		</ul>
+		<p class="moreWrap"><a href="javascript:;" id="addMore">加载更多</a></p>
+	</div>
+</section>
+
+
+
+<div id="fixednav"></div>
+<section id="nav">
+	<a href="index.html" class="comnav home"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+	<a href="nearby.html" class="comnav neary">附近</a>
+	<a href="javascript:;" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+
+<script type="text/javascript" src="js/public.js"></script>
+
+<script type="text/javascript" src="js/location.js"></script>
+<script type="text/javascript">
+
+
+var GetIndexInfo=new UihoForRenhuai();
+var sortid=UihoForRenhuai.prototype.geturldata(window.location.href).sortId,isRecommend='',isrecent=0,subSortId='',pageSize=20,nowPage=1;
+//得到默认的类
+var sortSon=document.getElementById('sortSon');
+sortSon.innerHTML=UihoForRenhuai.prototype.getDecodeData(UihoForRenhuai.prototype.geturldata(window.location.href).title);
+document.getElementsByTagName('title')[0].innerHTML=UihoForRenhuai.prototype.getDecodeData(UihoForRenhuai.prototype.geturldata(window.location.href).title);
+
+getLocation(function(lng,lat){
+
+	//alert(lat,lng)
+	//获取分类
+	GetIndexInfo.GetSonSortList(sortid,function(){
+		flterDown(function(SonSortid,isRecommend,isrecent){
+			$('#ListWrap').html('');
+			if(SonSortid==null){
+				SonSortid='';
+			}
+			GetIndexInfo.GetOneClassifySortList(sortid,isRecommend,isrecent,SonSortid,lat,lng,nowPage,pageSize);
+		});
+	});
+
+	//获取列表
+	GetIndexInfo.GetOneClassifySortList(sortid,isRecommend,isrecent,subSortId,lat,lng,nowPage,pageSize,function(){
+		setTimeout(function(){
+			GetIndexInfo.xdt();
+		},3000);
+	});
+
+});
+
+
+
+
+
+function  flterDown(Ajaxfn){
+	var oLi=document.getElementsByClassName('filterBar')[0].getElementsByTagName('li');
+	var oIcon=document.getElementsByClassName('filterBar')[0].getElementsByTagName('i');
+	for(var i=0; i<oLi.length; i++){
+		oLi[i].index=i;
+		oLi[i].btn=true;
+		oLi[i].addEventListener('touchend',function(e){
+			//var oIcon=this.getElementsByTagName('i')[0];
+			if(this.btn){
+				for(var j=0; j<oLi.length; j++){
+					var oflterDown=oLi[j].getElementsByClassName('flterDown')[0];
+					oflterDown.style.display='none';
+					oIcon[j].style.transform='rotateZ(0)';
+					oLi[j].btn=true;
+				};
+				var flterDown=this.getElementsByClassName('flterDown')[0];
+				flterDown.style.display='block';
+				oIcon[this.index].style.transform='rotateZ(180deg)';
+				//flterDown.style.color='red';
+				e.cancelBubble=true;
+				this.btn=false;
+			}else{
+				for(var j=0; j<oLi.length; j++){
+					var oflterDown=oLi[j].getElementsByClassName('flterDown')[0];
+					oflterDown.style.display='none';
+					oIcon[j].style.transform='rotateZ(0)';
+					oLi[j].btn=true;
+				};
+				this.btn=true;
+			}
+		},false);
+	}
+	var truble=document.getElementById('truble');
+	var sortS=document.getElementById('sortSon');
+	var oFlterDown=document.getElementsByClassName('flterDown');
+	for(var ii=0; ii<oFlterDown.length; ii++){
+		var aBtn=oFlterDown[ii].getElementsByTagName('em');
+		for(var i=0; i<aBtn.length; i++){
+			aBtn[i].index=i;
+			aBtn[i].addEventListener('touchend',function(e){
+				e.stopPropagation();
+				var oSpan=this.parentNode.parentNode.getElementsByTagName('span')[0];
+				var _this=this;
+
+				var oIcon=this.parentNode.parentNode.getElementsByTagName('i')[0];
+				this.parentNode.parentNode.btn=true;
+				oIcon.style.transform='rotateZ(0)';
+
+				oSpan.innerHTML=this.innerHTML;
+				if(this.getAttribute('typeC')==1){
+					var SonSortid=this.getAttribute('subsortid');
+					//sortid 没有这个自定义属性
+					oSpan.setAttribute('subsortid',SonSortid);
+					setTimeout(function(){
+						_this.parentNode.style.display='none';
+
+						if(truble.innerHTML=="最新"){
+							isRecommend='';
+						}else if(truble.innerHTML=="最热门"){
+							isRecommend=1;
+						}else if(truble.innerHTML=="最近"){
+							isrecent=1;
+						};
+						//选择之后发送请求
+						Ajaxfn&&Ajaxfn(SonSortid,isRecommend,isrecent);
+					},300);
+				}else{
+					SonSortid=sortS.getAttribute('subsortid');
+					if(truble.innerHTML=="最新"){
+						isRecommend='';
+						isrecent=0;
+					}else if(truble.innerHTML=="最热门"){
+						isRecommend=1;
+					}else if(truble.innerHTML=="最近"){
+						isrecent=1;
+					};
+					setTimeout(function(){
+						_this.parentNode.style.display='none';
+						//选择之后发送请求
+						Ajaxfn&&Ajaxfn(SonSortid,isRecommend,isrecent);
+					},300);
+				}
+				e.cancelBubble=true;
+				//console.log(e)
+			},false);
+		}
+	}
+
+	document.addEventListener('touchend',function(){
+		for(var ii=0; ii<oFlterDown.length; ii++){
+			oFlterDown[ii].style.display="none";
+		}
+	},false);
+}
+
+</script>
+</body>
+</html>

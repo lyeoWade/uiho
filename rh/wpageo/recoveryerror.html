@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我要纠错</title>
+
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+	<link rel="stylesheet" href="css/mui.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5xYtj38G0vQ2vqGvNk66HpBz2GqCZzrY"></script>
+</head>
+<body style="width: 3.2rem; ">
+
+
+<section id="recoveryerror" style=" min-height:5.6rem;">
+	<ul class="recoveryerrorList">
+		<li>该地点不存在<i class="mui-icon mui-icon-arrowright"></i></li>
+		<li>位置错误<i class="mui-icon mui-icon-arrowright"></i></li>
+		<li>联系方式错误<i class="mui-icon mui-icon-arrowright"></i></li>
+		<li>其他错误<i class="mui-icon mui-icon-arrowright"></i></li>
+	</ul>
+</section>
+
+
+<!-- 错误1 -->
+<section class="error errorWrap" style="display: none; min-height:5.6rem;">
+	<h2><i class="mui-icon mui-icon-closeempty closeBtn"></i>纠错：该地点不存在</h2>
+	<ul>
+		<li class="clearfix"><label class="fl">错误描述</label><textarea class="fl addressErrorIntor" rows="4"></textarea></li>
+		<li class="clearfix"><label class="fl">联系方式</label><input type="text" name="text" class="fl addressErrorTel"></li>
+		<li class="clearfix" style="text-align: center;">反馈有礼品哦!</li>
+		<li class="clearfix"><button class="submit addressError">提交</button></li>
+	</ul>
+</section>
+
+
+<section class="error errorWrap" style="display: none; min-height:5.6rem;">
+	<h2><i class="mui-icon mui-icon-closeempty closeBtn"></i>纠错：位置错误</h2>
+	<ul>
+		<li class="clearfix"><label class="fl">错误描述</label><textarea class="fl posErrorIntor" rows="4"></textarea></li>
+		<li class="clearfix"><label class="fl">位置</label><input type="text" name="text" class="fl position nowAd"><a href="javascript:;" class="shelectlocation"><i class="mui-icon mui-icon-location"></i>选择位置</a></li>
+		<li class="clearfix"><label class="fl">联系方式</label><input type="text" name="text" class="fl posErrorPhone"></li>
+		<li class="clearfix" style="text-align: center;">反馈有礼品哦!</li>
+		<li class="clearfix"><button class="submit posError">提交</button></li>
+	</ul>
+</section>
+
+<!-- style="transform:translateX(100%);" -->
+<section class="error errorWrap errorcontact" style="display: none; min-height:5.6rem;" >
+	<h2><i class="mui-icon mui-icon-closeempty closeBtn"></i>纠错：联系方式错误</h2>
+	<ul>
+		<li class="clearfix"><label class="fl">商户当前联系方式</label><input type="text" name="text" class="fl telErrorNow"></li>
+		<li class="clearfix"><label class="fl">商户最新联系方式</label><input type="text" name="text" class="fl telErrorNew"></li>
+		<li class="clearfix"><label class="fl">联系方式</label><input type="text" name="text" class="fl telErrorPhone"></li>
+		<li class="clearfix" style="text-align: center;">反馈有礼品哦!</li>
+		<li class="clearfix"><button class="submit telError">提交</button></li>
+	</ul>
+</section>
+
+<section class="error errorWrap" style="display: none; min-height:5.6rem; ">
+	<h2><i class="mui-icon mui-icon-closeempty closeBtn"></i>纠错：其他错误</h2>
+	<ul>
+		<li class="clearfix"><label class="fl">错误描述</label><textarea class="fl otherErrorIntor" rows="4"></textarea></li>
+		
+		<li class="clearfix"><label class="fl">联系方式</label><input type="text" name="text" class="fl otherErrorPhone"></li>
+		<li class="clearfix" style="text-align: center;">反馈有礼品哦!</li>
+		<li class="clearfix"><button class="submit otherError">提交</button></li>
+	</ul>
+</section>
+<div id="fixednav"></div>
+<section id="nav">
+	<a href="index.html" class="comnav home"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+	<a href="nearby.html" class="comnav neary">附近</a>
+	<a href="push.html" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+
+
+<section id="mapwrap">
+	<div id="allmap" style="width: 100%; height: 3.2rem;">
+		
+	</div>
+	<p id="nowaddress"><i class="mui-icon mui-icon-location"></i>当前位置:XXXXXXXXXXXXXX</p>
+
+	<p class="back"><a href="javascript:;">返回</a></p>
+</section>
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript">
+	//var filterClassify=document.getElementById('filterClassify');
+	var oMapWrap=document.getElementById('mapwrap');
+	//选择地图
+	$('.shelectlocation').on('touchend',function(){
+		$('#mapwrap').css({
+			"opacity":'1',
+			"z-index":'300'
+		});
+	});
+
+	//filterClassify.style.height=document.documentElement.clientHeight-50+'px';
+
+	document.getElementsByClassName('back')[0].getElementsByTagName('a')[0].addEventListener('touchend',function(){
+		oMapWrap.style.opacity='0';
+		oMapWrap.style.zIndex='-300';
+	},false);
+	
+	
+	//alert(GetIndexInfo)
+	if (navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(locationSuccess, locationError,{
+	        // 指示浏览器获取高精度的位置，默认为false
+	        enableHighAccuracy: true,
+	        // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
+	        timeout: 5000,
+	        // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
+	        maximumAge: 3000
+	    });
+	}else{
+	    alert("不好意思，你的浏览器不支持html5定位");
+	}
+	
+	
+
+	function locationSuccess(position){
+		var coords = position.coords;    
+	//	alert(coords.latitude+'-'+coords.longitude);
+
+		var locationPos=coords.latitude+','+coords.longitude;
+
+		var map = new BMap.Map("allmap");
+
+		map.centerAndZoom(new BMap.Point(coords.longitude,coords.latitude),17);  //初始化地图,设置城市和地图级别。
+		
+		//获取当前地址 
+
+		var myGeo = new BMap.Geocoder(); 
+		// 根据坐标得到地址描述 
+		myGeo.getLocation(new BMap.Point(coords.longitude,coords.latitude), function(result){ 
+			if (result){ 
+				//alert(result.address); 
+				$('.nowAd').val(result.address);
+				$('.nowAd').attr('posu',coords.longitude+','+coords.latitude);
+				$('#nowaddress').html('<i class="mui-icon mui-icon-location"></i>当前位置:'+result.address);
+			} 
+		});
+
+		var point = new BMap.Point(coords.longitude,coords.latitude);  
+		var markerB = new BMap.Marker(point);// 创建标注
+		
+		map.addOverlay(markerB);             // 将标注添加到地图中
+
+		markerB.disableDragging();
+		function showPoint(e){
+			point = new BMap.Point(map.getCenter().lng,map.getCenter().lat);
+			map.removeOverlay(markerB);
+			markerB = new BMap.Marker(point);  // 创建标注
+			map.addOverlay(markerB);   // 将标注添加到地图中
+
+			var gc = new BMap.Geocoder(); 
+			gc.getLocation(point, function(rs){
+				var addComp = rs.addressComponents;
+				var mapAddress = addComp.province+addComp.city + addComp.district
+				+ addComp.street + addComp.streetNumber;
+				$('#nowaddress').html('<i class="mui-icon mui-icon-location"></i>当前位置:'+mapAddress);
+				$('.nowAd').val(mapAddress);
+				$('.nowAd').attr('posu',map.getCenter().lng+','+map.getCenter().lat);
+			});
+		}
+		map.addEventListener("moving", showPoint);
+	};
+
+
+	function locationError(error){
+	    switch(error.code) {
+	        case error.TIMEOUT:
+	            alert("获取当前位置超时,请重试！！！");
+	            break;
+	        case error.POSITION_UNAVAILABLE:
+	            alert('不能获取您当前的位置！！！');
+	            break;
+	        case error.PERMISSION_DENIED:
+	            alert('请打开GPS以便于我们获取您当前的位置！！！');
+	            break;
+	        case error.UNKNOWN_ERROR:
+	            alert('未知的错误！！！');
+	            break;
+	    }
+	}
+
+
+
+	var oBtn=document.querySelectorAll('.recoveryerrorList')[0].children;
+	var oErrorWrap=document.querySelectorAll('.errorWrap');
+
+	var oCloseBtn=document.querySelectorAll('.closeBtn'); 
+	var len=oBtn.length;
+	for(var i=0;i<len; i++){
+		oBtn[i].index=i;
+		oCloseBtn[i].index=i;
+		oBtn[i].addEventListener('touchend',function(){
+			oErrorWrap[this.index].style.display='block';
+		},false);
+
+		oCloseBtn[i].addEventListener('touchend',function(){
+			oErrorWrap[this.index].style.display='none';
+		},false);
+	};
+
+	var sellerInfo=new UihoForRenhuai();
+	var getUrl=sellerInfo.requrl;
+	var userId=sellerInfo.getCookie('userIdByWeixin');
+	var oCorrectionUserId=window.location.href.split('?')[1].split('=')[1];
+
+	//
+
+	var otherError=document.getElementsByClassName('otherError')[0];
+	var addressError=document.getElementsByClassName('addressError')[0];
+	var telError=document.getElementsByClassName('telError')[0];
+
+	var posError=document.getElementsByClassName('posError')[0];
+
+	var longitude='',latitude='';
+	posError.addEventListener('touchend',function(){
+		var oIntor=document.getElementsByClassName('posErrorIntor')[0].value;
+		var position=document.getElementsByClassName('position')[0].value;
+		var phone=document.getElementsByClassName('posErrorPhone')[0].value;
+		var pos=$('.nowAd').attr('posu').split(',');
+		if(oIntor=='' || position=='' || phone==''){
+			alert('请填写完整');
+			return false;
+		}
+
+		var datas='data={"action":"addCorrection","params":{"correctionUserId":'+oCorrectionUserId+',"intor":"'+oIntor+'","address":"'+position+'","longitude":"'+pos[0]+'","latitude":"'+pos[1]+'","phone":"'+phone+'","type":2,"userId":'+userId+'},"source":"mobileweb","target":"correction"}';
+		postAjax(datas);
+	},false);
+
+	telError.addEventListener('touchend',function(){
+		var nowTel=document.getElementsByClassName('telErrorNow')[0].value;
+		var newTel=document.getElementsByClassName('telErrorNew')[0].value;
+		var phone=document.getElementsByClassName('telErrorPhone')[0].value;
+
+		if(nowTel=='' || newTel=='' || phone==''){
+			alert('请填写完整');
+			return false;
+		}
+		var datas='data={"action":"addCorrection","params":{"correctionUserId":'+oCorrectionUserId+',"nowTel":"'+nowTel+'","newTel":"'+newTel+'","phone":"'+phone+'","type":3,"userId":'+userId+'},"source":"mobileweb","target":"correction"}';
+		postAjax(datas);
+	},false);
+
+
+
+	otherError.addEventListener('touchend',function(){
+		var oIntor=document.getElementsByClassName('otherErrorIntor')[0].value;
+		var phone=document.getElementsByClassName('otherErrorPhone')[0].value;
+
+		if(oIntor=='' || phone==''){
+			alert('请填写完整');
+			return false;
+		}
+		var datas='data={"action":"addCorrection","params":{"correctionUserId":'+oCorrectionUserId+',"intor":"'+oIntor+'","phone":"'+phone+'","type":4,"userId":'+userId+'},"source":"mobileweb","target":"correction"}';
+
+		postAjax(datas);
+	},false);
+
+	addressError.addEventListener('touchend',function(){
+		var oIntor=document.getElementsByClassName('addressErrorIntor')[0].value;
+		var phone=document.getElementsByClassName('addressErrorTel')[0].value;
+
+		if(oIntor=='' || phone==''){
+			alert('请填写完整');
+			return false;
+		}
+		var datas='data={"action":"addCorrection","params":{"correctionUserId":'+oCorrectionUserId+',"intor":"'+oIntor+'","phone":"'+phone+'","type":1,"userId":'+userId+'},"source":"mobileweb","target":"correction"}';
+
+		postAjax(datas);
+	},false);
+
+	function postAjax(datas){
+		//alert(datas)
+		$.ajax({
+				url:getUrl,
+				type:"POST",
+				data:datas,
+				success:function(str){
+					var oData=$.parseJSON(str);
+					if(oData.responseCode==1){
+						alert("提交成功！");
+						window.location.href="index.html";
+					}else{
+						alert(oData.responseMsg);
+					}
+				}
+			});
+	}
+</script>
+
+
+
+</body>
+</html>

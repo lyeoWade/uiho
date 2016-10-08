@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>搜索</title>
+
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5xYtj38G0vQ2vqGvNk66HpBz2GqCZzrY"></script>
+	<script src="js/mui.min.js"></script>
+	
+</head>
+<body>
+<section id="noresult" >
+	<div class="searchWrap">
+		<div class="mui-input-row">
+			<input type="text" id="searchText" class="mui-input-clear swrap" placeholder="搜索">
+		</div>
+		<a href="javascript:;" class="sBtn mui-icon mui-icon-search"  id="searchBtn"></a>
+
+		<p class="nocontentTip" style="display: none; padding: 0.1rem 0;">搜索结果:共0条数据</p>
+	</div>
+	
+	<!-- 搜索初始页面 -->
+	<div class="initpage">
+		<div class="initpagecol">
+			<h2>热门搜索</h2>
+			<div class="hotwrap">
+			</div>
+		</div>
+
+		<div class="initpagecol">
+			<h2>最近搜索<span class="fr clearSearchHistory">清空搜索记录</span></h2>
+			<div class="zuijin">
+			</div>
+		</div>
+
+		<div class="searchad"><a href=""><img src=""></a></div>
+	</div>
+	
+	<div class="flterList">
+		<ul id="ListWrap" style="display: none;">
+		</ul>
+	</div>
+	<p class="noresultTip" style="display: none;">可能是输入的关键词不对，换一个试试吧。</p>
+</section>
+
+
+<div id="fixednav"></div>
+
+<div id="fixednav"></div>
+<section id="nav">
+	<a href="index.html" class="comnav home"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+	<a href="nearby.html" class="comnav neary">附近</a>
+	<a href="push.html" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/location.js"></script>
+
+<script type="text/javascript">
+//获取列表
+var GetIndexInfo=new UihoForRenhuai();
+
+var nowPage=1,pageSize=20;
+
+var userId=GetIndexInfo.getCookie('userIdByWeixin');
+
+//alert('搜索页'+userId);
+
+GetIndexInfo.GetHomeBannerList(2,function(oData){
+	console.log(oData);
+	if(oData.responseCode==0){
+
+	}else{
+		var obj=oData.object[0];
+		$('.searchad').html('<a href="'+obj.linkUrl+'"><img src="'+obj.coverImg+'"/></a>');
+	};
+});
+
+getLocation(function(lng,lat){
+	 try{
+		 INeedGetPos(lng,lat);
+	 }catch(e){
+		console.log(e)
+	}
+});
+
+function INeedGetPos(lng,lat){
+	//微信关键词输入搜索
+	var oIsNot=window.location.href.indexOf('?');
+	if(oIsNot!=-1){
+		//alert(window.location.href);
+		var oKeyword=window.location.href.split('?')[1].split('=')[1];
+		$('#searchText').val(decodeURIComponent(oKeyword));
+		getList(decodeURIComponent(oKeyword),lat,lng);
+	};
+
+	GetIndexInfo.GetSearchKeywordList(function(){
+		var oBtn=document.getElementsByClassName('hotwrap')[0].getElementsByTagName('a');
+		for(var i=0; i<oBtn.length; i++){
+			oBtn[i].addEventListener('touchend',function(){
+				var name=this.innerHTML;
+				$('#searchText').val(name);
+				getList(name,lat,lng);
+			},false)
+		}
+	});
+	//console.log(userId);
+	if(userId==undefined || userId==""){
+		//alert('从哪儿进来的,从哪儿出去！！！');
+	}else{
+		//获取历史记录 点击后搜索
+		GetIndexInfo.GetSearchHistoryList(userId,function(){
+			var oBtn=document.getElementsByClassName('zuijin')[0].getElementsByTagName('a');
+			for(var i=0; i<oBtn.length; i++){
+				oBtn[i].addEventListener('touchend',function(){
+					var name=this.innerHTML;
+					$('#searchText').val(name);
+					getList(name,lat,lng);
+				},false)
+			}
+		});
+	}
+
+	//搜索
+	var oSearchBtn=document.getElementById('searchBtn');
+	oSearchBtn.addEventListener('touchend',function(){
+		var name=document.getElementById('searchText').value;
+		getList(name,lat,lng);
+	},false);
+}
+
+
+function getList(name,lat,lng){
+	GetIndexInfo.GetNearbySSS(nowPage,pageSize,name,lat,lng,function(oData){
+		if(oData.responseCode==0){
+			$('.nocontentTip').css('display','block').html('搜索结果:共0条数据');
+			$('.noresultTip').css('display','block');
+			$('.initpage').css('display','none');
+		}else{
+			$('.initpage').css('display','none');
+			$('.noresultTip').css('display','none')
+			var SortListHtml='';
+			for(var i=0; i<oData.object.length; i++){
+				var channelListHtml='';
+				var len=0;
+				var cHtml='';
+				if(oData.object[i].channelList==undefined){
+					console.log(oData.object[i].channelList);
+					cHtml=channelListHtml;
+				}else{
+					if(oData.object[i].channelList.length>=3){
+						len=3;
+					}else{
+						len=oData.object[i].channelList.length;
+					}
+					for(var j=0; j<len; j++){
+						channelListHtml+='<a href="'+oData.object[i].channelList[j].linkUrl+'"><img src="'+oData.object[i].channelList[j].note+'"></a>';
+					}
+					cHtml='本店已入驻'+channelListHtml;
+				}
+				var targetUri='';
+				if(oData.object[i].isExpiration==1){
+					targetUri='href="javascript:;" isEnd="end"';
+				}else{
+					targetUri='href="seller.html?id='+oData.object[i].userId+'"';
+				}
+				SortListHtml+='<li><div class="listdetail clearfix">\
+					<a '+targetUri+' class="imgwrap fl"><img src="'+oData.object[i].coverImg+'"></a>\
+					<div class="fl"><h3><a '+targetUri+'>'+oData.object[i].name+'</a></h3>\
+					<p>'+cHtml+'</p></div></div><span class="km ">'+oData.object[i].distance+'km</span>\
+					<div class="marquee">\
+						<i></i><div class="scrollNote"><div class="marqueeWrap"><span>'+oData.object[i].bulletin+'</span></div></div></div></li>';
+
+			}
+			$('.nocontentTip').css('display','block').html('搜索结果:共'+oData.object.length+'条数据')
+			$('#ListWrap').html(SortListHtml).css('display','block');
+			$('a[isEnd="end"]').parents('li').find('a').attr('href','javascript:;').end().on('click',function(){
+				alert("您查看的商家未续费！");
+			});
+			GetIndexInfo.noteScroll();
+		};
+	});
+};
+
+var oClearSearchHistory=document.querySelectorAll('.clearSearchHistory')[0];
+oClearSearchHistory.addEventListener('touchend',function(){
+	if(confirm("你确定要删除搜索记录吗？")){
+		GetIndexInfo.clearSearchHistory(userId);
+	}	
+},false);
+
+
+
+</script>
+</body>
+</html>
