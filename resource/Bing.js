@@ -23,6 +23,10 @@ function geturldata(url){
 }
 */
 
+
+
+
+
 function setCookie(name, value, iDay) {
 	var oDate = new Date();
 	oDate.setDate(oDate.getDate() + iDay);
@@ -870,8 +874,3 @@ window.onload=function(){
 // 		}        
 // 	},{enableHighAccuracy: true})
 // }
-
-
-
-
-

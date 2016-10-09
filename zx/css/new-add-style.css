@@ -72,7 +72,7 @@ input:-ms-input-placeholder {
 
 .format{}
 .format #main-content{ margin-left: 0; }
-.format .wrapper{ margin-top: 0; }
+.format .wrapper{ margin-top: 0 !important; }
 #signupForm{ padding:0 0 50px 0; }
 
 .h100{
