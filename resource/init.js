@@ -1,8 +1,6 @@
 
 //ajax请求地址
-//var requrl="http://jiaxiao.dev.uiho.com/info/InfoServlet";
-var requrl="http://console.qjias.com/info/InfoServlet";
-
+//var requrl="http://jiaxiao.dev.$_.com/info/InfoServlet";
 
 //选择器
 
@@ -122,15 +120,15 @@ function _getByStr(aParent, str) {
 	return aChild;
 };
 
-function Uiho(arg) {
+function $$(arg) {
 	var elements = [],
 		bSelect;
 	switch (typeof arg) {
 		case 'function':
-			Uiho.tool.ready(arg);
+			$_.tool.ready(arg);
 			break;
 		case 'string':
-			elements = Uiho.browser.ie678 ? getEle(arg) : document.querySelectorAll(arg);
+			elements = $_.browser.ie678 ? getEle(arg) : document.querySelectorAll(arg);
 			break;
 		case 'object':
 			if (arg instanceof Array) {
@@ -142,95 +140,34 @@ function Uiho(arg) {
 	};
 	if (elements.length == 1) {
 		return elements[0];
-		if (bSelect == window.frameElement) Uiho.tool.ask();
+		if (bSelect == window.frameElement) $_.tool.ask();
 	};
 	return elements;
 };
 
 
-var Uiho={}
-/* 验证  正则匹配 */
-Uiho.ver={}
-Uiho.ver.init=function(arr,fn){
-	for(var i=0; i<arr.length; i++){
-		if(arr[i].obj.value==''){
-			fn&&fn(arr[i].tag+"不能为空!");
-			return false;
-		 }else if(!Uiho.ver.moblie(arr[i].obj.value)){
-		 	alert('---'+arr[i].obj.value)
-		 	fn&&fn("请输入正确的"+arr[i].tag+"!");
-		 	return false;
-		 }else if(!Uiho.ver.password(arr[i].obj.value)){
-		 	alert(arr[i].obj.value)
-		 	fn&&fn("请输入正确的"+arr[i].tag+"!");
-		 	return false;
-		 }else{
-		 	fn&&fn();
-		 };
-	};
-}; 
-Uiho.ver.empty=function(arr,fn){
-	for(var i=0; i<arr.length; i++){
-		if(arr[i].obj.value==''){
-			fn&&fn(arr[i].tag+"不能为空!");
-			return false;
-		 }
-	};
-};
-//0-99
-Uiho.ver.numint=function(num){
-	return /^(\d{1,2})$/.test(num);
-};
-//0-1000
-Uiho.ver.num1000=function(num){
-	return /^(\d{1,3}|1000)$/.test(num);
-};
-Uiho.ver.num=function(num){
-	return /^\d+$/.test(num);
-}
-
-Uiho.ver.allnum=function(num){
-	return /^(-)?\d+$/.test(num);
-}
-
-//中文名
-Uiho.ver.chinese=function(str){
-	return /^[\u4e00-\u9fa5]+$/.test(str);
-};
-
-Uiho.ver.moblie=function( value ){
-    return /^1\d{10}$/.test( value );
-}
-Uiho.ver.password=function( value ){
-    return /^[\w]{6,12}$/.test( value );
-}
-Uiho.ver.tel=function(value){
-	return /^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/.test(value);
-}
-Uiho.ver.email=function(value){
-	return /^[a-z0-9][\w\.]*@[a-z0-9\-]+(\.[a-z]{2,4}){1,2}$/i.test(value);
-}
+var $_={}
 
 
 
 //工具类
-Uiho.tool={};
+$_.tool={};
 
 //时间戳转换
-Uiho.tool.DetailTimesTamp=function(time){
+$_.tool.DetailTimesTamp=function(time){
 	var d = new Date(time);    //根据时间戳生成的时间对象
-	var date = (d.getFullYear()) + "-" + Uiho.tool.toZero(d.getMonth() + 1) + "-" +Uiho.tool.toZero(d.getDate()) + " " + Uiho.tool.toZero(d.getHours()) + ":" + Uiho.tool.toZero(d.getMinutes()) + ":" + Uiho.tool.toZero(d.getSeconds());
+	var date = (d.getFullYear()) + "-" + $_.tool.toZero(d.getMonth() + 1) + "-" +$_.tool.toZero(d.getDate()) + " " + $_.tool.toZero(d.getHours()) + ":" + $_.tool.toZero(d.getMinutes()) + ":" + $_.tool.toZero(d.getSeconds());
 	return date;
 };
 
 //补0
-Uiho.tool.toZero=function(n){
+$_.tool.toZero=function(n){
 	return n<10?n='0'+n:n;
 };
 
 
 //获取class
-Uiho.tool.getByClass=function(oParent, sClass) {
+$_.tool.getByClass=function(oParent, sClass) {
 
 	if (document.addEventListener) {
 		return oParent.getElementsByClassName(sClass);
@@ -250,7 +187,7 @@ Uiho.tool.getByClass=function(oParent, sClass) {
 
 
 
-Uiho.tool.geturldata=function(url){
+$_.tool.geturldata=function(url){
 	var urldata=url.split('?')[1].split('&');
 	var result=[];
 	var c=[];
@@ -268,26 +205,23 @@ Uiho.tool.geturldata=function(url){
 	return obj;
 };
 //随机数
-Uiho.tool.roundNum = function(s, b) {
+$_.tool.roundNum = function(s, b) {
 	return parseInt(Math.random() * (b - s + 1) + s);
 };
 //随机颜色
-Uiho.tool.roundColor = function() {
+$_.tool.roundColor = function() {
 	var str = parseInt(Math.random() * 16777215).toString(16);
 	if (str.length < 6) {
 		str = '0' + str;
 	}
 	return str;
 }
-
-
-Uiho.tool.roundColor2 = function() {
-	(~~(Math.random() * (1 << 24))).toString(16); // ~~  相当于 parseInt
+$_.tool.roundColor2 = function() {
+	return (~~(Math.random() * (1 << 24))).toString(16); // ~~  相当于 parseInt
 };
 
-
 //事件绑定
-Uiho.tool.addEvent = function(obj, sEv, fn) {
+$_.tool.addEvent = function(obj, sEv, fn) {
 	if (obj.addEventListener) {
 		obj.addEventListener(sEv, fn, false);
 	} else {
@@ -298,7 +232,7 @@ Uiho.tool.addEvent = function(obj, sEv, fn) {
 	}
 };
 
-Uiho.tool.removeEvent = function(obj, sEv, fn) {
+$_.tool.removeEvent = function(obj, sEv, fn) {
 	if (obj.removeEventListener) {
 		obj.removeEventListener(sEv, fn, false);
 	} else {
@@ -306,7 +240,7 @@ Uiho.tool.removeEvent = function(obj, sEv, fn) {
 	}
 };
 
-Uiho.tool.wheel = function(obj, fn) {
+$_.tool.wheel = function(obj, fn) {
 	if (window.navigator.userAgent.indexOf('Firefox') != -1) {
 		obj.addEventListener('DOMMouseScroll', wheelfn, false);
 	} else {
@@ -328,8 +262,7 @@ Uiho.tool.wheel = function(obj, fn) {
 };
 
 // 监控文本框的内容长度
-
-Uiho.tool.oninput = function(obj, fn) {
+$_.tool.oninput = function(obj, fn) {
 
 	if (document.getElementsByClassName) {
 		if (window.navigator.userAgent.indexOf('MSIE 9') != -1) {
@@ -355,7 +288,7 @@ Uiho.tool.oninput = function(obj, fn) {
 
 
 
-Uiho.tool.getStyle = function(obj, name) {
+$_.tool.getStyle = function(obj, name) {
 
 	return obj.currentStyle ? obj.currentStyle[name] : getComputedStyle(obj, false)[name];
 };
@@ -363,7 +296,7 @@ Uiho.tool.getStyle = function(obj, name) {
 
 
 // 运动
-Uiho.tool.move = function(obj, json, options) {
+$_.tool.move = function(obj, json, options) {
 	options = options || {};
 	options.time = options.time || 300;
 	options.type = options.type || 'ease-out';
@@ -374,11 +307,11 @@ Uiho.tool.move = function(obj, json, options) {
 	for (var name in json) {
 		//left
 		if (name == 'opacity') {
-			start[name] = parseFloat(Uiho.tool.getStyle(obj, name));
+			start[name] = parseFloat($_.tool.getStyle(obj, name));
 		} else if (name == 'scrollTop') {
 			start[name] = document.body.scrollTop || document.documentElement.scrollTop;
 		} else {
-			start[name] = parseInt(Uiho.tool.getStyle(obj, name));
+			start[name] = parseInt($_.tool.getStyle(obj, name));
 			if (!start[name]) {
 				switch (name) {
 					case 'left':
@@ -440,15 +373,15 @@ Uiho.tool.move = function(obj, json, options) {
 	}, 30);
 };
 //碰撞检测
-Uiho.tool.test = function(obj1, obj2) {
-	var l1 = Uiho.tool.getPos(obj1).left;
+$_.tool.test = function(obj1, obj2) {
+	var l1 = $_.tool.getPos(obj1).left;
 	var r1 = l1 + obj1.offsetWidth;
-	var t1 = Uiho.tool.getPos(obj1).top;
+	var t1 = $_.tool.getPos(obj1).top;
 	var b1 = t1 + obj1.offsetHeight;
 
-	var l2 = Uiho.tool.getPos(obj2).left;
+	var l2 = $_.tool.getPos(obj2).left;
 	var r2 = l2 + obj2.offsetWidth;
-	var t2 = Uiho.tool.getPos(obj2).top;
+	var t2 = $_.tool.getPos(obj2).top;
 	var b2 = t2 + obj2.offsetHeight;
 
 	if (b1 < t2 || l1 > r2 || t1 > b2 || r1 < l2) return false;
@@ -456,7 +389,7 @@ Uiho.tool.test = function(obj1, obj2) {
 };
 
 //找位置
-Uiho.tool.getPos = function(obj) {
+$_.tool.getPos = function(obj) {
 	var l = 0,
 		t = 0;
 	while (obj) {
@@ -471,7 +404,7 @@ Uiho.tool.getPos = function(obj) {
 };
 
 
-Uiho.tool.toArray = function(obj) {
+$_.tool.toArray = function(obj) {
 	return !obj.length ? [obj] : obj;
 };
 //
@@ -485,7 +418,7 @@ Uiho.tool.toArray = function(obj) {
 //}
 
 //找子集
-Uiho.tool.isChild = function(obj, parent) {
+$_.tool.isChild = function(obj, parent) {
 	while (obj) {
 		if (obj == parent) return true;
 		obj = obj.parentNode;
@@ -494,7 +427,7 @@ Uiho.tool.isChild = function(obj, parent) {
 }
 
 // 去空格
-Uiho.tool.ClearSpace = function(element) {
+$_.tool.ClearSpace = function(element) {
 	for (var i = 0; i < element.childNodes.length; i++) {
 		var node = element.childNodes[i];
 		if (node.nodeType == 3 && !/\S/.test(node.nodeValue)) {
@@ -503,7 +436,7 @@ Uiho.tool.ClearSpace = function(element) {
 	}
 }
 
-Uiho.tool.ready = function(fn) {
+$_.tool.ready = function(fn) {
 	if (document.getElementsByClassName) {
 		document.addEventListener('DOMContentLoaded', fn, false);
 	} else {
@@ -517,24 +450,96 @@ Uiho.tool.ready = function(fn) {
 
 
 
+
+
+
+
+
+/* 验证  正则匹配 */
+$_.ver={}
+$_.ver.init=function(arr,fn){
+	for(var i=0; i<arr.length; i++){
+		if(arr[i].obj.value==''){
+			fn&&fn(arr[i].tag+"不能为空!");
+			return false;
+		 }else if(!$_.ver.moblie(arr[i].obj.value)){
+		 	alert('---'+arr[i].obj.value)
+		 	fn&&fn("请输入正确的"+arr[i].tag+"!");
+		 	return false;
+		 }else if(!$_.ver.password(arr[i].obj.value)){
+		 	alert(arr[i].obj.value)
+		 	fn&&fn("请输入正确的"+arr[i].tag+"!");
+		 	return false;
+		 }else{
+		 	fn&&fn();
+		 };
+	};
+}; 
+$_.ver.empty=function(arr,fn){
+	for(var i=0; i<arr.length; i++){
+		if(arr[i].obj.value==''){
+			fn&&fn(arr[i].tag+"不能为空!");
+			return false;
+		 }
+	};
+};
+//0-99
+$_.ver.numint=function(num){
+	return /^(\d{1,2})$/.test(num);
+};
+//0-1000
+$_.ver.num1000=function(num){
+	return /^(\d{1,3}|1000)$/.test(num);
+};
+$_.ver.num=function(num){
+	return /^\d+$/.test(num);
+}
+
+$_.ver.allnum=function(num){
+	return /^(-)?\d+$/.test(num);
+}
+
+//中文名
+$_.ver.chinese=function(str){
+	return /^[\u4e00-\u9fa5]+$/.test(str);
+};
+
+$_.ver.moblie=function( value ){
+    return /^1\d{10}$/.test( value );
+}
+$_.ver.password=function( value ){
+    return /^[\w]{6,12}$/.test( value );
+}
+$_.ver.tel=function(value){
+	return /^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/.test(value);
+}
+$_.ver.email=function(value){
+	return /^[a-z0-9][\w\.]*@[a-z0-9\-]+(\.[a-z]{2,4}){1,2}$/i.test(value);
+}
+
+
+
+
+
+
 //////////// 浏览器检测相关
-Uiho.browser = {};
-Uiho.browser.userAgent = window.navigator.userAgent.toLowerCase();
-Uiho.browser.ie = !!document.all;
-Uiho.browser.ie6 = !window.XMLHttpRequest;
-Uiho.browser.ie678 = !document.getElementsByClassName;
-Uiho.browser.ie9 = Uiho.browser.userAgent.indexOf('msie 9') != -1;
-Uiho.browser.ie6789 = Uiho.browser.ie678 || Uiho.browser.ie9;
-Uiho.browser.ie10 = Uiho.browser.userAgent.indexOf('msie 10') != -1;
-Uiho.browser.ie11 = Uiho.browser.userAgent.indexOf('trident') != -1 && Uiho.browser.userAgent.indexOf('rv:11') != -1;
-Uiho.browser.chrome = Uiho.browser.userAgent.indexOf('chrome') != -1;
-Uiho.browser.ff = Uiho.browser.userAgent.indexOf('firefox') != -1;
+$_.browser = {};
+$_.browser.userAgent = window.navigator.userAgent.toLowerCase();
+$_.browser.ie = !!document.all;
+$_.browser.ie6 = !window.XMLHttpRequest;
+$_.browser.ie678 = !document.getElementsByClassName;
+$_.browser.ie9 = $_.browser.userAgent.indexOf('msie 9') != -1;
+$_.browser.ie6789 = $_.browser.ie678 || $_.browser.ie9;
+$_.browser.ie10 = $_.browser.userAgent.indexOf('msie 10') != -1;
+$_.browser.ie11 = $_.browser.userAgent.indexOf('trident') != -1 && $_.browser.userAgent.indexOf('rv:11') != -1;
+$_.browser.chrome = $_.browser.userAgent.indexOf('chrome') != -1;
+$_.browser.ff = $_.browser.userAgent.indexOf('firefox') != -1;
 
 
 
 /////////// css3 相关
-Uiho.css3 = {};
-Uiho.css3.setStyle = function(obj, name, value) {
+$_.css3 = {};
+$_.css3.setStyle = function(obj, name, value) {
 	var aCss3 = ['transform', 'transition', 'borderRadius', 'boxShadow', 'textShadow'];
 
 	var Name = name.charAt(0).toUpperCase() + name.substring(1);
@@ -549,7 +554,7 @@ Uiho.css3.setStyle = function(obj, name, value) {
 	};
 };
 // css3 运动
-Uiho.css3.move = function(obj, json, fnEnd) {
+$_.css3.move = function(obj, json, fnEnd) {
 	function fnInnerEnd() {
 		if (fnEnd) fnEnd(obj);
 
@@ -558,7 +563,7 @@ Uiho.css3.move = function(obj, json, fnEnd) {
 	}
 
 	for (var i in json) {
-		Uiho.css3.setStyle(obj, i, json[i]);
+		$_.css3.setStyle(obj, i, json[i]);
 	};
 
 	obj.addEventListener('webkitTransitionEnd', fnInnerEnd, false);
@@ -568,7 +573,7 @@ Uiho.css3.move = function(obj, json, fnEnd) {
 
 
 function getName(){
-	var SName=decodeURIComponent(Uiho.tool.geturldata(window.location.href).name);
+	var SName=decodeURIComponent($_.tool.geturldata(window.location.href).name);
 	if(SName.indexOf('#')!=-1){
 		return SName.substring(0,SName.indexOf('#'));
 	}else{
@@ -576,8 +581,8 @@ function getName(){
 	}
 };
 
-Uiho.cookies={};
-Uiho.cookies.getCookie=function(cookiename){
+$_.cookies={};
+$_.cookies.getCookie=function(cookiename){
 	var result;
 	var mycookie = document.cookie;
 	var start2 = mycookie.indexOf(cookiename + "=");
@@ -593,20 +598,20 @@ Uiho.cookies.getCookie=function(cookiename){
 
 	return result;
 }
-Uiho.cookies.setCookie=function(name, value, Hours){
+$_.cookies.setCookie=function(name, value, Hours){
 	var oDate=new Date();
 	var oh=oDate.getHours()+Hours;
 	oDate.setHours(oh);
 	//alert(oDate)
 	document.cookie=name+'='+value+';expires='+oDate;
 }
-Uiho.cookies.removeCookie=function(name){
-	Uiho.cookies.setCookie(name, 'undefined', -10);
+$_.cookies.removeCookie=function(name){
+	$_.cookies.setCookie(name, 'undefined', -10);
 }
 
 
 //效果
-Uiho.effect={};
+$_.effect={};
 
 //简单的分页  
 /*
@@ -615,7 +620,7 @@ Uiho.effect={};
 	nowPage-->当前第几页
 	fn------->执行函数,传参nowPage
 */
-Uiho.effect.pagination=function(allnum,pageSize,nowPage,fn){
+$_.effect.pagination=function(allnum,pageSize,nowPage,fn){
 	nowPage=parseInt(nowPage);
 	var nums=Math.ceil(allnum/pageSize);
 	$allnum='<div class="pull-left"><span>共 '+allnum+' 条数据</span>&nbsp;&nbsp;&nbsp;<span>共'+nums+'页</span></div><ul id="page" class="pagination pagination-sm no-margin pull-right"></ul>';
@@ -706,7 +711,7 @@ Uiho.effect.pagination=function(allnum,pageSize,nowPage,fn){
 	};
 };
 
-Uiho.effect.selectNum=function (fn){
+$_.effect.selectNum=function (fn){
 	$('#selectNum').on('change',function(){
 		fn&&fn($(this).val());
 	})
