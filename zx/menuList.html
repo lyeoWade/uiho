@@ -113,7 +113,7 @@ setInterval(function(){
     var ifm= document.getElementById("frame");   
     var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
     if(ifm != null && subWeb != null) {
-       ifm.height = subWeb.body.scrollHeight;
+       ifm.height = subWeb.body.offsetHeight;
     } 
 },2500);
 

@@ -65,23 +65,30 @@ Uiho.ver.email=function(value){
 	return /^[a-z0-9][\w\.]*@[a-z0-9\-]+(\.[a-z]{2,4}){1,2}$/i.test(value);
 }
 
+
+
+//工具类
 Uiho.tool={};
+
+//时间戳转换
 Uiho.tool.DetailTimesTamp=function(time){
 	var d = new Date(time);    //根据时间戳生成的时间对象
 	var date = (d.getFullYear()) + "-" + Uiho.tool.toZero(d.getMonth() + 1) + "-" +Uiho.tool.toZero(d.getDate()) + " " + Uiho.tool.toZero(d.getHours()) + ":" + Uiho.tool.toZero(d.getMinutes()) + ":" + Uiho.tool.toZero(d.getSeconds());
 	return date;
 };
 
+//补0
 Uiho.tool.toZero=function(n){
 	return n<10?n='0'+n:n;
 };
 
+
+//获取class
 Uiho.tool.getByClass=function(oParent, sClass) {
 
 	if (document.addEventListener) {
 		return oParent.getElementsByClassName(sClass);
 	};
-
 	var aEle = oParent.getElementsByTagName('*');
 	var re = new RegExp('\\b' + sClass + '\\b');
 	var result = [];
@@ -91,7 +98,6 @@ Uiho.tool.getByClass=function(oParent, sClass) {
 			result.push(aEle[i]);
 		}
 	};
-
 	return result;
 };
 
@@ -146,8 +152,7 @@ Uiho.cookies.setCookie=function(name, value, Hours){
 	//alert(oDate)
 	document.cookie=name+'='+value+';expires='+oDate;
 }
-Uiho.cookies.removeCookie=function(name)
-{
+Uiho.cookies.removeCookie=function(name){
 	Uiho.cookies.setCookie(name, 'undefined', -10);
 }
 //效果
@@ -256,3 +261,4 @@ Uiho.effect.selectNum=function (fn){
 		fn&&fn($(this).val());
 	})
 }
+
