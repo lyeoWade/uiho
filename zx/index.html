@@ -20,9 +20,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/style-responsive.css" />
 </head>
-
 <body>
-
 <section id="container">
 	<!--header start-->
 	<header class="header fixed-top clearfix">
@@ -81,12 +79,21 @@
 							<li><a data-url="showManager.html" ><i class="fa fa-angle-right"></i>查看管理员</a></li>
 						</ul>
 					</li>
-
 					<li class="sub-menu">
 						<a href="javascript:;"  data-url="menuList.html">
 							<i class="fa fa-laptop"></i>
 							<span>菜单管理</span>
 						</a>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-male"></i>
+							<span>地图管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="mapAdd.html" ><i class="fa fa-angle-right"></i>新增地图&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="mapList.html" ><i class="fa fa-angle-right"></i>地图列表&nbsp;<span class="badge bg-warning" id="allu"></span></a></li>
+						</ul>
 					</li>
 					<li class="sub-menu">
 						<a href="javascript:;">
@@ -169,7 +176,6 @@
 						</a>
 						<ul class="sub" id="examMsgChild">
 							<li><a data-url="student.html" ><i class="fa fa-angle-right"></i>查看学员</a></li>
-							
 							<li><a data-url="examAppo.html" ><i class="fa fa-angle-right"></i> 查看考试预约信息&nbsp;<span class="badge bg-warning" id="reserveExam"></span></a></li>
 						</ul>
 					</li>
@@ -204,9 +210,6 @@
 							<li><a data-url="feedback.html" ><i class="fa fa-angle-right"></i>查看反馈/举报</a></li>
 						</ul>
 					</li>
-					
-					
-					
 					<li class="sub-menu">
 						<a href="javascript:;">
 							<i class="fa fa-map-marker"></i>
@@ -242,7 +245,7 @@
 			<!-- page start-->
 			<div class="row">
 				<section class="gray panel">
-					<iframe width="100%" border="0" frameborder="0" src="right.html" name="frame" id="frame" title="frame" scrolling="no"  onLoad="iFrameHeight()" ></iframe>
+					<iframe width="100%" border="0" frameborder="0" src="right.html" name="frame" id="frame" title="frame" scrolling="no"  ></iframe>
 				</section>
 			<div>
 			<!-- page end-->
@@ -275,10 +278,10 @@ setInterval(function(){
 	var ifm= document.getElementById("frame");   
 	var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
 	if(ifm != null && subWeb != null) {
-	   ifm.height = subWeb.body.scrollHeight;
+	   ifm.height = subWeb.body.offsetHeight;
 	} 
-},500)
-	  
+},2000);
+
 </script>
 <script type="text/javascript" src="js/tool.js"></script>
 <script type="text/javascript" src="js/public.js"></script>

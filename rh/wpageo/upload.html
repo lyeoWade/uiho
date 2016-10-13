@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>图片上传</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/exif.js" ></script>
+    <script>
+
+    </script>
+</head>
+<body>
+<!-- 	<div style="height: 50px; line-height: 50px;text-align: center;border-bottom: 1px solid #171E28;">
+			
+			<input type="file" accept="image/*" id="uploadImage" capture="camera" />
+		</div>
+		<div style="margin-top: 10px;">
+			<img alt="preview" src="" style="width: 300px;" id="myImage"/>
+		</div> -->
+
+<button>切换1</button>
+<button>切换2</button>
+<button>切换3</button>
+
+
+<img src="image/tim.jpg" style="margin-bottom: 30px;  display: block; width: 220px;">
+<img src="image/timg.jpg" style="margin-bottom: 30px; display: none; width: 220px;">
+<img src="image/ewm.png" style="margin-bottom: 30px;  display: none; width: 220px;">
+
+
+<script type="text/javascript">
+  window.onload=function(){
+    var oBtn=document.getElementsByTagName('button');
+    var oImg=document.getElementsByTagName('img');
+   // alert(oBtn.length)
+    for(var i=0; i<oBtn.length; i++){
+      oBtn[i].index=i;
+      oBtn[i].onclick=function(){
+       // alert(index)
+        for(var j=0; j<oBtn.length; j++){
+          oImg[j].style.display='none';
+        }
+        oImg[this.index].style.display='block';
+      }
+    }
+  }
+</script>
+</body>
+
+</html>

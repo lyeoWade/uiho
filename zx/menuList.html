@@ -14,20 +14,20 @@
     <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
-<!-- 自己添加的样式文件 -->
-    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+
     <!--responsive table-->
     <link href="css/table-responsive.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/bootstrap-switch.css" />
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
 
 </head>
 
-<body style="height: 1065px;">
-<div class="hiddenss"></div>
-<section id="container" class="format"  style="overflow-y: auto;">
+<body>
+<section id="container" class="format">
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
@@ -79,7 +79,7 @@
             <div class=" rightcontent row">
                 <div class="col-sm-12 table-set">
                     <section class="panel" style="background: transparent;">
-                        <iframe width="100%" border="0" frameborder="0" src="right.html" name="frame" id="frame" title="frame" scrolling="no" ></iframe>
+                        <iframe width="100%" border="0" frameborder="0" src="AddParentMenu.html" name="frame" id="frame" title="frame" scrolling="no" ></iframe>
                     </section>
                 </div>
             </div>
@@ -113,7 +113,7 @@ setInterval(function(){
     var ifm= document.getElementById("frame");   
     var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
     if(ifm != null && subWeb != null) {
-       ifm.height = subWeb.body.scrollHeight;
+       ifm.height = subWeb.body.offsetHeight;
     } 
 },2500);
 
@@ -129,13 +129,17 @@ for(var i=0; i<oLi.length; i++){
     oLi[i].onmouseover=function(){
 
         var oHandleJsClass=Uiho.tool.getByClass(this,'HandleJsClass')[0];
-        console.log(oHandleJsClass)
-        oHandleJsClass.style.display='inline-block';
+       //console.log(oHandleJsClass)
+       if(oHandleJsClass){
+            oHandleJsClass.style.display='inline-block';
+       }
     }
 
     oLi[i].onmouseout=function(){
         var oHandleJsClass=this.getElementsByClassName('HandleJsClass')[0];
-        oHandleJsClass.style.display='none';
+        if(oHandleJsClass){
+            oHandleJsClass.style.display='none';
+        }
     }
 
 }

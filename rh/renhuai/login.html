@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>玩转仁怀后台管理系统</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link href="css/mycss.css" rel="stylesheet" />
+
+</head>
+
+  <body class="login-body">
+
+    <div class="container">
+      <form class="form-signin" action="index.html">
+        <h2 class="form-signin-heading">玩转仁怀后台管理系统</h2>
+        <div class="login-wrap">
+            <div class="user-login-info">
+                <input type="text" class="form-control" id="mobile" value="" placeholder="手机" autofocus>
+                <input type="password" class="form-control" id="password" placeholder="密码">
+            </div>
+            <button class="btn btn-lg btn-login btn-block" id="loginbtn" type="button">登陆</button>
+            <p id="tip"></p>
+        </div>
+      </form>
+    <!-- <p style="text-align: center;">技术支持:&nbsp;&nbsp;&nbsp;<a href="http://uiho.com" target="_blank" style=" color: #fff;">&copy;  重庆优活智联科技有限公司</a></p> -->
+    </div>
+    <!--Core js-->
+    <script src="js/jquery.js"></script>
+    <script src="bs3/js/bootstrap.min.js"></script>
+    <script src="js/tool.js"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            document.onkeydown=function(ev){
+               if(ev.keyCode==13){
+                login();
+               }
+            }
+            $("#loginbtn").on('click',function(){
+                login();
+            });
+            function login(){
+                var $mobile=$('#mobile').val();
+                var $pass=$('#password').val();
+                if($mobile=='' || !Uiho.ver.moblie($mobile)){
+                    $('#tip').html('请输入正确的手机号码！');
+                    $('#tip').addClass('error')
+                    return false;
+                }else if($pass=='' ||  !Uiho.ver.password($pass)){
+                    $('#tip').html('请输入正确的密码！');
+                    $('#tip').addClass('error')
+                    return false;
+                }
+
+                var reqdata='data={"action":"managerLogin","params":{"password":"'+$pass+'","phone":"'+$mobile+'"},"source":"backstage","target":"manager"}'
+                $.ajax({        
+                    url:requrl,
+                    type:"POST",
+                    data:reqdata,
+                    success:function(str){
+                        console.log(str);
+                        var oData=$.parseJSON(str);
+                        if(oData.responseCode==1){
+                            $('#tip').removeClass('error').html('登录成功!跳转中...');
+                            $('#tip').addClass('success');
+                            //得到object 将所有的存到cookie里面
+                            var object=JSON.stringify(oData.object);
+                           // alert(object)
+                            Uiho.cookies.setCookie('userinfo',object,1); //5小时
+                            setTimeout(function(){
+                                window.location.href="index.html";
+                            },1000)
+                        }else{
+                            $('#tip').removeClass('success').html('用户名或密码不正确或被禁用！');
+                            $('#tip').addClass('error')
+                        };
+                    }
+                })
+            }
+        });
+        window.onload=function(){
+            document.getElementById('mobile').focus();
+        }
+
+
+    </script>
+  </body>
+</html>

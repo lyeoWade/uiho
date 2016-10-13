@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"> 
+	<title></title>
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+	<!-- 清除微信缓存 -->
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yaDRGoon5YoRzAAwH781yUgn"></script>
+	<!-- <script type="text/javascript" src="js/weixin.js"></script> -->
+</head>
+<body>
+<section id="sell" style="">
+<!-- min-height: 570px; -->
+	<div class="sell-head clearfix">
+		<div class="sell-logo fl"><img src=""></div>
+		<div class="sell-head-cinfo fl"><h1><!-- 地瓜老火锅 --></h1><p><!-- 2016-08-23日到期 --></p></div>
+		<div class="sell-head-chandwrap fr">
+			<a href="tel:0851-28787171" class="contact">联系客服</a>
+		</div>
+	</div>
+	<div class="sellWrap">
+		<div class="sellWrapTab shopcenterTab">
+			<a href="javascript:;" class="active">商户信息</a>
+			<a href="javascript:;" class="">图片管理</a>
+		</div>
+		<div class="sellTabBox" style="position: relative;">
+			<div class="com-list" style="display: block; opacity: 1; z-index: 2; position: absolute; width: 100%;">
+				<ul class="shopInfo shopHome shopUpdata">
+					<li id="time" class="" style=" line-height: 0.4rem; height: 0.4rem;"><i class="time"></i>营业时间&nbsp;&nbsp;&nbsp;<input type="time" name="">-<input type="time" name="" disabled=""></li>
+					<li class="" id="address" style="height: 0.4rem; line-height: 0.4rem;">
+						<i class="address"></i><div class="addressWrpa addressWrpa2"><p class="address1"><span></span></p></div>
+						<em class="updataAddress">编辑</em>
+					</li>
+					<li id="tel" class="" style=" line-height: 0.4rem; height: 0.4rem;">
+						<i class="tel"></i><span id="address"><!-- 18888888888 --></span>
+						<em class="updata"></em>
+						<em class="saveUserInfo mui-icon mui-icon-checkmarkempty" style="display: none"></em>
+					</li>
+					<li id="notice" class="" style=" line-height: 0.4rem; height: 0.4rem;">
+						<i class="notice"></i>
+						<div class="noticesWrpas addressWrpa" style="width: 80%;"><p class="address1"><span style="width:100%;"></span></p></div>
+						<em class="updataNotice" style="">编辑</em>
+					</li>
+				</ul>
+				<div class="hb10"></div>
+				<div class="entershop">
+					<span>本店已入驻以下平台</span>
+					<!-- <a href="javascript:;" class="" id="addShop">新增</a> -->
+				</div>
+				<ul class="siteList">
+					<li><i class="meituan"></i>大众点评<span class="fr">待入驻</span></li>
+					<li><i class="dzdp"></i>美团<span class="fr">待入驻</span></li>
+					<li><i class="weidian"></i>微店<span href="" class="fr">待入驻</span></li>
+				</ul>
+			</div>
+
+			<div class="com-list"  style="display: block; opacity: 0; z-index: 1; position: absolute; width: 100%;">
+				<div class="article">
+					<h3>图片墙</h3>
+					<div class="imgList picList">
+						<img src="">
+						<img src="">
+					</div>
+				</div>
+				<div class="hb10"></div>
+				<div class="article">
+					<h3>商户二维码</h3>
+					<div class="wx clearfix" style="padding: 0 0.25rem;">
+						<div class="wxwrap ewmWrap">
+							<img src="image/ewm.png">
+							<p>仁怀地瓜老火锅</p>
+						</div>
+						<div class="wxwrap">
+							<a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIwMTQ3MTY5OA==&scene=110#wechat_redirect"><img  src="image/rh.png"></a>
+							<p>点击关注我们</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+<div class="htmleaf-container cutWrap">
+		<!-- Content -->
+  <div class="container">
+    <div class="row m0">
+      <div class="col-md-9 p0">
+        <!-- <h3 class="page-header">Demo:</h3> -->
+        <div class="img-container">
+          <img src="image/1.jpg" alt="Picture">
+        </div>
+      </div>
+      <div class="col-md-3 p0">
+        <!-- <h3 class="page-header">Preview:</h3> -->
+        <div class="docs-preview clearfix">
+          <div class="img-preview preview-lg"></div>
+          <!-- <div class="img-preview preview-md"></div> -->
+          <div class="img-preview preview-sm"></div>
+          <!-- <div class="img-preview preview-xs"></div> -->
+        </div>
+      </div>
+    </div>
+    <div class="row m0">
+      <div class="col-md-12 docs-buttons p0">
+          <button class="col-md-12 btn btn-primary upLoadImage" data-method="getCroppedCanvas" type="button" style=" display:block; width:100%; padding-left: 0; padding-right: 0;">
+            <span class="docs-tooltip" data-toggle="tooltip" style="width:100%; display:block; margin:-6px 0;">
+              上传
+            </span>
+          </button>
+          <p id="uploadtip" style="display: none;">图片上传中,请稍后...</p>
+      </div><!-- /.docs-buttons -->
+    </div>
+  </div>
+</div>
+
+
+
+<input type="file" id="file" style="display: none;" name="file">
+
+
+
+<script type="text/javascript">
+	document.getElementsByTagName('body')[0].style.height=document.documentElement.clientHeight+'px';
+	var oBtn=document.getElementsByClassName('shopcenterTab')[0].getElementsByTagName('a');
+	var oWrap=document.getElementsByClassName('com-list');
+	var iMax=2;
+	for(var i=0; i<oBtn.length; i++){
+		oBtn[i].index=i;
+		oBtn[i].addEventListener('touchend',function(){
+			for(var i=0; i<oBtn.length; i++){
+				oBtn[i].className='';
+				oWrap[i].style.opacity='0';
+			}
+			this.className='active';
+			oWrap[this.index].style.opacity='1';
+			oWrap[this.index].style.zIndex=iMax++;
+		},false);
+	}
+</script>
+<div class="maps" >
+	<div id="allmap" style="width: 100%; height: 3.2rem;"></div>
+	<p class="nowAddress"><i class="mui-icon mui-icon-location"></i></p>
+	<p class="back backMaps"><a href="javascript:;">保存</a></p>
+</div>
+<div class="ModifyBusinessBulletin" style="display:none ;">
+	<div class="ModifyBusinessBulletinWrap">
+		<div class="ModifyBusinessBulletinTextarea">
+			<textarea></textarea>
+		</div>
+		<button type="button" class="sureBtn">确定</button>
+	</div>
+</div>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/cropper.css">
+<link rel="stylesheet" href="css/main.css">
+
+<script src="js/bootstrap.min.js"></script>
+<!-- <script src="js/main.js"></script> -->
+
+<div id="fixednav"></div>
+<section id="nav">
+	<a href="index.html" class="comnav home"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+	<a href="nearby.html" class="comnav neary">附近</a>
+	<a href="push.html" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell active">入驻中心</a>
+</section>
+<script src='js/jquery-1.11.1.js'></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script src="js/cropper.js"></script>
+<script type="text/javascript">
+	var GetOneShop=new UihoForRenhuai();
+	var userId=GetOneShop.getCookie('userIdByWeixin');
+	//var userId=1011;
+	
+	if(userId==undefined){
+		window.location.href='sellenter.html';
+	}
+
+	var oCutWrap=$('.cutWrap');
+	oCutWrap.css('height',$(window).height())
+	GetOneShop.getOneShop(userId,function(){
+		scrollFont('addressWrpa2');
+		scrollFont('noticesWrpas');
+		cut();
+		var oWrap=document.getElementsByClassName('addressWrpa')[0];
+		var oWraps=document.getElementsByClassName('address1')[0];
+		var oAddressWrap=oWraps.getElementsByTagName('span');
+
+		if(oWrap.offsetWidth<=oWraps.offsetWidth){
+			var W=oAddressWrap[0].offsetWidth*oAddressWrap.length;
+			oWraps.style.width=W+'px';
+			setInterval(function(){
+				var left=oWraps.offsetLeft-1; 
+				oWraps.style.left=left%W+'px';
+			}, 30);
+		};
+		$('.updataNotice').on('touchend',function(){
+			$('.ModifyBusinessBulletin').css('display','block');
+			
+			$('.ModifyBusinessBulletinTextarea textarea').val($('#notice span').html());
+		});
+		$('.sureBtn').on('touchend',function(){
+			
+			setTimeout(function(){
+				$('.ModifyBusinessBulletin').css('display','none');
+			},500);
+
+			var oTextArea=$('.ModifyBusinessBulletinTextarea textarea').val();
+			//alert(oTextArea);
+			var datas='data={"action":"updateUser","params":{"bulletin":"'+oTextArea+'","userId":'+userId+'},"source":"mobileweb","target":"user"}'	
+			//alert(datas)
+			$.ajax({
+				url:GetOneShop.requrl,
+				type:"post",
+				data:datas,
+				success:function(str){
+					var oData=$.parseJSON(str);
+					if(oData.responseCode==1){
+						$('#notice span').html($('.ModifyBusinessBulletinTextarea textarea').val());
+					}else{
+						alert(oData.responseMsg)
+					}
+				}
+			})
+		});
+		$('.updata').on('touchend',function(){
+			for(var i=0; i<$('.updata').length; i++){
+				var oSapn=$('.updata').eq(i).parent().find('span');
+				oSapn.attr('contenteditable',false).removeClass('shopTip');
+				$('.updata').css('display','block');
+				var oSaveUserInfo=$('.updata').eq(i).parent().find('.saveUserInfo');
+				oSaveUserInfo.css('display','none');
+				if(oSapn.length==0){
+					var oInput=$('.updata').parents('li').find('input');
+					oInput.attr('disabled','true');
+					oInput.removeClass('active');
+				}
+			}
+			var oSapn=$(this).parents('li').find('span');
+			oSapn.attr('contenteditable',true).addClass('shopTip').focus();//.focus();
+			
+
+			if(oSapn.length==0){
+				var oInput=$(this).parents('li').find('input');
+				oInput.removeAttr('disabled');
+				oInput.addClass('active');
+			}
+			$(this).css('display','none');
+			var oSaveUserInfo=$(this).parent('li').find('.saveUserInfo');
+			oSaveUserInfo.css('display','block');
+
+			console.log(oSapn.length);
+		});
+
+		$('.saveUserInfo').on('touchend',function(){
+			//alert(123);
+			$(this).css('display','none');
+			var updata=$(this).parents('li').find('.updata');
+			updata.css('display','block');
+			var oSapn=$(this).parents('li').find('span');
+			oSapn.attr('contenteditable',false).removeClass('shopTip');
+			var updataInfo='';
+			if(oSapn.length==0){
+				var sTime=$(this).parents('li').find('.sTime');
+				var eTime=$(this).parents('li').find('.eTime');
+				sTime.attr('disabled','true').removeClass('active');
+				eTime.attr('disabled','true').removeClass('active');
+
+				updataInfo='"tradeBeginTime":"'+sTime.val()+'","tradeEndTime":"'+eTime.val()+'"';
+			}else{
+				switch(oSapn.attr('key')){
+					case 'tel':
+						updataInfo='"tel":"'+oSapn.html()+'"';
+					break;
+					case 'notice':
+						updataInfo='"bulletin":"'+oSapn.html()+'"';
+					break;
+				}
+			}
+
+			var datas='data={"action":"updateUser","params":{'+updataInfo+',"userId":'+userId+'},"source":"mobileweb","target":"user"}'	
+			//alert(datas)
+			$.ajax({
+				url:GetOneShop.requrl,
+				type:"post",
+				data:datas,
+				success:function(str){
+					var oData=$.parseJSON(str);
+					if(oData.responseCode==1){
+
+					}else{
+						alert(oData.responseMsg)
+					}
+				}
+			})
+		});
+		//handle();
+	});
+	
+	function upImageToSever(This){
+		//$('.upLoadImage').on('touchend',function(){
+			var f=$('#savewrap').attr('src'); 
+			//console.log(f)
+			if(f){
+				sumitImageFile(f,function(evt){
+					var data=eval('('+evt+')'); 
+					This.attr('src',data.objectURL);
+					var updataInfoImage='';
+					switch (This.attr('imageType')){
+						case 'coverImg':
+							updataInfoImage='"coverImg":"'+data.objectURL+'"';
+						break;
+						case 'qrCode':
+							updataInfoImage='"qrCode":"'+data.objectURL+'"';
+						break;
+
+						//,"imageList":[{"imgUrl":"http://img2.imgtn.bdimg.com/it/u=1536207273,1509014297fm=21gp=0.jpg"}],"picsId":3
+						case 'imageList':
+							var oImg=This.parent().find('img');
+
+							var imgJson='';
+
+							imgJson='{"imgUrl":"'+This.attr('src')+'"}';
+							//删除原有的
+							var imageId=This.attr('imageId');
+							deleteImages(imageId);
+							updataInfoImage='"imageList":['+imgJson+'],"picsId":'+This.attr('picsId');
+							
+						break;
+					};
+					//alert(updataInfoImage)
+					//return false;
+					var datas='data={"action":"updateUser","params":{'+updataInfoImage+',"userId":'+userId+'},"source":"mobileweb","target":"user"}';
+					$.ajax({
+						url:GetOneShop.requrl,
+						type:"post",
+						data:datas,
+						success:function(str){
+							var oData=$.parseJSON(str);
+							if(oData.responseCode==1){
+								//alert(oData.responseMsg)
+							}else{
+								//alert(oData.responseMsg)
+							}
+							oCutWrap.css({
+								'opacity':'0',
+								'z-index':'-300'
+							});
+							console.log(oData);
+						}
+					});
+				});
+			}else{
+				alert('请选择图片！');
+				return false;
+			};
+		//});
+	}
+
+	//删除图片
+	function deleteImages(imageId){
+		var datas='data={"action":"deleteImage","params":'+imageId+',"source":"mobileweb","target":"image"}';
+		$.ajax({
+			url:GetOneShop.requrl,
+			type:"POST",
+			data:datas,
+			success:function(str){
+				console.log(str);
+			}
+		});
+	}
+
+
+
+
+
+var Url=GetOneShop.requrl;
+
+$('.updataAddress').on('touchend',function(){
+	var initPos=$('body').attr('pos').split(',');
+	//alert(initPos);
+	getMap(initPos[0],initPos[1])
+	$('.maps').css({
+		'opacity':'1',
+		'z-index':'300'
+	});
+});
+
+$('.backMaps').on('touchend',function(){
+	var p=$('body').attr('pos').split(',');
+	var datas='data={"action":"updateUser","params":{"address":"'+$('.nowAddress').attr('newAddress')+'","longitude":"'+p[0]+'","latitude":"'+p[1]+'","userId":'+userId+'},"source":"mobileweb","target":"user"}';
+	$.ajax({
+		url:Url,
+		type:"post",
+		data:datas,
+		success:function(str){
+			var oData=$.parseJSON(str);
+			if(oData.responseCode==1){
+				$('#address span').html($('.nowAddress').attr('newAddress'));
+			}else{
+				alert(oData.responseMsg)
+			}
+		}
+	});
+	setTimeout(function(){
+		$('.maps').css({
+			'opacity':'0',
+			'z-index':'-300'
+		});
+	},500);
+
+	
+})
+// };
+
+
+//getMap();
+function getMap(lng,lat){
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(lng,lat),17);  //初始化地图,设置城市和地图级别。
+	//获取当前地址 
+	var geoc = new BMap.Geocoder();
+	// 根据坐标得到地址描述 
+	var point = new BMap.Point(lng,lat);  
+	//$('body').attr('pos','106.407701,27.79837');
+	var markerB = new BMap.Marker(point);// 创建标注
+	map.addOverlay(markerB);    
+
+
+	markerB.disableDragging();
+	function showPoint(e){
+		point = new BMap.Point(map.getCenter().lng,map.getCenter().lat);
+		map.removeOverlay(markerB);
+		markerB = new BMap.Marker(point);  // 创建标注
+		map.addOverlay(markerB);   // 将标注添加到地图中
+
+		var gc = new BMap.Geocoder(); 
+		gc.getLocation(point, function(rs){
+
+			var addComp = rs.addressComponents;
+			var mapAddress = addComp.province+addComp.city + addComp.district
+			+ addComp.street + addComp.streetNumber;
+
+			$('.nowAddress').html('<i class="mui-icon mui-icon-location"></i>'+mapAddress).attr('newAddress',mapAddress);;
+			$('body').attr('pos',map.getCenter().lng+','+map.getCenter().lat);
+			//$('#nowShopAddress').val('商户位置:'+mapAddress);
+		});
+	}
+	map.addEventListener("moving", showPoint);
+};
+</script>
+<script type="text/javascript" src="js/cutu.js"></script>
+</body>
+</html>

@@ -22,6 +22,10 @@ function geturldata(url){
 	return JSON.parse(aaa);
 }
 */
+ 
+
+
+
 
 function setCookie(name, value, iDay) {
 	var oDate = new Date();
@@ -281,7 +285,8 @@ $_.tool.getChild = function(obj) {
 		}
 
 	}
-	//随机数
+
+//随机数
 $_.tool.roundNum = function(s, b) {
 	return parseInt(Math.random() * (b - s + 1) + s);
 };
@@ -615,7 +620,6 @@ function json2url(json)
 	{
 		arr.push(i+'='+json[i]);
 	}
-	
 	return arr.join('&');
 }
 
@@ -644,6 +648,7 @@ function jsonp(url, data, fnSucc)
 }
 */
 ////////
+
 $_.tool.ready = function(fn) {
 	if (document.getElementsByClassName) {
 		document.addEventListener('DOMContentLoaded', fn, false);
@@ -870,8 +875,3 @@ window.onload=function(){
 // 		}        
 // 	},{enableHighAccuracy: true})
 // }
-
-
-
-
-

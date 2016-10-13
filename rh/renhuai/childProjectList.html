@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>APIM 数据接口中心</title>
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet"/>
+    <link href="css/mycss.css" rel="stylesheet">
+</head>
+<body>
+<section id="container">
+
+    <section class="wrapper">
+        <!-- page start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading title">
+                        <span><i class="fa  fa-bell"></i>&nbsp;&nbsp;跟我相关的状态更新</span>
+                        <a href="infoList.html?type=my">查看更多>></a>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    <div class="panel-body toggle-heading">
+                        <ul class="statusList" id="MystatusList">
+                            <li class="clearfix">
+                                <div class="pull-left tipIcon"><i class="ciricon orange"></i></div>
+                                <div class=" pull-lrft">
+                                    2016-05-02 21:30 【驾校服务】项目的【网站与应用接口】通过【张三】更新 【得到一条教练详情】 借口状态定义为 【1自定义开发,未开发】</div>
+                            </li>
+
+                            <li class="clearfix">
+                                <div class="pull-left tipIcon"><i class="ciricon orange"></i></div>
+                                <div class=" pull-lrft">
+                                    2016-05-02 21:30 【驾校服务】项目的【网站与应用接口】通过【张三】更新 【得到一条教练详情】 借口状态定义为 【1自定义开发,未开发】</div>
+                            </li>
+
+                            <li class="clearfix">
+                                <div class="pull-left tipIcon"><i class="ciricon orange"></i></div>
+                                <div class=" pull-lrft">
+                                    2016-05-02 21:30 【驾校服务】项目的【网站与应用接口】通过【张三】更新 【得到一条教练详情】 借口状态定义为 【1自定义开发,未开发】</div>
+                            </li>
+
+                            <li class="clearfix">
+                                <div class="pull-left tipIcon"><i class="ciricon orange"></i></div>
+                                <div class=" pull-lrft">
+                                    2016-05-02 21:30 【驾校服务】项目的【网站与应用接口】通过【张三】更新 【得到一条教练详情】 借口状态定义为 【1自定义开发,未开发】</div>
+                            </li>
+
+
+                            <li class="clearfix">
+                                <div class="pull-left tipIcon"><i class="ciricon orange"></i></div>
+                                <div class=" pull-lrft">
+                                    2016-05-02 21:30 【驾校服务】项目的【网站与应用接口】通过【张三】更新 【得到一条教练详情】 借口状态定义为 【1自定义开发,未开发】</div>
+                            </li>
+                            
+                        </ul>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- 项目列表 -->
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading title">
+                        <span><i class="fa fa-inbox"></i>&nbsp;&nbsp;子项目列表</span>
+                        <a href="AddChildProject.html" class="btn btn-info btn-sm backpage noroot"><i class="fa fa-plus-circle"></i> 新增子项目</a>
+                    </header>
+                    <style type="text/css">
+                        .searchpanel label{
+                            padding-right: 0 !important;
+                          
+                        }
+                    </style>
+                    <header class="panel-heading clearfix searchpanel" style="padding-bottom: 0;">
+                        <div class="pull-left col-sm-11  col-lg-11">
+                            <div class="form-group pull-left col-lg-3 col-sm-4" style="padding: 0;">
+                                <label for="projectId" class="control-label col-lg-4 col-sm-4">所属项目</label>
+                                <div class="col-lg-8 col-sm-7">
+                                    <select class="form-control" id="projectList">
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group pull-left col-lg-4 col-sm-3" style="padding: 0;">
+                                <label for="code" class="control-label col-lg-3 col-sm-4">编码</label>
+                                <div class="col-lg-8 col-sm-7">
+                                   <input class="form-control" id="code" placeholder="编码" />
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-3 col-sm-4" style="padding: 0;">
+                                <label for="name" class="control-label col-lg-4 col-sm-4">子项目名称</label>
+                                <div class="col-lg-8 col-sm-7">
+                                   <input class="form-control" id="name" placeholder="子项目名称" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <input type="button" id="SelectQueryBtn" class="btn btn-success" value="查询">
+                        </div>
+                    </header>
+                    <div class="panel-body">
+                        <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>项目ID</th>
+                                    <th>子项目名称</th>
+                                    <th>编码</th>
+                                    <th>请求key</th>
+                                    <th>最后更新时间</th>
+                                    <th class="numeric">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                    
+                                </tbody>
+                            </table>
+                            <div class="box-footer clearfix" id="pagination">
+
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- 所有的借口状态 -->
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading title">
+                        <span><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;接口最近状态更新</span>
+                        <a href="infoList.html?type=all">查看更多>></a>
+                    </header>
+                    <div class="panel-body toggle-heading">
+                        <ul class="statusList" id="allstatusList">
+                        </ul>
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script src="js/tool.js"></script>
+<script src="js/childProjectList.js"></script>
+<!--script for this page-->
+</body>
+</html>

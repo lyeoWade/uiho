@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5xYtj38G0vQ2vqGvNk66HpBz2GqCZzrY"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- 清除微信缓存 -->
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<script type="text/javascript" src="js/weixin.js"></script>
+</head>
+<body>
+<style type="text/css">
+	.mui-preview-image.mui-fullscreen {
+		position: fixed;
+		z-index: 20;
+		background-color: #000;
+	}
+	.mui-preview-header,
+	.mui-preview-footer {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		z-index: 10;
+	}
+	.mui-preview-header {
+		height: 44px;
+		top: 0;
+	}
+	.mui-preview-footer {
+		height: 50px;
+		bottom: 0px;
+	}
+	.mui-preview-header .mui-preview-indicator {
+		display: block;
+		line-height: 25px;
+		color: #fff;
+		text-align: center;
+		margin: 15px auto 4;
+		width: 70px;
+		background-color: rgba(0, 0, 0, 0.4);
+		border-radius: 12px;
+		font-size: 16px;
+	}
+	.mui-preview-image {
+		display: none;
+		-webkit-animation-duration: 0.5s;
+		animation-duration: 0.5s;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+	}
+	.mui-preview-image.mui-preview-in {
+		-webkit-animation-name: fadeIn;
+		animation-name: fadeIn;
+	}
+	.mui-preview-image.mui-preview-out {
+		background: none;
+		-webkit-animation-name: fadeOut;
+		animation-name: fadeOut;
+	}
+	.mui-preview-image.mui-preview-out .mui-preview-header,
+	.mui-preview-image.mui-preview-out .mui-preview-footer {
+		display: none;
+	}
+	.mui-zoom-scroller {
+		position: absolute;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		-webkit-backface-visibility: hidden;
+	}
+	.mui-zoom {
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+	.mui-slider .mui-slider-group .mui-slider-item img {
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+	}
+	.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+		width: 100%;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+		display: inline-table;
+	}
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.mui-preview-loading {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+	.mui-preview-loading.mui-active {
+		display: block;
+	}
+	.mui-preview-loading .mui-spinner-white {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -25px;
+		margin-top: -25px;
+		height: 50px;
+		width: 50px;
+	}
+	.mui-preview-image img.mui-transitioning {
+		-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+		transition: transform 0.5s ease, opacity 0.5s ease;
+	}
+	@-webkit-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@-webkit-keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	p img {
+		max-width: 100%;
+		height: auto;
+	}
+</style>
+<section id="sell">
+	<div class="sell-head clearfix">
+		<div class="sell-logo fl"><img src=""></div>
+		<div class="sell-r fl">
+			<div class="sell-head-info">
+				<h1 class="fl"><!-- 仁怀地瓜老火锅 --></h1>
+				<!-- <p class="fr"></p> -->
+			</div>
+			<div class="sell-head-handwrap">
+				<a href="recoveryerror.html">我要纠错</a>
+				<a href="sellenter.html">我要入驻</a>
+			</div>
+		</div>
+	</div>
+	<div class="sellWrap">
+		<div class="sellWrapTab">
+			<a href="javascript:;" class="active">商户信息</a>
+			<a href="javascript:;" class="">图文介绍</a>
+			<a href="javascript:;">查看位置</a>
+		</div>
+		<div class="sellTabBox famnt">
+			<div class="com-list adc">
+				<ul class="shopInfo shopHome">
+					<li id="time"><i class="time"></i><!-- 营业时间:  08:00 - 23:00 --></li>
+					
+					<li class="clearfix" style="height: 40px; overflow-y: hidden; "><i class="address"></i><div class="addressWrpa"><p class="address1"><span id="address"></span></p></div><a href="javascript:;" id="seeLocation" class="fr">点击查看</a></li>
+
+					<li id="tel"><i class="tel"></i><!-- 13888888888 --><a href="" class="fr touchendTel">点击拨打</a></li>
+
+
+					<li id=""><i class="notice"></i><div class="addressWrpa noticeWrpas"><p class="address1"><span id="notice">贵州省遵义市仁怀市酒都大道</span></p></div></li>
+
+
+				</ul>
+				<div class="hb10"></div>
+				<div class="entershop">
+					<span>本店已入驻以下平台</span>
+					<!-- <a href="javascript:;" class="" id="addShop">新增</a> -->
+				</div>
+				<ul class="siteList">
+					<li><i class="meituan"></i>美团<span class="fr">待入驻</span></li>
+					<li><i class="dzdp"></i>大众点评<span class="fr">待入驻</span></li>
+					<li><i class="weidian"></i>微店<span href="" class="fr">待入驻</span></li>
+				</ul>
+				<div class="hb10"></div>
+				<div class="wx clearfix">
+					<div class="wxwrap homewx">大众点评
+						
+					</div>
+					<div class="wxwrap">
+						<a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIwMTQ3MTY5OA==&scene=110#wechat_redirect"><img  src="image/rh.png"></a>
+						<p>点击关注我们</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="com-list" style="display: none;">
+				<div class="article">
+					<h3>商家介绍</h3>
+					<p class="intor"></p>
+				</div>
+				<div class="hb10"></div>
+				<div class="article">
+					<h3 class="titles">商户展示</h3>
+					<div class="imgList mui-content">
+						<!--<img src="image/2.jpg"  data-preview-src="" data-preview-group="1">
+						<img src="image/2.jpg"  data-preview-src="" data-preview-group="1">
+						<img src="image/2.jpg"  data-preview-src="" data-preview-group="1">
+						<img src="image/2.jpg"  data-preview-src="" data-preview-group="1"> -->
+					</div>
+				</div>
+				<div class="hb10"></div>
+				<div class="article famnts">
+					<h3 class="titles">相关商户推荐</h3>
+					<div class="flterList">
+						<ul id="ListWrap">
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="com-list" style="display: none; padding-bottom: 0.8rem;">
+				<div id="allmapsss" style="width: 100%; height: 3.2rem; margin-top: 0.1rem;"></div>
+			</div>
+		</div>
+	</div>
+</section>
+<script type="text/javascript">
+	var oBtn=document.getElementsByClassName('sellWrapTab')[0].getElementsByTagName('a');
+	var oWrap=document.getElementsByClassName('com-list');
+	var seeLocation=document.getElementById('seeLocation');
+
+	for(var i=0; i<oBtn.length; i++){
+		oBtn[i].index=i;
+		oBtn[i].addEventListener('touchend',function(){
+			for(var i=0; i<oBtn.length; i++){
+				oBtn[i].className='';
+				oWrap[i].style.display='none';
+			}
+			this.className='active';
+			oWrap[this.index].style.display='block';
+		},false);
+	};
+	seeLocation.addEventListener('touchend',function(){
+		for(var i=0; i<oBtn.length; i++){
+			oBtn[i].className='';
+			oWrap[i].style.display='none';
+		}
+		oBtn[oBtn.length-1].className='active';
+		oWrap[oBtn.length-1].style.display='block';
+	});
+	$(function(){
+		$('.touchendTel').on('touchend',function(){
+			$(this).attr('tel','13788888888')
+		});
+	});
+</script>
+<script type="text/javascript">
+	 
+</script>
+
+<div id="fixednav"></div>
+<section id="nav">
+	<a href="index.html" class="comnav home"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+	<a href="nearby.html" class="comnav neary">附近</a>
+	<a href="push.html" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+<script src="js/mui.min.js"></script>
+<script src="js/mui.zoom.js"></script>
+<script src="js/mui.previewimage.js"></script>
+<script>
+	 
+mui('body').on( 'tap' , 'a' , function(){
+	window.location.href=this.href;//业务逻辑
+} );
+</script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/location.js"></script>
+<script type="text/javascript">
+	var sellerInfo=new UihoForRenhuai();
+	var userIds=sellerInfo.geturldata(window.location.href).id;
+	sellerInfo.checkUserId();
+	var nUserId=sellerInfo.getCookie('userIdByWeixin');
+	sellerInfo.sellInfo(nUserId,userIds,function(){
+		scrollFont('addressWrpa');
+		scrollFont('noticeWrpas');
+
+		var sortId=$('body').attr('sortId').split(',');
+		var isRecommend=0,isrecent=0;
+		getLocation(function(lng,lat){
+			sellerInfo.GetOneClassifySortList(sortId[0],isRecommend,isrecent,sortId[1],lat,lng,1,20);
+		});
+		mui.previewImage();
+	});
+</script>
+</body>
+</html>

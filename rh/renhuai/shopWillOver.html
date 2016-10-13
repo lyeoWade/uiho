@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>即将到期商户列表</title>
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet"/>
+    <link href="css/mycss.css" rel="stylesheet">
+</head>
+<body>
+<section id="container">
+    <section class="wrapper ">
+        <!-- page start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel table-set">
+                    <header class="panel-heading title">
+                       
+                        <span><i class="fa fa-code"></i>&nbsp;&nbsp;即将到期商户列表</span>
+                        <span></span>
+
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    <header class="panel-heading clearfix searchpanel" style="padding-bottom: 0;">
+                        <div class="pull-left col-sm-11  col-lg-11">
+                          
+                            <div class="form-group pull-left col-lg-3 col-sm-3" style="padding: 0;" >
+                                <label for="name" class="control-label col-lg-4 col-sm-4">商户名称</label>
+                                <div class="col-lg-8 col-sm-8">
+                                    <input type="text" class="form-control" id="name" placeholder="姓名">
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-3 col-sm-3" style="padding: 0;" >
+                                <label for="tel" class="control-label col-lg-3 col-sm-3">手机</label>
+                                <div class="col-lg-8 col-sm-8">
+                                    <input type="text" class="form-control" id="tel" placeholder="手机">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <input type="button" id="SelectQueryBtn" class="btn btn-success" value="查询">
+                        </div>
+                    </header>
+                    <div class="panel-body toggle-heading">
+                        <section id="unseen">
+
+                            <table class="table table-bordered table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>商户名称</th>
+                                        <th>商户昵称</th>
+                                        <th>联系方式</th>
+                                        <th>入驻时间</th>
+                                        <th>推广天数</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                   <!--  <tr>
+                                        <td>1</td>
+                                        <td>汇源三鹿果汁</td>
+                                        <td>188888888888</td>
+                                        <td>2016-05-12 12:00</td>
+                                        <td>23</td>
+                                        <td>已推荐</td>
+                                        <td><a href="shoplistEdit.html" class="btn btn-primary btn-sm backpage">提醒</a></td>
+                                        <td> 
+                                            <div class="btn-group">
+                                                <a href="shoplistEdit.html" class="btn btn-primary btn-sm backpage">编辑&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a>
+                                                <a href="javascript:;" class="btn btn-warning btn-sm "><i class="fa fa-times"></i>&nbsp;&nbsp;删除</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                     -->
+                                </tbody>
+                            </table>
+                            <div class="box-footer clearfix" id="pagination">
+
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script src="js/tool.js"></script>
+<script type="text/javascript">
+$(function(){
+    var shopname='',tel='',pageSize=20,nowPage=1;
+
+    getExpiringUserList(shopname,tel,nowPage,pageSize)
+
+    $('#SelectQueryBtn').on('click',function(){
+        //alert(nowPage)
+        tel=$('#tel').val();
+        shopname=$('#name').val();
+        //选择查询
+        getExpiringUserList(shopname,tel,nowPage,pageSize)
+    });
+});
+
+
+
+
+function getExpiringUserList(shopname,tel,nowPage,pageSize){
+
+    var datas='data={"action":"getExpiringUserList","params":{"nowPage":'+nowPage+',"pageSize":'+pageSize+'},"source":"backstage","target":"user"}';
+    
+    $.ajax({
+        type:"POST",
+        url:requrl,
+        data:datas,
+        success:function(str){
+            var oData=$.parseJSON(str);
+            
+
+            if(oData.responseCode==1){
+                var oListObj=oData.object;
+                console.log(oListObj);
+                var proHtml='';
+                for(var i=0; i<oListObj.length; i++){
+                    var deleteHtml='';
+                    proHtml+='<tr><td>'+(i+1)+'</td><td>'+oListObj[i].name+'</td><td>'+oListObj[i].nickname+'</td><td>'+oListObj[i].tel+'</td>\
+                            <td>'+Uiho.tool.DetailTimesTamp(oListObj[i].residentBeginDatetime)+'</td>\
+                            <td>'+oListObj[i].residentDay+'</td>\
+                           <td><div class="btn-group"><a href="shoplistEdit.html?id='+oListObj[i].userId+'" class="btn btn-primary btn-sm">编辑&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a><a href="" class="btn btn-warning btn-sm"><i class="fa fa-times"></i>&nbsp;&nbsp;删除</a></div></td></tr>';
+                    $('body').attr('projectId',oListObj[i].projectId);
+                    $('body').attr('subprojectId',oListObj[i].subprojectId);
+                };
+                $('#tbody').html(proHtml);
+                $('#pagination').attr('count',oData.count);
+                //页码选择 分页
+                var allNum=$('#pagination').attr('count');
+                Uiho.effect.pagination(allNum,pageSize,nowPage,function(nowPage){
+                    getExpiringUserList(name,tel,nowPage,pageSize)
+                });
+                // deleteApi(function(){
+                //  getApiList(code,name,apiStatusId,apiGroupId,nowPage,pageSize);
+                // })//删除接口
+            }else{
+                $('#tbody').html('<tr><td colspan="10" align="center">'+oData.responseMsg+'</td></tr>');
+            }
+            
+        },
+        complete:function(){
+
+        }
+    });
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>热门商家</title>
+
+    <meta name="aplus-terminal" content="1"> 
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+    <meta name="apple-touch-fullscreen" content="no"> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+    <meta name="format-detection" content="telephone=no"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5xYtj38G0vQ2vqGvNk66HpBz2GqCZzrY"></script>
+</head>
+<body>
+<section id="banner">
+    <ul class="banner">
+        <li><a href=""><!-- <img src="image/1.jpg" alt=""> --></a></li>
+    </ul>
+</section>
+
+<!-- 筛选分类 -->
+<section id="filterClassify">
+    <!-- 列表 -->
+    <div class="flterList">
+        <ul id="ListWrap">
+            
+        </ul>
+
+        <!-- <a href="javascript:;" class="loadmore">加载更多</a> -->
+    </div>
+</section>
+
+
+<div id="fixednav"></div>
+<section id="nav">
+    <a href="index.html" class="comnav home"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+    <a href="nearby.html" class="comnav neary">附近</a>
+    <a href="javascript:;" class="comnav xq">发布需求</a>
+    <a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/location.js"></script>
+<script type="text/javascript">
+//获取列表
+var GetIndexInfo=new UihoForRenhuai();
+GetIndexInfo.GetHomeBannerList(4,function(oData){
+    console.log(oData);
+    if(oData.responseCode==0){
+
+    }else{
+        var obj=oData.object[0];
+        $('.banner li').html('<a href="'+obj.linkUrl+'"><img src="'+obj.coverImg+'"/></a>');
+    }
+});
+
+var sortId='',isRecommend='1',isrecent='0',subSortId='';
+
+getLocation(function(lng,lat){
+    //alert(lat,lng)
+    //获取分类
+    GetIndexInfo.GetOneClassifySortList(sortId,isRecommend,isrecent,subSortId,lat,lng,1,20);
+
+});
+</script>
+</body>
+</html>
