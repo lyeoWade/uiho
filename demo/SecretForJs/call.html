@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var obj={
+			fn1:function(){
+				alert(this);
+			}
+		}
+		//obj.fn1(); //object
+		var arr=[111,222,333];
+		//call 没有参数 --->window
+		obj.fn1.call(arr);
+	</script>
+</body>
+</html>

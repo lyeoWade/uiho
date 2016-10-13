@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* CSS Document */
+.header{
+	height:0.4rem;
+}
+
+
+/* tab */
+
+#tab{
+	overflow:hidden;
+	height:1.53rem;
+	position:relative;
+}
+
+#tab ul{
+	position:relative;
+	width:500%;
+}
+#tab ul li{
+	width:20%;	
+	float:left;
+}
+#tab ul img{
+	width:100%;
+	display:block;	
+}
+
+.nav-warp{
+	position:absolute;
+	left:0;
+	bottom:0;
+	z-index:1000;
+	width:100%;
+	height:0.5rem;
+	
+	
+	background:-webkit-linear-gradient(bottom,rgba(0,0,0,0.9) 0,rgba(0,0,0,0.8) 10%,rgba(0,0,0,0));	
+	background:linear-gradient(bottom,rgba(0,0,0,0.9) 0,rgba(0,0,0,0.8) 10%,rgba(0,0,0,0));
+}
+.nav-warp p{
+	font-size:0.14rem;
+	width:60%;
+	line-height:0.5rem;
+	color:#fff;
+	padding-left:0.12rem;
+}
+.nav-warp nav{
+	position:absolute;
+	right:0;
+	top:0.21rem;
+}
+.nav-warp nav a{
+	display:block;
+	float:left;
+	margin-right:0.1rem;
+	background:#ff4466;
+	border-radius:50%;
+	width:0.08rem;
+	height:0.08rem;
+}
+.nav-warp nav a.active{
+	background:#fff;	
+}
+
+
+
+
+
+
+
+.list-title{
+	background:#ff4466;
+	height:0.4rem;
+	width:100%;
+	line-height:0.4rem;
+	padding-left:0.1rem;
+	font-size:0.14rem;
+	color:#fff;
+	margin:0.08rem 0;	
+}
+
+
+.pbl-warp{
+	padding:0 0.1rem 0.1rem;
+		
+}
+.pbl-warp ul{
+	width:48%;
+	float:left;
+}
+.pbl-warp ul:nth-of-type(1){
+	margin-right:4%;
+}
+.pbl-warp ul li{
+	margin-bottom:0.1rem;
+	box-shadow:0 0 0.06rem #444;
+	border-radius:0.03rem;
+}
+.pbl-warp ul .imgbox{
+	
+}
+.pbl-warp ul img{
+	width:100%;
+	display:block;
+}
+.info-warp{
+		
+}
+.info-warp .info-desc{
+	padding:0.06rem;
+	line-height:0.18rem;
+	font-size:0.12rem;	
+	color:#4E2C3A;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
