@@ -402,7 +402,7 @@ $_.tool.getPos = function(obj) {
 		top: t
 	};
 };
-
+  
 
 $_.tool.toArray = function(obj) {
 	return !obj.length ? [obj] : obj;
