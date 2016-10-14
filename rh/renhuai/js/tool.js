@@ -3,7 +3,7 @@
 var requrl='http://m.wego58.com/info/InfoServlet';
 //var requrl='http://rhbiz.dev.uiho.com/info/InfoServlet';
 var Uiho={}
-/* 验证  正则匹配 */
+/* 验证  正则匹配 */ 
 Uiho.ver={}
 Uiho.ver.init=function(arr,fn){
 	for(var i=0; i<arr.length; i++){

@@ -1,6 +1,8 @@
 $(function(){
 	var Sid=Uiho.tool.geturldata(window.location.href).id;
 
+
+	//获取商家信息
 	getSubSortList(1);
 	var datas='data={"action":"getUser","params":{"userId":'+Sid+'},"source":"backstage","target":"user"}';
 	$.ajax({
@@ -27,7 +29,10 @@ $(function(){
 			$('#tradeEndTime').val(obj.tradeEndTime);
 			$('#tel').val(obj.tel);
 			$('#intor').val(obj.intor); 
-
+			if(obj.exfE){
+				$('#shopTag').val(obj.exfE);
+			}
+			
 			$('#bulletin').val(obj.bulletin);
 			$('#address').val(obj.address); 
 			$('.nowAddress').html('当前位置：'+obj.address)
@@ -370,7 +375,7 @@ function uploadPic(){
 
 
 
-//修改
+//修改商家信息
 function updataOneUser(userId){
 	var shopname=$("#name").val();
 	var intor=$("#intor").val();
@@ -381,6 +386,7 @@ function updataOneUser(userId){
 	var coverImg=$("#coverImgWrap img").attr('src');
 	var qrCode=$("#ewm img").attr('src');
 	var tel=$("#tel").val();
+	var shopTag=$("#shopTag").val();
 	var isRecommend=$('#isRecommend').val();
 
 	var  tradeBeginTime=$('#tradeBeginTime').val();
@@ -427,7 +433,7 @@ function updataOneUser(userId){
         arrSonSortid.push('{"subSortId":'+$('#sortListWarpBox input').eq(i).attr('sortid').split('/')[1]+'}');
     };
 	var picsId=$('body').attr('picsId');
-	var datas='data={"action":"updateUser","params":{"name":"'+shopname+'","channelList":'+channelListArr+',"imageList":'+imageListArr+',"intor":"'+intor+'","bulletin":"'+bulletin+'","address":"'+address+'","longitude":"'+longitude+'","latitude":"'+latitude+'","coverImg":"'+coverImg+'","qrCode":"'+qrCode+'","tel":"'+tel+'","tradeBeginTime":"'+tradeBeginTime+'","tradeEndTime":"'+tradeEndTime+'","userId":'+userId+',"isRecommend":"'+isRecommend+'","picsId":'+picsId+',"userSortList":['+arrSortid+'],"userSubSortList":['+arrSonSortid+']},"source":"backstage","target":"user"}';
+	var datas='data={"action":"updateUser","params":{"name":"'+shopname+'","channelList":'+channelListArr+',"imageList":'+imageListArr+',"intor":"'+intor+'","bulletin":"'+bulletin+'","address":"'+address+'","longitude":"'+longitude+'","latitude":"'+latitude+'","coverImg":"'+coverImg+'","qrCode":"'+qrCode+'","tel":"'+tel+'","exfE":"'+shopTag+'","tradeBeginTime":"'+tradeBeginTime+'","tradeEndTime":"'+tradeEndTime+'","userId":'+userId+',"isRecommend":"'+isRecommend+'","picsId":'+picsId+',"userSortList":['+arrSortid+'],"userSubSortList":['+arrSonSortid+']},"source":"backstage","target":"user"}';
 
 	//$('#tradeBeginTime').val(obj.tradeBeginTime);
 	//$('#tradeEndTime').val(obj.tradeEndTime);

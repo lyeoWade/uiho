@@ -77,15 +77,16 @@ function getUserList(shopname,tel,sortid,nowPage,pageSize){
 				console.log(oData);
 				var proHtml='';
 				for(var i=0; i<oListObj.length; i++){
-					var deleteHtml='',names='';
-					if(oListObj[i].nickname==undefined){
-						names='';
-					}else{
-						names=oListObj[i].nickname;
-					}
+					var deleteHtml='',names='',tagNo='';
+
+					oListObj[i].nickname==undefined?names='':names=oListObj[i].nickname;
+				
+					oListObj[i].exfE==undefined?tagNo='无标签':tagNo='已设置';
+
 					proHtml+='<tr><td>'+(i+1)+'</td><td>'+oListObj[i].name+'</td><td>'+names+'</td><td>'+oListObj[i].tel+'</td>\
 							<td>'+Uiho.tool.DetailTimesTamp(oListObj[i].createDatetime)+'</td>\
 	                        <td>'+oListObj[i].residentDay+'</td>\
+	                        <td>'+tagNo+'</td>\
 	                        <td><a href="resident.html?id='+oListObj[i].userId+'" class="btn btn-primary btn-sm">查看&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a></td>\
 	                       <td><div class="btn-group"><a href="shoplistEdit.html?id='+oListObj[i].userId+'" class="btn btn-primary btn-sm">编辑&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a><a href="javascript:;" class="btn btn-warning btn-sm deleteChildPro" proid="'+oListObj[i].userId+'"><i class="fa fa-times"></i>&nbsp;&nbsp;删除</a></div></td></tr>';
 	                $('body').attr('projectId',oListObj[i].projectId);
