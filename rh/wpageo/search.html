@@ -105,8 +105,10 @@ function INeedGetPos(lng,lat){
 	var oIsNot=window.location.href.indexOf('?');
 	if(oIsNot!=-1){
 		//alert(window.location.href);
-		var oKeyword=window.location.href.split('?')[1].split('=')[1];
-		$('#searchText').val(decodeURIComponent(oKeyword));
+		var oKeywordArr=window.location.href.split('?')[1].split('&');
+		var oKeyword=oKeywordArr[0].split('=')[1];
+		var oKeywordShow=oKeywordArr[1].split('=')[1];
+		$('#searchText').val(decodeURIComponent(oKeywordShow));
 		getList(decodeURIComponent(oKeyword),lat,lng);
 	};
 
