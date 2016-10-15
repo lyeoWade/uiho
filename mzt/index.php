@@ -34,7 +34,7 @@
         if (!isset($id)) {
           $id='';
          };
-        $perNumber=1; //每页显示的记录数
+        $perNumber=21; //每页显示的记录数
         $page=$_GET['page']; //获得当前的页面值
         //echo $page;
         $count=mysql_query("select count(*) from imagearr ".$setsql." "); //获得记录总数

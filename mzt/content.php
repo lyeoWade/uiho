@@ -79,6 +79,12 @@
               <!--<p>
                 <a href="images/7.jpg"><img src="images/11.jpg" alt="优雅大方温柔纯情 尤果网曲铭瑄丝袜美腿狂野却又矜持"></a>
               </p>-->
+
+              <div style="display: none;">
+                <?php 
+                    echo $row['note'];
+                  ?>
+              </div>
             </div>
             
       <div class="pagenavi">
@@ -163,20 +169,6 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 
 <script type="text/javascript">
-//     $(document).ready(function () {
-//         $("#single_250_load").find("div").appendTo("#sidebar_250_fix");
-//         $("#sidebar_250_fix").css("height", 250);
-//         $("#single_250_load").remove();
-//         $("#banner_top_load").find("div").appendTo("#banner_top");
-//         $("#banner_top").css("height", 90);
-//         $("#banner_top_load").remove();
-//         $("#banner_mid_load").find("div").appendTo("#banner_mid");
-//         $("#banner_mid").css("height", 90);
-//         $("#banner_mid_load").remove();
-//         $("#banner_btm_load").find("div").appendTo("#banner_btm");
-//         $("#banner_btm").css("height", 90);
-//         $("#banner_btm_load").remove();
-// });
 
 window.onload=function(){
   var oNext=document.getElementById('nextpic');
