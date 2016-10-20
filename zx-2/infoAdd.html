@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>新增信息</title>
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+</head>
+<body>
+<section id="container" class="format">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            
+            <!-- page start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading title">
+                            <span>新增信息</span>
+                            <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <div class="cmxform form-horizontal " id="signupForm" >
+                                    <div class="form-group ">
+                                        <label for="realname" class="control-label col-lg-2 col-sm-2">信息标题</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input type="text" placeholder="信息标题" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="realname" class="control-label col-lg-2 col-sm-2">信息内容</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input type="text" placeholder="信息内容" class="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="filewarp2">
+                                        <div class="form-group ">
+                                            <label for="phone" class="control-label col-lg-2 col-sm-2">封面图</label>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <input type="file" id="fileInput1" name="fileInput1" class="form-control fileInput1 hiddentag">
+                                                <div class="marktag">点击添加封面图</div>
+                                                <button class="btn btn-primary col-sm-3 rt00" id="uploadBanner" type="button">上传</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="realname" class="control-label col-lg-2 col-sm-2">人员选择</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <select class="form-control" id="">
+                                                <option value="1">张三</option>
+                                                <option value="2">李四</option>
+                                                <option value="3">王麻子</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-lg-6 col-sm-6">
+                                            <button class="btn btn-primary col-sm-3" id="addmanager" type="submit">保存</button>
+                                            <span class="addtip"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+<div id="MapWrapBox">
+        
+    </div>
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/mapAdd.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+   var m=new MapAdd();
+};
+</script>
+</body>
+</html>

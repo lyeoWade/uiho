@@ -4,195 +4,22 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
-		*{ margin: 0; padding: 0;  }
-		#box{ width: 798px; height: 550px; margin: 20px auto; border: 1px solid #f00; position: relative; overflow: hidden;  }
-		/*
-			2560 - 800 = 1760 / 2 =880
-		*/
-		#box img{ position: absolute; left: -300px; top: -300px; cursor: move; display: inline; } 
-		.zoomwrap{ position: absolute; right: 8px; bottom: 0; z-index: 999999;  }
-		.zoomwrap a{ display: block; width: 30px; height: 30px; text-align: center; line-height: 30px; color: #666; background: #f1f1f1; margin-bottom: 10px;  text-decoration: none; font-size: 24px; font-weight: bold;  }
-
-		#meunList{ position: absolute; border: 1px solid #ccc; font-size: 14px; padding: 5px 0;  background: #fff;  }
-		#meunList a{ display: block; color: #333; text-decoration: none; padding: 2px 12px; line-height: 24px;  }
-		#meunList a:hover{
-			background: #f1f1f1;
-		}
+		
 	</style>
 </head>
 <body>
-	<div id="box">
-		<img id="img" src="1.jpg" />
-		<div class="zoomwrap">
-			<a href="javascript:;" id="blowUp">+</a>
-			<a href="javascript:;" id="narrow">-</a>
-		</div>
+	<div id="MapWrapBox">
+		
 	</div>
+
 	<script type="text/javascript">
 		window.onload=function(){
-			var m=new SetMap();
-		};
-
-	
-		function SetMap(){
-			this.oImg=document.getElementById('img');
-			this.oBox=document.getElementById('box');
-
-			this.oBlowUp=document.getElementById('blowUp');
-			this.oNarrow=document.getElementById('narrow');
-			this.init();
-			this.dragMap();
-			this.BlowUp();
-			this.Narrow();
-			this.contextmeunHandle();
-		}
-		SetMap.prototype.init=function (){
-			if(this.oImg.offsetWidth<this.oBox.offsetWidth){
-				this.oImg.style.width=this.oBox.offsetWidth+10+'px';
-			}
-
-			this.oImg.style.left=-(this.oImg.offsetWidth-this.oBox.offsetWidth)/2+'px';
-			this.oImg.style.top=-(this.oImg.offsetHeight-this.oBox.offsetHeight)/2+'px';
-		}
-		SetMap.prototype.dragMap=function(){
-			var disX=0;
-			var disY=0;
-			var _this=this;
-			this.oImg.onmousedown=function(ev){
-				var oEvent=ev||event;
-				disX=oEvent.clientX-_this.oImg.offsetLeft
-				disY=oEvent.clientY-_this.oImg.offsetTop;
-				
-				document.onmousemove=function(ev){
-					var oEvent=ev||event;
-					var L=oEvent.clientX-disX;
-					var T=oEvent.clientY-disY;
-
-					if(L>=0){
-						L=0;
-					}else if(L<=-(Math.abs(_this.oImg.offsetWidth)-_this.oBox.offsetWidth)){
-						L=-(Math.abs(_this.oImg.offsetWidth)-_this.oBox.offsetWidth);
-					}
-
-					if(T>=0){
-						T=0;
-					}else if(T<=-(Math.abs(_this.oImg.offsetHeight)-_this.oBox.offsetHeight)){
-						T=-(Math.abs(_this.oImg.offsetHeight)-_this.oBox.offsetHeight);
-					}
-					_this.oImg.style.left=L+'px';
-					_this.oImg.style.top=T+'px';
-					return false;
-				}
-				document.onmouseup=function(){
-					document.onmousemove=document.onmouseup=null;
-				}
-			}
-		}
-		SetMap.prototype.BlowUp=function(){
-			var _this=this;
-			//初始值
-			var oImgW=_this.oImg.offsetWidth;
-			var oImgH=_this.oImg.offsetHeight;
-			this.oBlowUp.onclick=function(){
-				
-				//每一次增加的值
-				var narrowValueWidth=_this.oImg.offsetWidth*0.1;
-				var narrowValueHeight=_this.oImg.offsetHeight*0.1;
-
-				//最大值2倍
-				if((_this.oImg.offsetHeight-_this.oBox.offsetHeight)>=oImgH*2){
-					return false;
-				}
-
-				if((_this.oImg.offsetWidth-_this.oBox.offsetWidth)>=oImgW*2){
-					return false;
-				}
-				_this.oImg.style.width=_this.oImg.offsetWidth+narrowValueWidth+'px';
-				_this.oImg.style.height=_this.oImg.offsetHeight+narrowValueHeight+'px';
-				_this.oImg.style.left=_this.oImg.offsetLeft-narrowValueWidth/2+'px';
-				_this.oImg.style.top=_this.oImg.offsetTop-narrowValueHeight/2+'px';
-				//_this.init();
-			}
-		}
-		SetMap.prototype.Narrow=function(){
-			var _this=this;
-			this.oNarrow.onclick=function(){
-				
-				//每一次缩小的值
-				var narrowValueWidth=_this.oImg.offsetWidth*0.1;
-				var narrowValueHeight=_this.oImg.offsetHeight*0.1;
-				//判断最小值
-				if((_this.oImg.offsetHeight-_this.oBox.offsetHeight)<=narrowValueHeight){
-					return false;
-				}
-				if(_this.oImg.offsetTop>=-narrowValueHeight){
-					return false;
-				}
-				if(_this.oImg.offsetLeft>=-narrowValueWidth){
-					return false;
-				}
-				if((_this.oImg.offsetWidth-_this.oBox.offsetWidth)<=narrowValueWidth){
-					return false;
-				}
-				_this.oImg.style.left=_this.oImg.offsetLeft+narrowValueWidth/2+'px';
-				_this.oImg.style.top=_this.oImg.offsetTop+narrowValueHeight/2+'px';
-				_this.oImg.style.height=_this.oImg.offsetHeight-narrowValueHeight+'px';
-				_this.oImg.style.width=_this.oImg.offsetWidth-narrowValueWidth+'px';
-				
-
-				/*
-					524 - 444=80 --> 160 
-				*/ 
-
-			}
-		}
-
-		//右键菜单
-
-		SetMap.prototype.contextmeunHandle=function(){
-
-			
-			this.oImg.oncontextmenu=function(ev){
-				var oEvent=ev||event;
-				createList(oEvent);
-				return false;
-			}
-
-			document.body.onclick=function(){
-				var oL=document.getElementById('meunList');
-				if(oL){
-					document.body.removeChild(oL);
-				}
-			};
-
-			//创建列表
-			function createList(oEvent){
-				var oL=document.getElementById('meunList');
-				if(oL){
-					document.body.removeChild(oL);
-				}
-				var oDiv=document.createElement('div');
-				oDiv.id="meunList";
-				document.body.appendChild(oDiv);
-				oDiv.style.left=oEvent.clientX+'px';
-				oDiv.style.top=oEvent.clientY+'px';
-
-				oDiv.innerHTML+='<a href="">添加坐标</a><a href="">添加坐标</a><a href="">添加坐标</a>';
-			}
-		}
-
-		function getPos(obj){
-			var l=0,t=0;
-			while(obj){
-				l+=obj.offsetLeft;
-				t+=obj.offsetTop;
-				obj=obj.offsetParent;
-			}
-			return {
-				left:l,
-				top:t
-			}
+			var m=new SetMap({
+				obj:document.getElementById('MapWrapBox'),
+				ImageUrl:'1.jpg'
+			});
 		};
 	</script>
+	<script type="text/javascript" src="map.js"></script>
 </body>
-</html>;
+</html>

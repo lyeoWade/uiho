@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png" />
+	
+	<!-- 自己添加的样式文件 -->
+	<link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <title>智巡管理后台</title>
+    <!--Core CSS -->
+    <link rel="stylesheet" href="bs3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-reset.css" />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" />
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-responsive.css" />
+</head>
+<body>
+<section id="container">
+	<!--header start-->
+	<header class="header fixed-top clearfix">
+		<!--logo start-->
+		<div class="brand">
+			<a href="index.html" class="logo">
+				<img src="" height="60" />
+			</a>
+			<div class="sidebar-toggle-box">
+				<div class="fa fa-bars"></div>
+			</div>
+		</div>
+		<!--logo end-->
+		<div class="nav notify-row" id="top_menu">
+			智巡管理后台
+		</div>
+		<div class="top-nav clearfix">
+			<!--search & user info start-->
+			<ul class="nav pull-right top-menu">
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+						<img alt="" src="images/avatar1_small.jpg">
+						<span class="username"></span>
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu extended logout">
+						<li><a data-url="changepaddword.html"><i class=" fa fa-suitcase"></i>修改密码</a></li>
+						<li><a  data-url="showManagerEdit.html"><i class="fa fa-cog"></i> 个人资料</a></li>
+						<li><a href="login.html"><i class="fa fa-key"></i> 退出</a></li>
+					</ul>
+				</li>
+			</ul> 
+		</div>
+	</header>
+	<!--header end-->
+	<aside>
+		<div id="sidebar" class="nav-collapse">
+			<!-- sidebar menu start-->            
+			<div class="leftside-navigation">
+				<ul class="sidebar-menu" id="nav-accordion">
+					<li class="active">
+						<a  data-url="right.html">
+							<i class="fa fa-home"></i>
+							<span>主页</span>
+						</a>
+					</li>
+					<li class="sub-menu" id="managewarp">
+						<a href="javascript:;">
+							<i class="fa fa-group"></i>
+							<span>管理员管理</span>
+						</a>
+						<ul class="sub">
+							<li id="addmanager"><a data-url="addManager.html" ><i class="fa fa-angle-right"></i>新增管理员</a></li>
+							<li><a data-url="showManager.html" ><i class="fa fa-angle-right"></i>查看管理员</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-male"></i>
+							<span>地图管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="mapAdd.html" ><i class="fa fa-angle-right"></i>新增地图&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="mapList.html" ><i class="fa fa-angle-right"></i>地图列表&nbsp;<span class="badge bg-warning" id="allu"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-home"></i>
+							<span>权限管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="powerAdd.html" ><i class="fa fa-angle-right"></i>新增权限</a></li>
+							<li><a data-url="powerList.html" ><i class="fa fa-angle-right"></i>权限列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-map-marker"></i>
+							<span>角色管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="roleAdd.html" ><i class="fa fa-angle-right"></i>新增角色</a></li>
+							<li><a data-url="roleList.html" ><i class="fa fa-angle-right"></i>角色列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-building-o"></i>
+							<span>单位管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="companyAdd.html" ><i class="fa fa-angle-right"></i> 新增单位</a></li>
+							<li><a data-url="companyList.html" ><i class="fa fa-angle-right"></i> 单位列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-edit"></i>
+							<span>部门管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="departmentAdd.html" ><i class="fa fa-angle-right"></i> 新增部门</a></li>
+							<li><a data-url="departmentList.html" ><i class="fa fa-angle-right"></i> 部门列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-bullhorn"></i>
+							<span>小队管理</span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="smallteamAdd.html" ><i class="fa fa-angle-right"></i> 新增小队</a></li>
+							<li><a data-url="smallteamList.html" ><i class="fa fa-angle-right"></i> 小队列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-user-md"></i>
+							<span>人员管理</span>
+							<span class="badge bg-warning" id="txsq"></span>
+						</a>
+						<ul class="sub">
+							<li><a data-url="personAdd.html" ><i class="fa fa-angle-right"></i>新增人员</a></li>
+							<li><a data-url="personList.html" ><i class="fa fa-angle-right"></i>人员列表</a></li>
+						</ul>
+					</li>
+					 <li class="sub-menu">
+						<a href="javascript:;" id="examMsg">
+							<i class="fa fa-user"></i>
+							<span>信息管理</span>
+						</a>
+						<ul class="sub" id="examMsgChild">
+							<li><a data-url="infoAdd.html" ><i class="fa fa-angle-right"></i>新增信息</a></li>
+							<li><a data-url="infoList.html" ><i class="fa fa-angle-right"></i> 信息列表&nbsp;<span class="badge bg-warning" id="reserveExam"></span></a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>        
+	<!-- sidebar menu end-->
+		</div>
+	</aside>
+	<!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content">
+		<section class="wrapper">
+		<!-- 	<a href="javascript:;" id="deleteCookie">删除cookie</a>
+			 -->
+			<!-- page start-->
+			<div class="row">
+				<section class="gray panel">
+					<iframe width="100%" border="0" frameborder="0" src="right.html" name="frame" id="frame" title="frame" scrolling="no"  ></iframe>
+				</section>
+			<div>
+			<!-- page end-->
+		</section>
+    </section>
+    <!--main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/jquery.scrollTo.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("[data-url]").on('click',function(){
+		$("[data-url]").parent('li').removeClass('active');
+		$(this).parent('li').addClass('active')
+		$("#frame").attr('src',$(this).attr("data-url"));
+	});
+});
+</script>
+<script type="text/javascript"> 
+setInterval(function(){
+	var ifm= document.getElementById("frame");   
+	var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
+	if(ifm != null && subWeb != null) {
+	   ifm.height = subWeb.body.offsetHeight;
+	} 
+},2000);
+
+</script>
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script type="text/javascript">
+	// window.onload=function(){
+	// 	var oDeleteCookie=document.getElementById('deleteCookie');
+	// 	oDeleteCookie.onclick=function(){
+	// 		Uiho.cookies.removeCookie('userinfo');
+	// 		console.log(Uiho.cookies.getCookie('userinfo'));
+	// 	};
+	// }
+</script>
+</body>
+</html>

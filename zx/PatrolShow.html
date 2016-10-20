@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>查看巡更点</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <!--responsive table-->
+    <link href="css/table-responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap-switch.css" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+<div class="hiddenss"></div>
+<section id="container" class="format" style="overflow-y: auto;">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+        <div class="row">
+            <div class="col-sm-12 table-set">
+                <section class="panel">
+                    <header class="panel-heading title">
+                        <span>查看巡更点</span>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    <header class="panel-heading clearfix searchpanel">
+                        <div class="pull-left col-sm-11  col-lg-11">
+                            <div class="form-group pull-left col-lg-3 col-sm-3">
+                                <label for="name" class="control-label col-lg-3 col-sm-4">所属地图</label>
+                                <div class="col-lg-8 col-sm-6">
+                                    <select class="form-control input-sm m-bot15" id="sub">
+                                        <option value="">未选择</option>
+                                        <option value="1">uiho</option>
+                                        <option value="2">baidu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-3 col-sm-3">
+                                <label for="name" class="control-label col-lg-2 col-sm-3">类型</label>
+                                <div class="col-lg-8 col-sm-6">
+                                    <select class="form-control input-sm m-bot15" id="sub">
+                                        <option value="">未选择</option>
+                                        <option value="1">定时巡更</option>
+                                        <option value="2">时间段巡更</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-3 col-sm-3">
+                                <label for="name" class="control-label col-lg-2 col-sm-4">巡更点名称</label>
+                                <div class="col-lg-8 col-sm-6">
+                                    <input class="form-control " id="name" name="name" type="text" placeholder="巡更点名称" />
+                                </div>
+                            </div>
+
+                            <div class="form-group pull-left col-lg-4 col-sm-2">
+                                <label for="name" class="control-label col-lg-2 col-sm-4">状态</label>
+                                <div class="col-lg-8 col-sm-6">
+                                    <select class="form-control input-sm m-bot15" id="sub">
+                                        <option value="">未选择</option>
+                                        <option value="1">启用</option>
+                                        <option value="2">禁用</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <input type="button" class="btn btn-success" id="SelectQueryBtn" value="查询">
+                        </div>
+                    </header>
+                    <div class="panel-body">
+                        <section id="unseen" style="position: relative; height:600px;">
+                            <div id="MapWrapBox">
+                                
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script src="js/bootstrap-switch.js"></script>
+
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+   var mmm=new SetMap({
+            obj:document.getElementById('MapWrapBox'),
+            ImageUrl:'images/1.jpg',
+            text:'<a href="patrolAdd.html">新增巡更点</a>',
+    });
+};
+</script>
+</body>
+</html>

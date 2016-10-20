@@ -10,7 +10,7 @@
 	
 	<!-- 自己添加的样式文件 -->
 	<link rel="stylesheet" type="text/css" href="css/new-add-style.css">
-    <title>智巡后台管理平台</title>
+    <title>智巡控制后台</title>
     <!--Core CSS -->
     <link rel="stylesheet" href="bs3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-reset.css" />
@@ -36,7 +36,7 @@
 		</div>
 		<!--logo end-->
 		<div class="nav notify-row" id="top_menu">
-			智巡后台管理平台
+			智巡控制后台
 		</div>
 		<div class="top-nav clearfix">
 			<!--search & user info start-->
@@ -68,7 +68,6 @@
 							<span>主页</span>
 						</a>
 					</li>
-					
 					<li class="sub-menu" id="managewarp">
 						<a href="javascript:;">
 							<i class="fa fa-group"></i>
@@ -92,6 +91,16 @@
 						</a>
 						<ul class="sub" id="ugmentChild">
 							<li><a data-url="mapAdd.html" ><i class="fa fa-angle-right"></i>新增地图&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="mapList.html" ><i class="fa fa-angle-right"></i>地图列表&nbsp;<span class="badge bg-warning" id="allu"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-male"></i>
+							<span>巡更点管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="PatrolShow.html" ><i class="fa fa-angle-right"></i>查看巡更点&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
 							<li><a data-url="mapList.html" ><i class="fa fa-angle-right"></i>地图列表&nbsp;<span class="badge bg-warning" id="allu"></span></a></li>
 						</ul>
 					</li>
@@ -168,18 +177,32 @@
 							<li><a data-url="unitmanagerList.html" ><i class="fa fa-angle-right"></i>单位管理员列表&nbsp;<span class="badge bg-warning" id="allu"></span></a></li>
 						</ul>
 					</li>
-					<!-- <li class="sub-menu">
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-male"></i>
+							<span>版本管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="versionEdit.html" ><i class="fa fa-angle-right"></i>版本详情&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+						</ul>
+					</li>
+					 <li class="sub-menu">
 						<a href="javascript:;" id="examMsg">
 							<i class="fa fa-user"></i>
-							<span>学员管理</span>
-							
+							<span>反馈管理</span>
 						</a>
 						<ul class="sub" id="examMsgChild">
-							<li><a data-url="student.html" ><i class="fa fa-angle-right"></i>查看学员</a></li>
-							<li><a data-url="examAppo.html" ><i class="fa fa-angle-right"></i> 查看考试预约信息&nbsp;<span class="badge bg-warning" id="reserveExam"></span></a></li>
+							<li><a data-url="feedbackTypeAdd.html" ><i class="fa fa-angle-right"></i>新增反馈类型</a></li>
+							<li><a data-url="feedbackList.html" ><i class="fa fa-angle-right"></i> 反馈类型列表&nbsp;<span class="badge bg-warning" id="reserveExam"></span></a></li>
 						</ul>
 					</li>
 					<li class="sub-menu">
+						<a data-url="productInfo.html" id="examMsg">
+							<i class="fa fa-user"></i>
+							<span>产品信息</span>
+						</a>
+					</li>
+					<!--<li class="sub-menu">
 						<a href="javascript:;">
 							<i class="fa fa-heart"></i>
 							<span>爱车服务管理</span>
@@ -199,7 +222,6 @@
 							<li><a data-url="messages.html" ><i class="fa fa-angle-right"></i>消息列表</a></li>
 						</ul>
 					</li>
-					
 					<li class="sub-menu">
 						<a href="javascript:;">
 							<i class="fa fa-exclamation"></i>

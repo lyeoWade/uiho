@@ -110,6 +110,7 @@ function INeedGetPos(lng,lat){
 		var oKeywordShow=oKeywordArr[1].split('=')[1];
 		$('#searchText').val(decodeURIComponent(oKeywordShow));
 		getList(decodeURIComponent(oKeyword),lat,lng);
+		alert('oKeyword:'+oKeyword+'<->oKeywordShow:'+oKeywordShow)
 	};
 
 	GetIndexInfo.GetSearchKeywordList(function(){
@@ -122,6 +123,7 @@ function INeedGetPos(lng,lat){
 			},false)
 		}
 	});
+	
 	//console.log(userId);
 	if(userId==undefined || userId==""){
 		//alert('从哪儿进来的,从哪儿出去！！！');
