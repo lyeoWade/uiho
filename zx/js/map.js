@@ -7,24 +7,29 @@ function SetMap(options){
 	options.obj=options.obj||'MapWrapBox';
 
 	this.oBox=options.obj;//document.getElementById('box');
-	options.text=options.text+'<a href="javascript:history.go(-1);">返回上一页</a>'||'<a href="javascript:history.go(-1);">返回上一页</a>';
+
+	this.oImgInit={
+		l:0,
+		t:0
+	}
+	options.text=options.text||'<a href="javascript:history.go(-1);">返回上一页</a>';
 	this.loadImage(options.ImageUrl,function(){
 		_this.createMap(options.obj,this.src);
 		_this.oImg=document.getElementById('img');
 		_this.oBlowUp=document.getElementById('blowUp');
 		_this.oNarrow=document.getElementById('narrow');
 		_this.init();
+		_this.oImgInit={
+			w:_this.oImg.offsetWidth,
+			h:_this.oImg.offsetHeight
+		}
 		_this.dragMap();
 		_this.BlowUp();
 		_this.Narrow();
 		_this.contextmeunHandle(options.text);
 	});
 
-	this.scale={
-		l:1,
-		t:1
-	}
-	//options.FullBg=this.FullBg()||'';
+	
 }
 
 SetMap.prototype.loadImage=function(url, callback) { 
@@ -94,11 +99,11 @@ SetMap.prototype.BlowUp=function(){
 		//每一次增加的值
 		var narrowValueWidth=_this.oImg.offsetWidth*0.1;
 		var narrowValueHeight=_this.oImg.offsetHeight*0.1;
+
 		//最大值2倍
 		if((_this.oImg.offsetHeight-_this.oBox.offsetHeight)>=oImgH*2){
 			return false;
 		}
-
 		if((_this.oImg.offsetWidth-_this.oBox.offsetWidth)>=oImgW*2){
 			return false;
 		}
@@ -117,7 +122,6 @@ SetMap.prototype.BlowUp=function(){
 		_this.oImg.style.left=_this.oImg.offsetLeft+narrowValueWidth*scaleL+'px';
 		_this.oImg.style.top=_this.oImg.offsetTop+narrowValueHeight*scaleT+'px';
 		//_this.init();
-
 	}
 }
 SetMap.prototype.Narrow=function(){
@@ -173,8 +177,11 @@ SetMap.prototype.contextmeunHandle=function(text){
 
 	function getDis(e){
 		var disX=0,disY=0;
-		console.log(_this.scale)
-		alert((_this.getPos(_this.oImg).left-e.clientX)*_this.scale.l)
+		//console.log(_this.scale);
+		var disX=Math.abs(_this.oImgInit.w*(_this.getPos(_this.oImg).left-e.clientX))/_this.oImg.offsetWidth;
+		var disY=Math.abs(_this.oImgInit.h*(_this.getPos(_this.oImg).top-e.clientY))/_this.oImg.offsetHeight;
+		//alert(disX+'-'+disY);
+		Uiho.cookies.setCookie("noePointDis",disX+','+disY,10);
 	}
 	document.body.onclick=function(){
 		var oL=document.getElementById('meunList');

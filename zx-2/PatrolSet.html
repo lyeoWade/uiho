@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>查看巡更点</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <!--responsive table-->
+    <link href="css/table-responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap-switch.css" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+<div class="hiddenss"></div>
+<section id="container" class="format" style="overflow-y: auto;">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+        <div class="row">
+            <div class="col-sm-12 table-set">
+                <section class="panel">
+                    <header class="panel-heading title">
+                        <span>查看巡更点</span>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    <header class="panel-heading clearfix searchpanel">
+                        <div class="pull-left col-sm-11  col-lg-11">
+                            <div class="form-group pull-left col-lg-3 col-sm-3">
+                                <label for="name" class="control-label col-lg-3 col-sm-4">所属地图</label>
+                                <div class="col-lg-8 col-sm-6">
+                                    <select class="form-control input-sm m-bot15" id="sub">
+                                        <option value="">未选择</option>
+                                        <option value="1">uiho</option>
+                                        <option value="2">baidu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-3 col-sm-3">
+                                <label for="name" class="control-label col-lg-2 col-sm-3">类型</label>
+                                <div class="col-lg-8 col-sm-6">
+                                    <select class="form-control input-sm m-bot15" id="sub">
+                                        <option value="">未选择</option>
+                                        <option value="1">定时巡更</option>
+                                        <option value="2">时间段巡更</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-3 col-sm-3">
+                                <label for="name" class="control-label col-lg-2 col-sm-4">巡更点名称</label>
+                                <div class="col-lg-8 col-sm-6">
+                                    <input class="form-control " id="name" name="name" type="text" placeholder="巡更点名称" />
+                                </div>
+                            </div>
+
+                            <div class="form-group pull-left col-lg-4 col-sm-2">
+                                <label for="name" class="control-label col-lg-2 col-sm-4">状态</label>
+                                <div class="col-lg-8 col-sm-6">
+                                    <select class="form-control input-sm m-bot15" id="sub">
+                                        <option value="">未选择</option>
+                                        <option value="1">启用</option>
+                                        <option value="2">禁用</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <input type="button" class="btn btn-success" id="SelectQueryBtn" value="查询">
+                        </div>
+                    </header>
+                    <div class="panel-body">
+                        <section id="unseen" style="position: relative; height:600px;">
+                            <div id="MapWrapBox">
+                                
+                            </div>
+
+                        </section>
+
+                        <div class="form">
+                            <div class="cmxform form-horizontal " id="signupForm" >
+                                <div class="form-group ">
+                                    <label for="realname" class="control-label col-lg-2 col-sm-2">巡更点1</label>
+                                    <div class="col-lg-3 col-sm-3">
+                                        <input type="text" placeholder="定时巡更点" class="form-control" name="">
+                                    </div>
+                                    <label for="realname" class="control-label col-lg-1 col-sm-1">巡更时间</label>
+                                    <div class="col-lg-2 col-sm-2">
+                                        <input type="text" placeholder="巡更时间" class="form-control" name="">
+                                    </div>
+                                    <div class="col-lg-1 col-sm-1">
+                                        <input type="button" value="移除" class="btn btn-warning btn-sm" name="">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="realname" class="control-label col-lg-2 col-sm-2">巡更点2</label>
+                                    <div class="col-lg-2 col-sm-2">
+                                        <input type="text" placeholder="时间段巡更点" class="form-control" name="">
+                                    </div>
+                                    <label for="realname" class="control-label col-lg-1 col-sm-1">时间段</label>
+                                    <div class="col-lg-5 col-sm-5">
+                                        <input type="time" placeholder="" class="form-control w60" name="">&nbsp;&nbsp;至&nbsp;&nbsp;
+                                        <input type="time" placeholder="" class="form-control w60" name="">
+
+                                        &nbsp;&nbsp;&nbsp;&nbsp;每&nbsp;&nbsp;<input type="text" placeholder="" class="form-control w30" name="">&nbsp;&nbsp;小时&nbsp;
+                                        <input type="text" placeholder="" class="form-control w30" name="">&nbsp;次
+                                    </div>
+                                    <div class="col-lg-1 col-sm-1">
+                                        <input type="button" value="移除" class="btn btn-warning btn-sm" name="">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="realname" class="control-label col-lg-2 col-sm-2">巡更点3</label>
+                                    <div class="col-lg-3 col-sm-3">
+                                        <input type="text" placeholder="定时巡更点" class="form-control" name="">
+                                    </div>
+                                    <label for="realname" class="control-label col-lg-1 col-sm-1">巡更时间</label>
+                                    <div class="col-lg-2 col-sm-2">
+                                        <input type="text" placeholder="巡更时间" class="form-control" name="">
+                                    </div>
+                                    <div class="col-lg-1 col-sm-1">
+                                        <input type="button" value="移除" class="btn btn-warning btn-sm" name="">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="realname" class="control-label col-lg-2 col-sm-2">巡更点4</label>
+                                    <div class="col-lg-3 col-sm-3">
+                                        <input type="text" placeholder="定时巡更点" class="form-control" name="">
+                                    </div>
+                                    <label for="realname" class="control-label col-lg-1 col-sm-1">巡更时间</label>
+                                    <div class="col-lg-2 col-sm-2">
+                                        <input type="text" placeholder="巡更时间" class="form-control" name="">
+                                    </div>
+                                    <div class="col-lg-1 col-sm-1">
+                                        <input type="button" value="移除" class="btn btn-warning btn-sm" name="">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="realname" class="control-label col-lg-2 col-sm-2">执行日期</label>
+                                    <div class="col-lg-8 col-sm-8 clearfix">
+                                        <ul class="selectClendar fl">
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li>10</li>
+                                            <li>11</li>
+                                            <li>12</li>
+                                            <li>13</li>
+                                            <li>14</li>
+                                            <li>15</li>
+                                            <li>16</li>
+                                            <li>17</li>
+                                            <li>18</li>
+                                            <li>19</li>
+                                            <li>20</li>
+                                            <li>21</li>
+                                            <li>22</li>
+                                            <li>23</li>
+                                            <li>24</li>
+                                            <li>25</li>
+                                            <li>26</li>
+                                            <li>27</li>
+                                            <li>28</li>
+                                            <li>29</li>
+                                            <li>30</li>
+                                            <li>31</li>
+                                        </ul>
+                                        <div class="fl selectClendarTip">
+                                            *温馨提示：任务一旦生成，合作年限内将默认每月重复执行；如某月没有29/30/31日将自动取消这几日的任务;
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="realname" class="control-label col-lg-2 col-sm-2">任务名称</label>
+                                    <div class="col-lg-6 col-sm-6">
+                                        <input type="text" placeholder="任务名称" class="form-control" name="">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="job" class="control-label col-lg-2 col-sm-2">任务描述</label>
+                                    <div class="col-lg-6 col-sm-6">
+                                        <textarea class="form-control "  placeholder="任务描述"></textarea>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-lg-6 col-sm-6">
+                                        <button class="btn btn-primary col-sm-3" id="addmanager" type="submit">保存</button>
+                                        <span class="addtip"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script src="js/bootstrap-switch.js"></script>
+
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+   var mmm=new SetMap({
+        obj:document.getElementById('MapWrapBox'),
+        ImageUrl:'images/1.jpg'
+    });
+};
+</script>
+</body>
+</html>

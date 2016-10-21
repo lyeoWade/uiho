@@ -124,6 +124,39 @@ input:-ms-input-placeholder {
 	overflow: hidden;
 }
 
+.w30{
+	width: 30px;
+	overflow: hidden;
+	text-align: center;
+	line-height: 34px;
+	display: inline-block;
+	padding: 0 0 0 0px;
+}
+.w50{
+	width: 50px;
+	overflow: hidden;
+
+}
+.w60{
+	width: 80px;
+	overflow: hidden;
+	padding: 0 0 0 5px;
+	text-align: center;
+	line-height: 34px;
+	display: inline-block;
+}
+.w100{
+	width: 100px;
+	overflow: hidden;
+}
+.w130{
+	width: 130px;
+	overflow: hidden;
+}
+.w160{
+	width: 160px;
+	overflow: hidden;
+}
 
 .pdl0{
 	padding-left: 0 !important;
@@ -707,3 +740,52 @@ ul.sidebar-menu li a span.HandleJsClass{
 #mapListUl li a{
 	display: block;
 }
+
+
+
+
+
+
+
+.selectClendar{
+	margin: 0;
+	padding: 0;
+	width: 220px;
+	font-size: 0;
+	padding: 5px;
+	border-radius: 3px;
+	background-color: #fcfcfc;
+}
+.selectClendar li{
+	font-size: 14px;
+	font-weight: bold;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.selectClendar li:hover{
+	background-color: #1fb5ad;
+	border-radius: 50%;
+	color: #fff;
+
+}
+.selectClendarTip{
+	margin-left: 20px;
+	width: 60%;
+}
+
+
+
+
+
+
+
+
+
+
+
+

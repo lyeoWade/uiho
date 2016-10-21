@@ -4,26 +4,33 @@ function SetMap(options){
 	this.loadCss(); //初始化样式
 	options=options||{};
 	var _this=this;
-
 	options.obj=options.obj||'MapWrapBox';
 
 	this.oBox=options.obj;//document.getElementById('box');
-	
+
+	this.oImgInit={
+		l:0,
+		t:0
+	}
+	options.text=options.text||'<a href="javascript:history.go(-1);">返回上一页</a>';
 	this.loadImage(options.ImageUrl,function(){
 		_this.createMap(options.obj,this.src);
 		_this.oImg=document.getElementById('img');
 		_this.oBlowUp=document.getElementById('blowUp');
 		_this.oNarrow=document.getElementById('narrow');
 		_this.init();
+		_this.oImgInit={
+			w:_this.oImg.offsetWidth,
+			h:_this.oImg.offsetHeight
+		}
 		_this.dragMap();
 		_this.BlowUp();
 		_this.Narrow();
-		_this.contextmeunHandle();
+		_this.contextmeunHandle(options.text);
 	});
 
-	this.FullBg();
+	
 }
-
 
 SetMap.prototype.loadImage=function(url, callback) { 
 	var img = new Image(); //创建一个Image对象，实现图片的预下载 
@@ -92,11 +99,11 @@ SetMap.prototype.BlowUp=function(){
 		//每一次增加的值
 		var narrowValueWidth=_this.oImg.offsetWidth*0.1;
 		var narrowValueHeight=_this.oImg.offsetHeight*0.1;
+
 		//最大值2倍
 		if((_this.oImg.offsetHeight-_this.oBox.offsetHeight)>=oImgH*2){
 			return false;
 		}
-
 		if((_this.oImg.offsetWidth-_this.oBox.offsetWidth)>=oImgW*2){
 			return false;
 		}
@@ -106,13 +113,15 @@ SetMap.prototype.BlowUp=function(){
 
 		var scaleL=L/(_this.oImg.offsetWidth-_this.oBox.offsetWidth);
 		var scaleT=T/(_this.oImg.offsetHeight-_this.oBox.offsetHeight);
-		
+		_this.scale={
+			l:scaleL,
+			t:scaleT
+		}
 		_this.oImg.style.width=_this.oImg.offsetWidth+narrowValueWidth+'px';
 		_this.oImg.style.height=_this.oImg.offsetHeight+narrowValueHeight+'px';
 		_this.oImg.style.left=_this.oImg.offsetLeft+narrowValueWidth*scaleL+'px';
 		_this.oImg.style.top=_this.oImg.offsetTop+narrowValueHeight*scaleT+'px';
 		//_this.init();
-
 	}
 }
 SetMap.prototype.Narrow=function(){
@@ -142,6 +151,11 @@ SetMap.prototype.Narrow=function(){
 		var scaleL=L/(_this.oImg.offsetWidth-_this.oBox.offsetWidth);
 		var scaleT=T/(_this.oImg.offsetHeight-_this.oBox.offsetHeight);
 		
+		_this.scale={
+			l:scaleL,
+			t:scaleT
+		}
+		
 		console.log(scaleL);
 		
 		_this.oImg.style.height=_this.oImg.offsetHeight-narrowValueHeight+'px';
@@ -152,12 +166,22 @@ SetMap.prototype.Narrow=function(){
 	}
 }
 //右键菜单
-SetMap.prototype.contextmeunHandle=function(){
-
+SetMap.prototype.contextmeunHandle=function(text){
+	var _this=this;
 	this.oImg.oncontextmenu=function(ev){
 		var oEvent=ev||event;
 		createList(oEvent);
+		getDis(oEvent);
 		return false;
+	}
+
+	function getDis(e){
+		var disX=0,disY=0;
+		//console.log(_this.scale);
+		var disX=Math.abs(_this.oImgInit.w*(_this.getPos(_this.oImg).left-e.clientX))/_this.oImg.offsetWidth;
+		var disY=Math.abs(_this.oImgInit.h*(_this.getPos(_this.oImg).top-e.clientY))/_this.oImg.offsetHeight;
+		//alert(disX+'-'+disY);
+		Uiho.cookies.setCookie("noePointDis",disX+','+disY,10);
 	}
 	document.body.onclick=function(){
 		var oL=document.getElementById('meunList');
@@ -176,15 +200,21 @@ SetMap.prototype.contextmeunHandle=function(){
 		oDiv.id="meunList";
 		document.body.appendChild(oDiv);
 		oDiv.style.left=oEvent.clientX+'px';
-		oDiv.style.top=oEvent.clientY+'px';
-
-		oDiv.innerHTML+='<a href="">添加坐标</a><a href="">添加坐标</a><a href="">添加坐标</a>';
+		oDiv.style.top=oEvent.clientY+_this.scrollNum().T+'px';
+		oDiv.innerHTML+=text;
 	}
 }
 
 // SetMap.prototype.createMapWrap=function(obj){
 	
 // }
+
+SetMap.prototype.scrollNum=function(){
+	return {
+		T:document.body.scrollTop||document.documentElement.scrollTop,
+		L:document.body.scrollLeft||document.documentElement.scrollLeft,
+	}
+}
 
 SetMap.prototype.createMap=function(obj,src){
 	obj.innerHTML+='<img id="img" src="'+src+'" />\
@@ -205,7 +235,7 @@ SetMap.prototype.FullBg=function(){
 	oBg.id="FullBg_bg";
 	document.body.appendChild(oBg);
 }
-function getPos(obj){
+SetMap.prototype.getPos=function(obj){
 	var l=0,t=0;
 	while(obj){
 		l+=obj.offsetLeft;

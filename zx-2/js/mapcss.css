@@ -1,6 +1,6 @@
 
 *{ margin: 0; padding: 0;  }
-#MapWrapBox{ width: 798px; height: 550px; position: absolute; left: 50%; top: 50%; margin: -275px 0 0 -389px; overflow: hidden; z-index: 10000;  }
+#MapWrapBox{ width: 90%; height: 550px; position: absolute; left: 50%; top: 50%; margin: -275px 0 0 -45%; overflow: hidden; z-index: 2990;  }
 #MapWrapBox img{ position: absolute; left: -300px; top: -300px; cursor: move; display: inline; } 
 .zoomwrap{ position: absolute; right: 8px; bottom: 0; z-index: 999999;  }
 .zoomwrap a{ display: block; width: 30px; height: 30px; text-align: center; line-height: 30px; color: #666; background: #f1f1f1; margin-bottom: 10px;  text-decoration: none; font-size: 24px; font-weight: bold;  }
