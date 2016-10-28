@@ -71,7 +71,7 @@ function getUserList(shopname,tel,sortid,nowPage,pageSize){
 		url:requrl,
 		data:datas,
 		success:function(str){
-			var oData=$.parseJSON(str);
+			var oData=eval('('+str+')');
 			if(oData.responseCode==1){
 				var oListObj=oData.object;
 				console.log(oData);
@@ -100,7 +100,7 @@ function getUserList(shopname,tel,sortid,nowPage,pageSize){
 					getUserList(shopname,tel,sortid,nowPage,pageSize)
 				});
 				deleteApi(function(){
-					getUserList(shopname,tel,sortid,nowPage,pageSize)
+					getUserList(shopname,tel,sortid,nowPage,pageSize);
 				})//删除接口
 			}else{
 				$('#pagination').attr('count',0);

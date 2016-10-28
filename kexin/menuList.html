@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>菜单管理</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!--responsive table-->
+    <link href="css/table-responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap-switch.css" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+
+</head>
+
+<body>
+<section id="container" class="format">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+        <!-- page start-->
+            <aside class="pull-left">
+                <div id="sidebar" class="nav-collapse resetsidebar" style="width: 200px; height: auto;">
+                    <!-- sidebar menu start-->            
+                    <div class="leftside-navigation">
+                        <div class="addMP">
+                            <a href="javascript:;" data-url="AddParentMenu.html"><i class="fa fa-edit"></i>&nbsp;&nbsp;&nbsp;新增父菜单</a>
+                        </div>
+                        <ul class="sidebar-menu" id="nav-accordion" style="padding-top: 0;">
+                            <li class="sub-menu" id="managewarp">
+                                <a href="javascript:;">
+                                    <span>管理员管理</span>
+                                    <span class="parentHandleIcon HandleJsClass"><i class="fa fa-search-plus"  data-url="AddChildMenu.html" title="查看父菜单"></i><i class="fa fa-pencil-square" data-url="AddChildMenu.html" title="新增子菜单"></i><i class="fa fa-times" title="删除父菜单"></i></span>
+                                </a>
+                                <ul class="sub">
+                                    <li id="addmanager"><a data-url="addManager.html" ><i class="fa fa-angle-right"></i>新增管理员
+                                    <span class="parentHandleIcon HandleJsClass"><i class="fa fa-times"></i></span></a></li>
+                                    <li><a data-url="showManager.html" ><i class="fa fa-angle-right"></i>查看管理员</a></li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <span>菜单管理</span>
+                                    <span class="parentHandleIcon HandleJsClass"><i class="fa fa-search-plus" title="新增子菜单"></i><i class="fa fa-pencil-square" title="查看父菜单"></i><i class="fa fa-times" title="删除父菜单"></i></span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a data-url="menuAdd.html"><i class="fa fa-angle-right"></i>新增父菜单</a></li>
+                                    <li><a data-url="menuList.html"><i class="fa fa-angle-right"></i>父菜单列表</a></li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <span>公司管理</span>
+                                    <span class="parentHandleIcon HandleJsClass"><i class="fa fa-search-plus" title="新增子菜单"></i><i class="fa fa-pencil-square" title="查看父菜单"></i><i class="fa fa-times" title="删除父菜单"></i></span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a data-url="companyEdit.html" ><i class="fa fa-angle-right"></i>查看公司信息</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>        
+                    <!-- sidebar menu end-->
+                </div>
+            </aside>
+
+            <div class=" rightcontent row">
+                <div class="col-sm-12 table-set">
+                    <section class="panel" style="background: transparent;">
+                        <iframe width="100%" border="0" frameborder="0" src="AddParentMenu.html" name="frame" id="frame" title="frame" scrolling="no" ></iframe>
+                    </section>
+                </div>
+            </div>
+        <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<script src="js/scripts.js"></script>
+<script src="js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/jquery.scrollTo.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript">
+$(function(){
+    $("[data-url]").on('click',function(){
+        $("[data-url]").parent('li').removeClass('active');
+        $(this).parent('li').addClass('active')
+        $("#frame").attr('src',$(this).attr("data-url"));
+    });
+});
+
+setInterval(function(){
+    var ifm= document.getElementById("frame");   
+    var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
+    if(ifm != null && subWeb != null) {
+       ifm.height = subWeb.body.offsetHeight;
+    } 
+},2500);
+
+</script>
+
+<script type="text/javascript">
+    
+
+var oLi=document.getElementById('nav-accordion').getElementsByTagName('li');
+
+for(var i=0; i<oLi.length; i++){
+
+    oLi[i].onmouseover=function(){
+
+        var oHandleJsClass=Uiho.tool.getByClass(this,'HandleJsClass')[0];
+       //console.log(oHandleJsClass)
+       if(oHandleJsClass){
+            oHandleJsClass.style.display='inline-block';
+       }
+    }
+
+    oLi[i].onmouseout=function(){
+        var oHandleJsClass=this.getElementsByClassName('HandleJsClass')[0];
+        if(oHandleJsClass){
+            oHandleJsClass.style.display='none';
+        }
+    }
+
+}
+
+</script>
+</body>
+</html>

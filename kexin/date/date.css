@@ -1,0 +1,81 @@
+﻿*{margin:0;padding:0}
+.dateDiv{width:100%;overflow:hidden;/*border:1px solid #000;*/ background:#fff;}
+.dateDiv .name{height:20px; line-height:20px;}
+.dateDiv .name li{height:20px;width:100%; text-align:center; color:blue;list-style:none; position:relative;}
+.dateDiv .name li .a1{ position:absolute;top:0;left:0;}
+.dateDiv .name li .a2{ position:absolute;top:0;right:0;}
+.dateDiv .week{height:60px; line-height:60px; background: #e4e4e4;}
+.dateDiv .week li{ float:left;width:14.2%;height:60px; text-align:center; list-style:none; font-size: 16px; font-weight: bold;}
+.dateDiv .dateUl{ overflow:hidden; clear:both; padding: 0;}
+.dateDiv .dateUl li{float:left;width:14.35%;height:50px; text-align:center; line-height:50px;list-style:none; position: relative; border: 1px solid #e4e4e4; margin: -1px -1px 0px 0px;}
+.dateDiv .dateUl li.ccc{ color:#ccc;}
+.dateDiv .dateUl li.red{ background:#F90}
+.dateDiv .dateUl li.sun{ color:#f00;}
+.dateDiv .dateUl .daynum{ font-size: 16px; font-weight: bold; position: absolute; left: 20px; top: 0px; }
+
+.holiday{ height: 24px; line-height: 24px; position: absolute; left: 0; bottom: 5px; width: 100%;  }
+.dateDiv .dateUl .isHoliday{ margin-right: 10px; vertical-align: middle; margin-top: -4px;  }
+.dateDiv .dateUl .holiday label{ cursor: pointer; }
+.dateDiv .dateUl .workName{ margin-left: 10px;  }
+
+.workName{position: absolute; left: 30px; top:9px; width: 90%; height: 32px; line-height: 32px; margin-left: 0px !important;}
+.workName .nowName{  }
+.workName .nowName:hover .workNameList{ display: block; }
+.workNameList{ display: none; position: absolute; right: -100px; top: 50px; width: 200px; background: #ccc;   list-style: none; padding-left: 0;  z-index: 500;}
+.dateDiv .dateUl li .workNameList li{ width: 100%; height: 32px; line-height: 32px; text-align: left; padding-left: 15px; background: #faf9ff;  }
+.dateDiv .dateUl li .workNameList li label{ font-size: 12px;  }
+.dateDiv .dateUl li .workNameList li span{ margin-left: 15px;  }
+
+.dateDiv .dateUl li .workNameList li input{ margin-top: -2px;  vertical-align: middle; }
+
+.dateDiv .dateUl li .workNameList li .subBtn{
+	background: #faf9ff;
+	width: 100%;
+	height: 22px;
+	line-height: 22px;
+	text-indent: -15px;
+}
+
+
+
+.ktp{position: absolute; top: 41px; left: 30px; width: 90%; height: 32px; line-height: 32px;}
+.ktp .nowName{  }
+.ktp .nowName:hover .ktpNameList{ display: block; }
+.ktpNameList{ display: none; position: absolute; right: -100px; top: 50px; width: 200px; background: #ccc;   list-style: none; padding-left: 0;  z-index: 500;}
+.dateDiv .dateUl li .ktpNameList li{ width: 100%; height: 32px; line-height: 32px; text-align: left; padding-left: 15px; background: #faf9ff;  }
+.dateDiv .dateUl li .ktpNameList li label{ font-size: 12px;  }
+.dateDiv .dateUl li .ktpNameList li span{ margin-left: 15px;  }
+
+.dateDiv .dateUl li .ktpNameList li input{ margin-top: -2px;  vertical-align: middle; }
+
+.dateDiv .dateUl li .ktpNameList li .subBtn{
+	background: #faf9ff;
+	width: 100%;
+	height: 22px;
+	line-height: 22px;
+	text-indent: -15px;
+}
+
+
+.zg{position: absolute; top: 71px; left: 30px; width: 90%; height: 32px; line-height: 32px;}
+.zg .nowName{  }
+.zg .nowName:hover .zgNameList{ display: block; }
+.zgNameList{ display: none; position: absolute; right: -100px; top: 50px; width: 200px; background: #ccc;   list-style: none; padding-left: 0;  z-index: 500;}
+.dateDiv .dateUl li .zgNameList li{ width: 100%; height: 32px; line-height: 32px; text-align: left; padding-left: 15px; background: #faf9ff;  }
+.dateDiv .dateUl li .zgNameList li label{ font-size: 12px;  }
+.dateDiv .dateUl li .zgNameList li span{ margin-left: 15px;  }
+
+.dateDiv .dateUl li .zgNameList li input{ margin-top: -2px;  vertical-align: middle; }
+
+.dateDiv .dateUl li .zgNameList li .subBtn{
+	background: #faf9ff;
+	width: 100%;
+	height: 22px;
+	line-height: 22px;
+	text-indent: -15px;
+}
+
+
+
+
+

@@ -350,12 +350,15 @@ UihoForRenhuai.prototype.GetOneClassifySortList=function(sortId,isRecommend,isre
 }
 
 UihoForRenhuai.prototype.GetNearbySSS=function(nowPage,pageSize,name,lat,lng,fnCall){
+
+
 	var _this=this.requrl;
 
 	var datas='data={"action":"getUserList","params":{"isRecent":"1","nowPage":'+nowPage+',"pageSize":'+pageSize+',"name":"'+name+'","latitude":"'+lat+'","longitude":"'+lng+'"},"source":"mobileweb","target":"user"}';
 
 	this.Ajax(_this,datas,function(str){
-		var oData=$.parseJSON(str);
+		//console.log(eval('('+str+')'));
+		var oData=eval('('+str+')');
 		
 		if(oData.responseCode==0){
 			$('#ListWrap').html("<p style='line-height:50px; text-align:center;'>暂无数据</p>");

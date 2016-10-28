@@ -110,7 +110,6 @@ function INeedGetPos(lng,lat){
 		var oKeywordShow=oKeywordArr[1].split('=')[1];
 		$('#searchText').val(decodeURIComponent(oKeywordShow));
 		getList(decodeURIComponent(oKeyword),lat,lng);
-		alert('oKeyword:'+oKeyword+'<->oKeywordShow:'+oKeywordShow)
 	};
 
 	GetIndexInfo.GetSearchKeywordList(function(){
@@ -152,6 +151,7 @@ function INeedGetPos(lng,lat){
 
 function getList(name,lat,lng){
 	GetIndexInfo.GetNearbySSS(nowPage,pageSize,name,lat,lng,function(oData){
+		console.log(oData)
 		if(oData.responseCode==0){
 			$('.nocontentTip').css('display','block').html('搜索结果:共0条数据');
 			$('.noresultTip').css('display','block');

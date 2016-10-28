@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Upload</title>
+
+<!-- 上传方法 -->
+<script type="text/javascript">
+/**
+	Long Zhengyong
+	20140820
+*/
+	
+// 选择文件
+function fileSelected() {
+  var file = document.getElementById('fileInput').files[0];
+  if (file) {
+    var fileSize = 0;
+    if (file.size > 1024 * 1024)
+      fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+    else
+      fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+    document.getElementById('fileName').innerHTML = 'Name: ' + file.name;
+    document.getElementById('fileSize').innerHTML = 'Size: ' + fileSize;
+  }
+}
+     
+// 文件上传
+function uploadFile() {
+  var fd = new FormData();
+  
+  fd.append("fileInput", document.getElementById('fileInput').files[0]);
+  
+  var xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", uploadComplete, false);
+  xhr.addEventListener("error", uploadFailed, false);
+  xhr.addEventListener("abort", uploadCanceled, false);
+  xhr.open("POST", "StroageServlet");
+  xhr.send(fd);
+}
+      
+// 上传完成后执行方法
+function uploadComplete(evt) {
+  /* 服务器端返回响应时候触发event事件*/
+  var info = evt.target.responseText;
+  document.getElementById('info').innerHTML = info;
+}
+   
+// 上传失败后执行方法
+function uploadFailed(evt) {
+  alert("There was an error attempting to upload the file.");
+}
+   
+// 上传异常中断后执行方法
+function uploadCanceled(evt) {
+  alert("The upload has been canceled by the user or the browser dropped the connection.");
+}
+</script>
+    
+</head>
+<body>
+
+<p><label for="fileInput">File :</label></p>
+<p><input type="file" name="fileInput" id="fileInput" onchange="fileSelected();"/></p>
+<p id="fileName"></p>
+<p id="fileSize"></p>
+   
+<p><input type="button" onclick="uploadFile()" value="Upload" /></p>
+
+<p>ResponseData :</p>
+<textarea id="info" rows="5" cols="80" style="color:blue;"></textarea>
+
+ 
+<!-- 以下是说明部分 -->
+<hr></hr>
+<p><strong>支持上传文件类型及体积限制</strong></p>
+<p>
+图片脚本样式类 .jpg,.jpeg,.png,.gif,.bmp,.js,.css,.svg 小于等于10M<br/>
+媒体类 .avi,.wmv,.wma,.mp3,.mp4,.3gp,.ogg 小于等于50M<br/>
+资料类 .doc,.docx,.xls,.xlsx,.ppt,.pptx,.csv,.pdf,.txt,.xml,.plist 小于等于50M<br/>
+文件类 .zip,.z7,.rar,.tar,.iso,.apk,.ipa,.exe,.gz 小于等于50M<br/>
+</p>
+<hr></hr>
+<h2>上传对象方法</h2>
+<p><strong>上传请求说明</strong></p>
+<p>上传请求接口</p>
+<p><i>http://jiabindao.dev.uihu.com/resx/StroageServlet</i></p>
+<p>文件输入框名称</p>
+<p><i>fileInput</i></p>
+<p><strong>上传返回参数说明</strong></p>
+<p>
+responseCode 返回代码<br/>
+<i>
+1 上传成功<br/>
+2 非文件上传请求<br/>
+3 上传异常或超出缓存大小<br/>
+4 文件名为空<br/>
+5 文件存储异常<br/>
+6 文件体积过大<br/>
+7 不支持的文件类型 <br/>
+8 存储异常
+</i>
+</p>
+<p>responseMsg 返回信息</p>
+<p>datetime 返回时间</p>
+<p>objectContentLength 对象大小</p>
+<p>objectContentType 对象类型</p>
+<p>objectETag 对象唯一码</p>
+<p>objectURL 对象地址</p>
+
+<hr></hr>
+<h2>刪除已上传对象方法</h2>
+<p><strong>请求接口</strong></p>
+<p><i>http://jiabindao.dev.uihu.com/resx/ActionServlet</i></p>
+<p><strong>请求参数</strong></p>
+<p>action=remove</p>
+<p>keyId=钥匙</p>
+<p>objectName=对象名称（包含扩展名）</p>
+<p><strong>返回参数说明</strong></p>
+<p>responseCode 返回代码<br/>
+<i>1 删除完成<br />
+0 删除异常<br />
+-1 keyId错误<br />
+-2 action错误<br />
+-3 objectName错误
+</i>
+</p>
+
+
+
+
+
+<!-- 删除方法 -->
+<script type="text/javascript">
+/**
+	Long Zhengyong
+	20150402
+*/
+
+// 删除对象
+function removeFile() {
+	
+	var action = document.getElementById("action").value;
+	var keyId = document.getElementById("keyId").value;
+	var objectName = document.getElementById("objectName").value;
+	
+	var removeXHR = new XMLHttpRequest();
+	removeXHR.addEventListener("load", removeComplete, false);
+	removeXHR.addEventListener("error", removeFailed, false);
+	removeXHR.addEventListener("abort", removeCanceled, false);
+	removeXHR.open("POST", "ActionServlet?keyId="+keyId+"&action="+action+"&objectName="+objectName);
+	removeXHR.send(null);
+}
+// 删除执行成功后方法
+function removeComplete(evt){
+	var resposneInfo = evt.target.responseText;
+	document.getElementById('resposneInfo').innerHTML = resposneInfo;
+}
+
+// 删除执行失败后方法
+function removeFailed(evt) {
+	alert("remove failed");
+}
+
+//删除执行异常中断后方法
+function removeCanceled(evt) {
+	alert("remove canceled");
+}
+</script>
+
+<p>Demo :</p>
+<form name="removeForm" id="removeForm">
+<p>action <input type="text" id="action" name="action" value="remove"/> </p>
+<p>keyId <input type="text" id="keyId" name="keyId" value=""/> </p>
+<p>objectName <input type="text" id="objectName" name="objectName" value=""/> </p>
+</form>
+<p><input type="button" onclick="removeFile()" value="Remove" /></p>
+
+<p>ResponseData :</p>
+<textarea id="resposneInfo" rows="5" cols="80" style="color:blue;"></textarea>
+
+</body>
+</html>
