@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="ThemeBucket">
+		<link rel="shortcut icon" href="images/favicon.png">
+
+		<title>新增人员</title>
+
+		<!--Core CSS -->
+		<link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="css/bootstrap-reset.css" rel="stylesheet">
+	    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+	    <!-- 自己添加的样式文件 -->
+	    <link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+	    <!-- Custom styles for this template -->
+	    <link href="css/style.css" rel="stylesheet">
+	    <link href="css/style-responsive.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/role.css" />
+	</head>
+
+	<body>
+
+		<section class="wrapper m-top0">
+			<!-- page start-->
+
+			<div class="row">
+				<div class="col-sm-12">
+					<section class="panel">
+						<header class="panel-heading title">
+                            <span>新增人员</span>
+                            <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                        </header>
+						<div class="panel-body">
+							<form class="form-horizontal bucket-form padding-bot" method="get">
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">姓名</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="请输入人员姓名" required>
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">类型</label>
+									<div class="col-sm-8">
+										<select class="form-control">
+											<option>民警</option>
+											<option>民警</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">身份证号</label>
+									<div class="col-sm-8">
+										<input type="text" id="idcard" class="form-control" placeholder="请输入人员身份证号" required>
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">政治面貌</label>
+									<div class="col-sm-8">
+										<select class="form-control">
+											<option>共产党员</option>
+											<option>共青团员</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">性别</label>
+									<div class="col-sm-8">
+										<select class="form-control">
+											<option>男</option>
+											<option>女</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">民族</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="请输入民族">
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">手机号码</label>
+									<div class="col-sm-8">
+										<input type="text" id="phone" class="form-control" placeholder="请输入11位手机号码" required>
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">警员编号</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="请输入警员编号">
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">职务</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="请输入职务	">
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">职级</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="请输入职级">
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">座机电话</label>
+									<div class="col-sm-8">
+										<input type="text" id="tel-number" class="form-control" placeholder="请输入座机电话">
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">现居地</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="请输入现居地">
+									</div>
+								</div>
+								<div class="form-group no-border">
+									<label class="col-sm-2 control-label">家庭地址</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="请输入家庭地址">
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-2">
+                                        <button class="btn btn-primary btn-block" id="addmanager" type="submit" onclick="submitAdd()">保存</button>
+                                        <span class="addtip" id="tip"></span>
+                                    </div>
+								</div>
+							</form>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!-- page end-->
+		</section>
+
+		<!--Core js-->
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="bs3/js/bootstrap.min.js"></script>
+		<script src="js/scripts.js"></script>
+		<script type="text/javascript">
+			function submitAdd() {
+				var phoneOne = document.getElementById('phone').value;
+				var idCard = document.getElementById('idcard').value;
+				var phoneNumber = document.getElementById("tel-number").value;
+				var tip = document.getElementById("tip");
+				if(phoneOne == "" || idCard == "") {
+					tip.innerHTML = ("身份证号码和手机号码不能为空！");
+					tip.style.color = "#f00";
+				} else {
+					if(idCard != ""){
+						if(!(/^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/.test(idCard))){ 
+							tip.innerHTML = ("身份证号码输入错误，请重新填写");
+				        	tip.style.color="#f00";
+					        return false; 
+					   }
+					}
+					if(phoneOne != ""){
+						if(!(/^1(3|4|5|7|8)\d{9}$/.test(phoneOne))){ 
+							tip.innerHTML = ("手机号码输入错误，请重新填写");
+				        	tip.style.color="#f00";
+					        return false; 
+					   } 
+					}
+					if(phoneNumber != ""){
+						if(!(/\d{3}-\d{8}|\d{4}-\d{7}/.test(phoneNumber))){ 
+				        	tip.innerHTML = ("座机号码输入错误，请重新填写,格式为：xxx-xxxxxxxx或者xxxx-xxxxxxx");
+				        	tip.style.color="#f00";
+					        return false; 
+					   }
+					}
+					tip.innerHTML = ("提交成功，正在跳转...");
+		        	tip.style.color="#1fb5ac";
+					return true;
+				}
+			}
+		</script>
+	</body>
+
+</html>

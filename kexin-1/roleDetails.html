@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="ThemeBucket">
+		<link rel="shortcut icon" href="images/favicon.png">
+
+		<title>角色详情</title>
+
+		<!--Core CSS -->
+		<link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-reset.css" rel="stylesheet">
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<!-- 自己添加的样式文件 -->
+		<link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+		<!-- Custom styles for this template -->
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/style-responsive.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/role.css" />
+
+	</head>
+
+	<body>
+
+		<!--main content start-->
+		<section class="wrapper m-top0">
+			<!-- page start-->
+
+			<div class="row">
+				<div class="col-sm-12">
+					<section class="panel">
+						<header class="panel-heading title">
+							<span>角色详情</span>
+							<a href="javascript:history.go(-1);" class="btn btn-primary pull-right btn-sm backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+						</header>
+						<div class="panel-body">
+							<form class="form-horizontal bucket-form padding-bot" method="get">
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">角色类型</label>
+									<div class="col-sm-8">
+										<select class="form-control">
+											<option>角色类型一</option>
+											<option>角色类型二</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">角色名称</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="民警">
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">创建人</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="张三">
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">创建时间</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="2016-10-21 18:21">
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">修改时间</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="2016-10-21 18:21">
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">状态</label>
+									<div class="col-sm-8">
+										<select class="form-control">
+											<option>启用</option>
+											<option>不启用</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">角色描述</label>
+									<div class="col-sm-8">
+										<textarea name="" class="form-control" rows="" cols=""></textarea>
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">权限选择</label>
+									<div class="col-sm-8">
+										<div class="border">
+											<div class="m-bot15 m-left-20">
+												<div class="minimal-blue row single-row single-row-float" id="checked-all">
+													<div class="checkbox ">
+														<label>
+	                                                    	<input type="checkbox" >
+	                                                    	任务管理
+	                                                	</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="minimal-blue m-left-20 pull-left single-row single-row-float">
+														<div class="checkbox ">
+															<label>
+		                                                    	<input type="checkbox" >
+		                                                    	新增任务
+		                                                	</label>
+														</div>
+													</div>
+													<div class="minimal-blue m-left-20 pull-left single-row single-row-float">
+														<div class="checkbox ">
+															<label>
+		                                                    	<input type="checkbox" >
+		                                                    	查看任务
+		                                                	</label>
+														</div>
+													</div>
+													<div class="minimal-blue m-left-20 pull-left single-row single-row-float">
+														<div class="checkbox ">
+															<label>
+		                                                    	<input type="checkbox" >
+		                                                    	删除任务
+		                                                	</label>
+														</div>
+													</div>
+													<div class="minimal-blue m-left-20 pull-left single-row single-row-float">
+														<div class="checkbox ">
+															<label>
+		                                                    	<input type="checkbox" >
+		                                                    	分配任务
+		                                                	</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="m-bot15 m-left-20">
+												<div class="minimal-blue row single-row single-row-float" id="checked-all">
+													<div class="checkbox ">
+														<label>
+	                                                    	<input type="checkbox" >
+	                                                    	事件管理
+	                                                	</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="minimal-blue m-left-20 pull-left single-row single-row-float">
+														<div class="checkbox ">
+															<label>
+		                                                    	<input type="checkbox" >
+		                                                    	新增事件
+		                                                	</label>
+														</div>
+													</div>
+													<div class="minimal-blue m-left-20 pull-left single-row single-row-float">
+														<div class="checkbox ">
+															<label>
+		                                                    	<input type="checkbox" >
+		                                                    	查看事件
+		                                                	</label>
+														</div>
+													</div>
+													<div class="minimal-blue m-left-20 pull-left single-row single-row-float">
+														<div class="checkbox ">
+															<label>
+		                                                    	<input type="checkbox" >
+		                                                    	删除事件
+		                                                	</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-2">
+										<button class="btn btn-block btn-primary">保存</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!-- page end-->
+		</section>
+		</section>
+		<!--main content end-->
+
+		<!--Core js-->
+		<script src="js/jquery.js"></script>
+		<script src="bs3/js/bootstrap.min.js"></script>
+		<!--common script init for all pages-->
+		<script src="js/scripts.js"></script>
+
+		<script type="text/javascript" src="js/tool.js"></script>
+		<script type="text/javascript" src="js/public.js"></script>
+	</body>
+
+</html>

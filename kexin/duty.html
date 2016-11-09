@@ -19,7 +19,6 @@
     <!--responsive table-->
     <link href="css/table-responsive.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/bootstrap-switch.css" />
-    <link href="js/iCheck/skins/square/green.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
@@ -69,7 +68,7 @@
                         <div class="pull-right">
                             <a class="btn btn-default btn-sm" href="duty.html" id="">导入</a>
                             <a class="btn btn-default btn-sm" href="duty.html" id="">申请换班</a>
-                            <a class="btn btn-primary btn-sm" href="smartUpAdd.html" id="">值班日志</a>
+                            <a class="btn btn-primary btn-sm" href="logbook.html" id="">值班日志</a>
                         </div>
                     </header>
                     <div class="panel-body">
@@ -103,7 +102,6 @@ window.onload=function()
 {
     znsDate('calendar',function(){
         // 名称点击
-        //alert(123)
         var oCalendar=document.getElementById('calendar');
         var oWorkNameListAll=$$('.workNameList');
         oCalendar.onclick=function(ev){
@@ -112,24 +110,22 @@ window.onload=function()
             if(target.className=='nowName'){
                 var oNowName=$$('.nowName');
                 var len=oNowName.length;
-                console.log(typeof target)
-               // var oEvent=ev||event;
                 oEvent.cancelBubble=true;
                 var oWorkNameList=getByClass(target.parentNode,'workNameList')[0];
                 for(var j=0; j<oWorkNameListAll.length; j++){
                     oWorkNameListAll[j].style.display="none";
                 }
                 oWorkNameList.style.display='block';
-                    
             }
         }
        
         document.body.onclick=function(){
             for(var j=0; j<oWorkNameListAll.length; j++){
                 oWorkNameListAll[j].style.display="none";
-            }
+            };
         }
     });
+
 };
 </script>
 </body>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="ThemeBucket">
+		<link rel="shortcut icon" href="images/favicon.png">
+
+		<title>事件详情</title>
+
+		<!--Core CSS -->
+		<link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-reset.css" rel="stylesheet">
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+		<link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+	    <!-- Custom styles for this template -->
+	    <link href="css/style.css" rel="stylesheet">
+	    <link href="css/style-responsive.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/role.css" />
+	</head>
+
+	<body>
+
+		<section class="wrapper m-top0">
+			<!-- page start-->
+
+			<div class="row">
+				<div class="col-sm-12">
+					<section class="panel">
+						<header class="panel-heading title">
+	                        <span>事件详情</span>
+	                        <span></span>
+	                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right btn-sm backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+	                    </header>
+						<div class="panel-body">
+							<form class="form-horizontal bucket-form padding-bot" method="get">
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">事件描述</label>
+									<div class="col-sm-8">
+										<textarea class="wysihtml5 form-control" rows="4"></textarea>
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">提交人</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="请输入单位联系人(选填)">
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">提交时间</label>
+									<div class="col-sm-8">
+										<div class="" data-date="13/07/2013" data-date-format="mm/dd/yyyy">
+											<input type="text" class="form-control dpd1" name="from" placeholder="10/28/2016">
+										</div>
+									</div>
+								</div>
+								<div class="form-group m-bottom-no no-border">
+									<label class="col-sm-2 control-label">处理人</label>
+									<div class="col-sm-6 m-bot15">
+										<input type="datetime" class="form-control" placeholder="张三">
+									</div>
+									<div class="col-sm-2 m-bot15">
+										<button class="btn btn-block btn-primary">重新分配</button>
+									</div>
+								</div>
+								<div class="form-group m-bottom-no no-border">
+									<label class="col-sm-2 control-label">状态</label>
+									<div class="col-sm-6 m-bot15">
+										<input type="datetime" class="form-control" placeholder="处理中">
+									</div>
+									<div class="col-sm-2 m-bot15">
+										<button class="btn btn-block btn-primary">申请中止</button>
+									</div>
+								</div>
+								<div class="form-group no-border no-margin-b">
+									<label class="col-sm-2 control-label">等级</label>
+									<div class="col-sm-8">
+										<select class="form-control m-bot15">
+											<option>一般</option>
+											<option>紧急</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group no-border no-margin-b">
+									<label class="col-sm-2 control-label">所属单位</label>
+									<div class="col-sm-8">
+										<select class="form-control m-bot15">
+											<option>单位1</option>
+											<option>单位2</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">处理结束时间</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="2016-10-20 17:52">
+									</div>
+								</div>
+								<div class="form-group m-bottom-no no-border">
+									<label class="col-sm-2 control-label">物品消耗</label>
+									<div class="col-sm-6 m-bot15">
+										<input type="datetime" class="form-control" placeholder="数据线2根">
+									</div>
+									<div class="col-sm-2 m-bot15">
+										<button class="btn btn-block btn-primary">选择</button>
+									</div>
+									
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">日志</label>
+									<div class="col-sm-8">
+										<textarea class="wysihtml5 form-control" rows="3"></textarea>
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<div class="col-sm-2 col-lg-2 col-md-2"></div>
+									<div class="col-sm-2 col-lg-2 col-md-2 m-bot15">
+										<button class="btn btn-block btn-success">保存</button>
+									</div>
+									<div class="col-sm-2 col-lg-2 col-md-2 m-bot15">
+										<button class="btn btn-block btn-send">联系第三方</button>
+									</div>
+									<div class="col-sm-2 col-lg-2 col-md-2 m-bot15">
+										<button class="btn btn-block btn-primary">查看送修设备</button>
+									</div>
+									<div class="col-sm-2 col-lg-2 col-md-2 m-bot15">
+										<button class="btn btn-block btn-info">日志新增</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!-- page end-->
+		</section>
+
+		</section>
+
+		<!-- Placed js at the end of the document so the pages load faster -->
+
+		<!--Core js-->
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="bs3/js/bootstrap.min.js"></script>
+		<script src="js/scripts.js"></script>
+	</body>
+
+</html>

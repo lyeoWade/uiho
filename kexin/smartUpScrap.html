@@ -40,30 +40,58 @@
                     </header>
                     <div class="panel-body">
                         <section id="unseen">
-                        <div class="form">
-                            <div class="cmxform form-horizontal " id="signupForm" >
-                                <div class="form-group ">
-                                    <label for="realname" class="control-label col-lg-2 col-sm-2">类型</label>
-                                    <div class="col-lg-6 col-sm-6">
-                                        <select class="form-control">
-                                            <option value="">uiho</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="realname" class="control-label col-lg-2 col-sm-2">资源选择</label>
-                                    <div class="col-lg-6 col-sm-6">
-                                        <div class="col-lg-3 col-sm-3">
-                                            <label>类型</label>
+                            <div class="form">
+                                <div class="cmxform form-horizontal " id="signupForm" style="padding-bottom: 0;">
+                                    <div class="form-group ">
+                                        <label for="realname" class="control-label col-lg-2 col-sm-2">故障类型</label>
+                                        <div class="col-lg-8 col-sm-8">
                                             <select class="form-control">
                                                 <option value="">uiho</option>
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="form-group ">
+                                        <label for="realname" class="control-label col-lg-2 col-sm-2">资源选择</label>
+                                        <div class="col-lg-10 col-sm-10">
+                                            <div class="form-group pull-left col-lg-3 col-sm-3">
+                                                <label for="name" class="control-label col-lg-4 col-sm-4">类型</label>
+                                                <div class="col-lg-8 col-sm-8">
+                                                    <select class="form-control input-sm " id="sub">
+                                                        <option value="">未选择</option>
+                                                        <option value="1">uiho</option>
+                                                        <option value="2">baidu</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group pull-left col-lg-3 col-sm-3">
+                                                <label for="name" class="control-label col-lg-4 col-sm-4">状态</label>
+                                                <div class="col-lg-8 col-sm-8">
+                                                    <select class="form-control input-sm" id="sub">
+                                                        <option value="">未选择</option>
+                                                        <option value="1">uiho</option>
+                                                        <option value="2">baidu</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group pull-left col-lg-4 col-sm-4">
+                                                <label for="name" class="control-label col-lg-4 col-sm-4">所属单位</label>
+                                                <div class="col-lg-8 col-sm-8">
+                                                    <select class="form-control input-sm" id="sub">
+                                                        <option value="">未选择</option>
+                                                        <option value="1">uiho</option>
+                                                        <option value="2">baidu</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group pull-left col-lg-2 col-sm-2">
+                                                
+                                                <input type="button" class="btn btn-sm btn-primary" value="查询" name="">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                            <table class="table table-bordered table-striped table-condensed">
+                            <table class="table table-bordered table-striped table-condensed" style="margin: 0 auto 20px; width: 83%;">
                                 <thead class="thead">
                                     <tr>
                                         <th class="numeric">序号</th>
@@ -104,58 +132,27 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>服务器</td>
-                                        <td>长虹XXXc</td>
-                                        <td>S-B-w0909</td>
-                                        <td>2016-10-26</td>
-                                        <td>正常</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="smartUpEdit.html" class="btn btn-primary btn-sm">编辑&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a>
-                                                <a href="javascript:;" class="btn btn-warning btn-sm deleteChildPro"><i class="fa fa-times"></i>&nbsp;&nbsp;删除</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>服务器</td>
-                                        <td>长虹XXXc</td>
-                                        <td>S-B-w0909</td>
-                                        <td>2016-10-26</td>
-                                        <td>正常</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="smartUpEdit.html" class="btn btn-primary btn-sm">编辑&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a>
-                                                <a href="javascript:;" class="btn btn-warning btn-sm deleteChildPro"><i class="fa fa-times"></i>&nbsp;&nbsp;删除</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>服务器</td>
-                                        <td>长虹XXXc</td>
-                                        <td>S-B-w0909</td>
-                                        <td>2016-10-26</td>
-                                        <td>正常</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="feedbackEdit.html" class="btn btn-primary btn-sm">编辑&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a>
-                                                <a href="javascript:;" class="btn btn-warning btn-sm deleteChildPro"><i class="fa fa-times"></i>&nbsp;&nbsp;删除</a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
-                            <div class="oHandle">
-                                <a href="feedbackEdit.html" class="btn btn-primary btn-sm">故障申报&nbsp;&nbsp;</a>
-                                <a href="javascript:;" class="btn btn-primary btn-sm deleteChildPro">&nbsp;&nbsp;流向登记</a>
-                                <a href="feedbackEdit.html" class="btn btn-primary btn-sm">报废申报&nbsp;&nbsp;</a>
-                                <a href="javascript:;" class="btn btn-primary btn-sm deleteChildPro">&nbsp;&nbsp;送修登记</a>
+                            <div class="form">
+                                <div class="cmxform form-horizontal " id="signupForm" style="padding-bottom: 0;">
+                                    <div class="form-group ">
+                                        <label for="realname" class="control-label col-lg-2 col-sm-2">故障现象</label>
+                                        <div class="col-lg-8 col-sm-8">
+                                            <textarea class="form-control" rows="5" placeholder="请输入故障现象(200字以内)"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-lg-6 col-sm-6">
+                                            <button class="btn btn-primary col-sm-2" id="addmanager" type="submit">保存</button>
+                                            <span class="addtip"></span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </section>
-                        <div class="box-footer clearfix" id="pagination" count="361"><div class="pull-left"><span>共 361 条数据</span>&nbsp;&nbsp;&nbsp;<span>共19页</span></div><ul id="page" class="pagination pagination-sm no-margin pull-right"><li class="active"><a pagenum="1">1</a></li><li class=""><a pagenum="2">2</a></li><li class=""><a pagenum="3">3</a></li><li class=""><a pagenum="4">4</a></li><li class=""><a pagenum="5">5</a></li><li><a pagenum="2">下一页</a></li><li><a pagenum="19">尾页</a></li></ul></div>
+                       
                     </div>
 
                 </section>

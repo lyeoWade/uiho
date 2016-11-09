@@ -108,13 +108,50 @@
 <script type="text/javascript" src="js/tool.js"></script>
 <script type="text/javascript" src="js/public.js"></script>
 <script type="text/javascript" src="js/map.js"></script>
+<style type="text/css">
+    .mapdot{ width: 16px; height: 16px; border-radius: 50%; background: #f90; position: absolute;  }
+    
+</style>
 <script type="text/javascript">
 window.onload=function(){
-   var mmm=new SetMap({
+    var point=[{
+        "x":300,
+        "y":260
+    },{
+        "x":120,
+        "y":680
+    },{
+        "x":400,
+        "y":270
+    },{
+        "x":800,
+        "y":560
+    },{
+        "x":380,
+        "y":490
+    }];
+
+    //创建dot
+
+    var mmm=new SetMap({
             obj:document.getElementById('MapWrapBox'),
             ImageUrl:'images/1.jpg',
             text:'<a href="patrolAdd.html">新增巡更点</a><a href="javascript:history.go(-1);">返回上一页</a>',
+    },function(){
+        var oImagemap=document.getElementById('imagemap');
+
+        for(var i=0; i<point.length; i++){
+            var oDiv=document.createElement('div');
+            oDiv.className='mapdot';
+            oImagemap.appendChild(oDiv);
+            oDiv.style.left=point[i].x+'px';
+            oDiv.style.top=point[i].y+'px';
+        }
     });
+
+
+    
+    
 };
 </script>
 </body>

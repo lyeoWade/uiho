@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="ThemeBucket">
+		<link rel="shortcut icon" href="images/favicon.png">
+
+		<title>新增事件</title>
+
+		<!--Core CSS -->
+		<link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-reset.css" rel="stylesheet">
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+		<link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+		<!-- Custom styles for this template -->
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/role.css" />
+	</head>
+
+	<body>
+
+		<section class="wrapper m-top0">
+			<!-- page start-->
+
+			<div class="row">
+				<div class="col-sm-12">
+					<section class="panel">
+						<header class="panel-heading title">
+							<span>新增事件</span>
+							<span></span>
+							<a href="javascript:history.go(-1);" class="btn btn-primary pull-right btn-sm backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+						</header>
+						<div class="panel-body">
+							<form class="form-horizontal bucket-form padding-bot" method="get">
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">事件描述</label>
+									<div class="col-sm-8">
+										<textarea class="wysihtml5 form-control" rows="4" placeholder="请输入事件内容描述（200字以内）"></textarea>
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<label class="col-sm-2 control-label">处理人</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" placeholder="默认为当前民警；可选择工勤处理（单选）">
+									</div>
+								</div>
+								<div class="form-group no-border no-margin-b">
+									<label class="col-sm-2 control-label">等级</label>
+									<div class="col-sm-8">
+										<select class="form-control m-bot15">
+											<option>一般</option>
+											<option>紧急</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group no-border no-margin-b">
+									<label class="col-sm-2 control-label">所属单位</label>
+									<div class="col-sm-8">
+										<select class="form-control m-bot15">
+											<option>单位1</option>
+											<option>单位2</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group m-bot15 no-border">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-2">
+										<button class="btn btn-primary btn-block">提交</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!-- page end-->
+		</section>
+
+		<!--Core js-->
+		<script src="js/jquery.js"></script>
+		<script src="bs3/js/bootstrap.min.js"></script>
+		<!--common script init for all pages-->
+		<script src="js/scripts.js"></script>
+	</body>
+
+</html>

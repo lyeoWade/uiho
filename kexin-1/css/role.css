@@ -1,0 +1,96 @@
+body{
+	font-family: "微软雅黑" !important;
+}
+html,body{
+	height: 100%;
+}
+*{
+	margin: 0;
+}
+/*#frame body{
+	margin: -8px !important;
+}
+
+#main-content{
+	height: 100%;
+}
+#main-content section{
+	height: 100%;
+}*/
+
+.noradius{
+	border-radius: 0 !important;
+}
+.dataTables_length{
+	margin-top: -5px;
+}
+.bucket-form-margin .form-group{
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+	border-bottom: none !important;
+}
+.no-border{
+	border-bottom: none !important;
+}
+.margin-no{
+	margin-left: -15px !important;
+	margin-right: -15px !important;
+}
+.no-margin-b{
+	margin-bottom: 0px !important;
+}
+.m-left-20{
+	margin-left: 20px;
+}
+.m-right-10{
+	margin-right: 10px !important;
+}
+.m-right-20{
+	margin-right: 20px !important;
+}
+.m-bottom-no{
+	margin-bottom: 0px !important;
+}
+
+.single-row-float .icheckbox_minimal-blue{
+	float: left;
+}
+#editable-none #editable-sample_info,
+#editable-none .dataTables_paginate,
+#editable-none #editable-sample_length{
+	display: none !important;
+}
+.m-top0{
+	margin-top: 0px !important;
+}
+
+.padding-lr0{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.border{
+	border: 1px solid #e2e2e4;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+.radio-class .iradio_square-blue{
+	float: left;
+}
+.radio-class label{
+	margin-top: 4px;
+	margin-left: 10px;
+}
+
+.padding-bot{
+	padding-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+

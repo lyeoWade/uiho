@@ -13,7 +13,8 @@ UihoForRenhuai.prototype.getOneShop=function(userId,fnCall){
 	},datas,function(str){
 
 		This.removeLoading(); 
-		var oData=$.parseJSON(str);
+		//var oData=$.parseJSON(str);
+		var oData=eval('('+str+')');
 		//console.log(oData);
 		if(oData.responseCode==1){
 			$('.sell-logo').html('<i class="mui-icon mui-icon-compose"></i><img class="getfile1" imageType="coverImg" src="'+oData.object.coverImg+'"/>');
@@ -68,7 +69,8 @@ UihoForRenhuai.prototype.GetHomeBannerList=function(type,fnCall){
 	var _this=this.requrl;
 	var datas='data={"action":"getBannerList","params":{"nowPage":1,"pageSize":5,"type":"'+type+'"},"source":"mobileweb","target":"banner"}';
 	this.Ajax(_this,datas,function(str){
-		var oData=$.parseJSON(str);
+		//var oData=$.parseJSON(str);
+		var oData=eval('('+str+')');
 		if(oData.responseCode==0){
 			$('#homebanner').html("<p style='line-height:50px; text-align:center;'>暂无数据</p>");
 			fnCall&&fnCall(oData);
@@ -98,8 +100,11 @@ UihoForRenhuai.prototype.GetSortList=function(fnCall){
 	var _this=this.requrl;
 	var datas='data={"action":"getSortList","params":{"nowPage":1,"pageSize":80},"source":"mobileweb","target":"sort"}';
 	this.Ajax(_this,datas,function(str){
-		var oData=$.parseJSON(str);
-		console.log(oData)
+
+		//console.log(str)
+		var oData=eval('('+str+')');
+		//console.log(oData)
+		
 		var itemHtml='',iHtml='',flterDownHtml='',btnHtml='';
 		var num=Math.ceil(oData.object.length/8);
 		
@@ -118,7 +123,7 @@ UihoForRenhuai.prototype.GetSortList=function(fnCall){
 
 			btnHtml+='<div class="mui-indicator"></div>';
 		};
-		console.log(iHtml);
+		//console.log(iHtml);
 		$('#sortListWrap').html(iHtml);
 		for(var i=0; i<oData.object.length; i++){
 			flterDownHtml+='<em href="javascript:;" typeC="1" sortId="'+oData.object[i].sortId+'">'+oData.object[i].title+'</em>';
@@ -136,14 +141,16 @@ UihoForRenhuai.prototype.GetSonSortList=function(sortId,fnCall){
 	var datas='data={"action":"getSubSortList","params":{"nowPage":1,"pageSize":20,"sortId":'+sortId+'},"source":"mobileweb","target":"subSort"}';
 
 	this.Ajax(_this,datas,function(str){
-		var oData=$.parseJSON(str);
-			console.log(oData)
+		//var oData=$.parseJSON(str);
+		var oData=eval('('+str+')');
+			//console.log(oData)
 		if(oData.responseCode==0){
 			$('.SonSortWrap').html("暂无数据");
 		}else{
 			var SortListHtml='';
 			for(var i=0; i<oData.object.length; i++){
-				SortListHtml+='<em href="javascript:;" typeC="1" subsortid="'+oData.object[i].subSortId+'">'+oData.object[i].title+'</em>';
+				//alert(sortId)
+				SortListHtml+='<a href="sonclassify.html?sortId='+sortId+'&subSortId='+oData.object[i].subSortId+'&title='+oData.object[i].title+'" typeC="1" subsortid="'+oData.object[i].subSortId+'">'+oData.object[i].title+'</a>';
 			}
 			$('.SonSortWrap').html(SortListHtml);
 			fnCall&&fnCall();
@@ -155,7 +162,8 @@ UihoForRenhuai.prototype.GetSortTreeList=function(fnCall){
 
 	var datas='data={"action":"getSortList","params":{"nowPage":1,"pageSize":30},"source":"mobileweb","target":"sort"}';
 	This.Ajax(_this,datas,function(str){
-		var oData=$.parseJSON(str);
+		//var oData=$.parseJSON(str);
+		var oData=eval('('+str+')');
 		var SortListHtml='';
 
 		var cityData=[];
@@ -203,7 +211,8 @@ UihoForRenhuai.prototype.sellInfo=function(browseUserId,userId,fnCall){
 	this.AjaxSend(_this,function(data){
 		This.loading();
 	},datas,function(str){
-		var oData=$.parseJSON(str);
+		//var oData=$.parseJSON(str);
+		var oData=eval('('+str+')');
 		console.log(oData);
 		This.removeLoading();
 		if(oData.responseCode==1){
@@ -280,10 +289,8 @@ UihoForRenhuai.prototype.GetOneClassifySortList=function(sortId,isRecommend,isre
 	var This=this;
 
 	var datas='data={"action":"getUserList","params":{"sortId":"'+sortId+'","subSortId":"'+subSortId+'","isRecommend":"'+isRecommend+'","isRecent":"'+isrecent+'","latitude":"'+latitude+'","longitude":"'+longitude+'","nowPage":"'+nowPage+'","pageSize":"'+pageSize+'"},"source":"mobileweb","target":"user"}';
-
 	this.Ajax(_this,datas,function(str){
-		var oData=$.parseJSON(str);
-		console.log(oData)
+		var oData=eval('('+str+')');
 		if(oData.responseCode==0){
 			$('#ListWrap').append("<p style='line-height:50px; text-align:center;'>加载完成,没有更多了</p>");
 			$('.moreWrap').css('display','none');
@@ -297,7 +304,7 @@ UihoForRenhuai.prototype.GetOneClassifySortList=function(sortId,isRecommend,isre
 
 
 				if(oData.object[i].channelList==undefined){
-					console.log(oData.object[i].channelList);
+					//console.log(oData.object[i].channelList);
 					cHtml=channelListHtml;
 				}else{
 					if(oData.object[i].channelList.length>=3){
@@ -405,7 +412,8 @@ UihoForRenhuai.prototype.getRandomUserList=function(lat,lng,fnCall){
 	var datas='data={"action":"getRandomUserList","params":{"isRecent":"1","nowPage":1,"pageSize":20,"latitude":"'+lat+'","longitude":"'+lng+'"},"source":"mobileweb","target":"user"}';
 	var This=this;
 	this.Ajax(_this,datas,function(str){
-		var oData=$.parseJSON(str);
+		//var oData=$.parseJSON(str);
+		var oData=eval('('+str+')');
 		console.log(oData)
 		if(oData.responseCode==0){
 			$('#ListWrap').html("<p style='line-height:50px; text-align:center;'>暂无数据</p>");
@@ -464,7 +472,8 @@ UihoForRenhuai.prototype.getShopList=function(fnCall){
 	//alert(datas);
 
 	this.Ajax(_this,datas,function(str){
-		var oData=$.parseJSON(str);
+		//var oData=$.parseJSON(str);
+		var oData=eval('('+str+')');
 		console.log(oData)
 		if(oData.responseCode==0){
 			$('.endEnterShop').html("<p style='line-height:50px; text-align:center;'>暂无数据</p>");
@@ -487,7 +496,8 @@ UihoForRenhuai.prototype.GetHistory=function(UserId,fnCall){
 	var datas='data={"action":"getHistoryList","params":{"nowPage":1,"pageSize":20,"userId":'+UserId+'},"source":"mobileweb","target":"history"}';
 	var This=this;
 	this.Ajax(_this,datas,function(str){
-		var oData=$.parseJSON(str);
+		//var oData=$.parseJSON(str);
+		var oData=eval('('+str+')');
 		console.log(oData)
 
 		if(oData.responseCode==0){

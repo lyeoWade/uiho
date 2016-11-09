@@ -4,7 +4,7 @@
 	//创建DIV
 	var oBox=document.createElement('div');
 	oBox.className='dateDiv';	
-	var s='<ul class="name"><li><span>2013年10月</span><a href="javascript:;" class="a1">上月</a><a href="javascript:;" class="a2">下月</a></li></ul><ul class="week"><li>一</li>';	
+	var s='<ul class="name"><li><span></span><a href="javascript:;" class="a1">上月</a><a href="javascript:;" class="a2">下月</a></li></ul><ul class="week"><li>一</li>';	
 	s+='<li>二</li>';
 	s+='<li>三</li>';
 	s+='<li>四</li>';
@@ -18,23 +18,7 @@
 	
 	var aUl=oBox.children;
 	
-	
-	function getPos(obj)
-	{
-		var l=0;
-		var t=0;
-		if(obj)
-		{
-			l+=obj.offsetLeft;
-			t+=obj.offsetTop;
-			obj=obj.offsetParent;	
-		}
-		return {left:l,top:t};
-	};
-	////////////加载日历LI
-	
-	function nowDays()
-   {
+	function nowDays(){
 	   var oDate=new Date();
 	   //将日期先调到下个月，再将天数调为0 回到上个月最后一天
 	   oDate.setMonth(oDate.getMonth()+iNow);
@@ -44,18 +28,16 @@
    };
    
    // 算出本月第一天是星期几
-   function firstDay()
-   {
+    function firstDay(){
 		var oDate=new Date();
 		oDate.setMonth(oDate.getMonth()+iNow);
 		 oDate.setDate(1);
 		 return oDate.getDay();
 		 // 0-6   星期天是0
-   };
+    };
    
 	
-	function dateFn()
-	{
+	function dateFn(){
 	   //每次进来之前都要清空
 	   
 	   aUl[2].innerHTML='';	
@@ -116,8 +98,10 @@
 		//alert(workNameList.length)
 		//获取所有日期的LI
 		var aLi=aUl[2].children;
-		//alert(aLi.length)
-
+		var oW=aLi[1].offsetWidth
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].style.height=oW+'px';
+		}
 		
 		//判断是上个月还是下个月还是本月
 		var oDate=new Date();
@@ -149,10 +133,10 @@
 				{
 					//星期六星期天
 					aLi[i].className='sun';	
-				}else if(i%7==1){
-					//alert(i)
+				}else if(i%7==0){
 					//alert(i-(aLi.length-workNameList.length));
-					workNameList[i-(aLi.length-workNameList.length+1)].style.right='-150px';
+					//aLi[i].style.background="#ccc";
+					workNameList[i-(aLi.length-workNameList.length)].style.right='-150px';
 				}
 				
 			}
@@ -175,9 +159,7 @@
 		}
 
 
-		for(var i=0; i<aLi.length; i++){
-			aLi[i].style.height=aLi[10].offsetWidth+'px';
-		}
+		
 		//改日期标题
 		var oS=oBox.getElementsByTagName('span')[0];
 		oS.innerHTML=oDate.getFullYear()+'年'+(oDate.getMonth()+1)+'月';
@@ -206,25 +188,11 @@
 	fn()&&fn();
 };
 
-////////加载CSS
 var oLink=document.createElement('link');
 oLink.href='date/date.css';
 oLink.rel='stylesheet';
 oLink.type='text/css';
 document.getElementsByTagName('head')[0].appendChild(oLink);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

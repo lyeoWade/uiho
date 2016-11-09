@@ -1,6 +1,6 @@
 //依赖tool.js
 
-function SetMap(options){
+function SetMap(options,fn){
 	this.loadCss(); //初始化样式
 	options=options||{};
 	var _this=this;
@@ -27,11 +27,10 @@ function SetMap(options){
 		_this.BlowUp();
 		_this.Narrow();
 		_this.contextmeunHandle(options.text);
+		fn&&fn();
 	});
-
-	
 }
-
+//QQLV000054ZDuCU8
 SetMap.prototype.loadImage=function(url, callback) { 
 	var img = new Image(); //创建一个Image对象，实现图片的预下载 
 	img.src = url; 
@@ -217,6 +216,8 @@ SetMap.prototype.scrollNum=function(){
 }
 
 SetMap.prototype.createMap=function(obj,src){
+
+	//<div id="imagemap"></div>
 	obj.innerHTML+='<img id="img" src="'+src+'" />\
 		<div class="zoomwrap">\
 		<a href="javascript:;" id="blowUp">+</a>\
