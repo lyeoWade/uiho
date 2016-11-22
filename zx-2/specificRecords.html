@@ -65,12 +65,27 @@
 <script type="text/javascript" src="js/tool.js"></script>
 <script type="text/javascript" src="js/public.js"></script>
 <script type="text/javascript" src="js/map.js"></script>
+
 <script type="text/javascript">
 window.onload=function(){
-   var mmm=new SetMap({
-        obj:document.getElementById('MapWrapBox'),
-        ImageUrl:'images/1.jpg'
+    var point=[{
+        "x":1208,
+        "y":614
+    },{
+        "x":1373,
+        "y":774
+    },{
+        "x":867,
+        "y":758
+    }];
+    //创建dot
+    var mmm=new SetMap({
+            obj:document.getElementById('MapWrapBox'),
+            ImageUrl:'images/1.jpg',
+            text:'<a href="patrolAdd.html">新增巡更点</a><a href="javascript:history.go(-1);">返回上一页</a>',
+            point:point
     });
+
 };
 </script>
 </body>

@@ -1,0 +1,21 @@
+
+*{ margin: 0; padding: 0;  }
+#MapWrapBox{ width: 90%; height: 550px; position: absolute; left: 50%; top: 50%; margin: -275px 0 0 -45%; overflow: hidden; z-index: 2990;  }
+#imagemap{ width: 100%; height: 100%; position: absolute; left: 0px; top: 0px; cursor: move; }
+#MapWrapBox img{ display: inline; position: absolute; left: 0; top: 0; } 
+.zoomwrap{ position: absolute; right: 8px; bottom: 0; z-index: 999999;  }
+.zoomwrap a{ display: block; width: 30px; height: 30px; text-align: center; line-height: 30px; color: #666; background: #f1f1f1; margin-bottom: 10px;  text-decoration: none; font-size: 24px; font-weight: bold;  }
+#meunList{ position: absolute; border: 1px solid #ccc; font-size: 14px; padding: 5px 0;  background: #fff;  z-index: 2999; }
+#meunList a{ display: block; color: #333; text-decoration: none; padding: 2px 12px; line-height: 24px;  }
+#meunList a:hover{
+	background: #f1f1f1;
+}
+#FullBg_bg{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.6);
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+}

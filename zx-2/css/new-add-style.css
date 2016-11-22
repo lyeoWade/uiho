@@ -780,11 +780,18 @@ ul.sidebar-menu li a span.HandleJsClass{
 
 
 
+.mapdisImg{ width: 100%;  }
+.mapdisImg img{
+	width: 100%;
+}
 
-
-
-
-
+.field-col {
+    margin-bottom: 20px;
+}
+.field-list label {
+    display: inline-block !important;
+    margin-right: 30px;
+}
 
 
 

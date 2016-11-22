@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png" />
+	
+	<!-- 自己添加的样式文件 -->
+	<link rel="stylesheet" type="text/css" href="css/new-add-style.css">
+    <title>xcms</title>
+    <!--Core CSS -->
+    <link rel="stylesheet" href="bs3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-reset.css" />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" />
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-responsive.css" />
+</head>
+<body>
+<section id="container">
+	<!--header start-->
+	<header class="header fixed-top clearfix">
+		<!--logo start-->
+		<div class="brand">
+	
+			<a href="index.html" class="logo">
+				<img src="images/logo.png" alt="">
+			</a>
+			<div class="sidebar-toggle-box">
+				<div class="fa fa-bars"></div>
+			</div>
+		</div>
+		<div class="nav notify-row" id="top_menu">
+		    <!--  notification start -->
+		    <ul class="nav top-menu">
+		        <!-- settings start -->
+		        <li class="dropdown">
+		            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+		                <i class="fa fa-tasks"></i>
+		                <span class="badge bg-success">8</span>
+		            </a>
+		            <ul class="dropdown-menu extended tasks-bar">
+		                <li>
+		                    <p class="">You have 8 pending tasks</p>
+		                </li>
+		                <li>
+		                    <a href="#">
+		                        <div class="task-info clearfix">
+		                            <div class="desc pull-left">
+		                                <h5>Target Sell</h5>
+		                                <p>25% , Deadline  12 June’13</p>
+		                            </div>
+		                                    <span class="notification-pie-chart pull-right" data-percent="45">
+		                            <span class="percent">45</span>
+		                            <canvas height="50" width="50"></canvas></span>
+		                        </div>
+		                    </a>
+		                </li>
+		                <li>
+		                    <a href="#">
+		                        <div class="task-info clearfix">
+		                            <div class="desc pull-left">
+		                                <h5>Product Delivery</h5>
+		                                <p>45% , Deadline  12 June’13</p>
+		                            </div>
+		                                    <span class="notification-pie-chart pull-right" data-percent="78">
+		                            <span class="percent">78</span>
+		                            <canvas height="50" width="50"></canvas></span>
+		                        </div>
+		                    </a>
+		                </li>
+		                <li>
+		                    <a href="#">
+		                        <div class="task-info clearfix">
+		                            <div class="desc pull-left">
+		                                <h5>Payment collection</h5>
+		                                <p>87% , Deadline  12 June’13</p>
+		                            </div>
+		                                    <span class="notification-pie-chart pull-right" data-percent="60">
+		                            <span class="percent">60</span>
+		                            <canvas height="50" width="50"></canvas></span>
+		                        </div>
+		                    </a>
+		                </li>
+		                <li>
+		                    <a href="#">
+		                        <div class="task-info clearfix">
+		                            <div class="desc pull-left">
+		                                <h5>Target Sell</h5>
+		                                <p>33% , Deadline  12 June’13</p>
+		                            </div>
+		                                    <span class="notification-pie-chart pull-right" data-percent="90">
+		                            <span class="percent">90</span>
+		                            <canvas height="50" width="50"></canvas></span>
+		                        </div>
+		                    </a>
+		                </li>
+
+		                <li class="external">
+		                    <a href="#">See All Tasks</a>
+		                </li>
+		            </ul>
+		        </li>
+		        <!-- settings end -->
+		        <!-- inbox dropdown start-->
+		        <li id="header_inbox_bar" class="dropdown">
+		            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+		                <i class="fa fa-envelope-o"></i>
+		                <span class="badge bg-important">4</span>
+		            </a>
+		            <ul class="dropdown-menu extended inbox">
+		                <li>
+		                    <p class="red">You have 4 Mails</p>
+		                </li>
+		                <li>
+		                    <a href="#">
+		                        <span class="photo"><img alt="avatar" src="images/avatar-mini.jpg"></span>
+		                                <span class="subject">
+		                                <span class="from">Jonathan Smith</span>
+		                                <span class="time">Just now</span>
+		                                </span>
+		                                <span class="message">
+		                                    Hello, this is an example msg.
+		                                </span>
+		                    </a>
+		                </li>
+		                <li>
+		                    <a href="#">
+		                        <span class="photo"><img alt="avatar" src="images/avatar-mini-2.jpg"></span>
+		                                <span class="subject">
+		                                <span class="from">Jane Doe</span>
+		                                <span class="time">2 min ago</span>
+		                                </span>
+		                                <span class="message">
+		                                    Nice admin template
+		                                </span>
+		                    </a>
+		                </li>
+		                <li>
+		                    <a href="#">
+		                        <span class="photo"><img alt="avatar" src="images/avatar-mini-3.jpg"></span>
+		                                <span class="subject">
+		                                <span class="from">Tasi sam</span>
+		                                <span class="time">2 days ago</span>
+		                                </span>
+		                                <span class="message">
+		                                    This is an example msg.
+		                                </span>
+		                    </a>
+		                </li>
+		                <li>
+		                    <a href="#">
+		                        <span class="photo"><img alt="avatar" src="images/avatar-mini.jpg"></span>
+		                                <span class="subject">
+		                                <span class="from">Mr. Perfect</span>
+		                                <span class="time">2 hour ago</span>
+		                                </span>
+		                                <span class="message">
+		                                    Hi there, its a test
+		                                </span>
+		                    </a>
+		                </li>
+		                <li>
+		                    <a href="#">See all messages</a>
+		                </li>
+		            </ul>
+		        </li>
+		        <!-- inbox dropdown end -->
+		        <!-- notification dropdown start-->
+		        <li id="header_notification_bar" class="dropdown">
+		            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+		                <i class="fa fa-bell-o"></i>
+		                <span class="badge bg-warning">3</span>
+		            </a>
+		            <ul class="dropdown-menu extended notification">
+		                <li>
+		                    <p>Notifications</p>
+		                </li>
+		                <li>
+		                    <div class="alert alert-info clearfix">
+		                        <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+		                        <div class="noti-info">
+		                            <a href="#"> Server #1 overloaded.</a>
+		                        </div>
+		                    </div>
+		                </li>
+		                <li>
+		                    <div class="alert alert-danger clearfix">
+		                        <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+		                        <div class="noti-info">
+		                            <a href="#"> Server #2 overloaded.</a>
+		                        </div>
+		                    </div>
+		                </li>
+		                <li>
+		                    <div class="alert alert-success clearfix">
+		                        <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+		                        <div class="noti-info">
+		                            <a href="#"> Server #3 overloaded.</a>
+		                        </div>
+		                    </div>
+		                </li>
+
+		            </ul>
+		        </li>
+		        <!-- notification dropdown end -->
+		    </ul>
+		    <!--  notification end -->
+		</div>
+		<!--logo end-->
+		<div class="nav notify-row" id="top_menu">
+			
+		</div>
+		<div class="top-nav clearfix">
+			<!--search & user info start-->
+			<ul class="nav pull-right top-menu">
+				<li>
+		            <input type="text" class="form-control search" placeholder=" Search">
+		        </li>
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+						<img alt="" src="images/avatar1_small.jpg">
+						<span class="username">王麻子</span>
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu extended logout">
+						<li><a data-url="changepaddword.html"><i class=" fa fa-suitcase"></i>修改密码</a></li>
+						<li><a  data-url="userdata.html"><i class="fa fa-cog"></i> 个人资料</a></li>
+						<li><a href="login.html"><i class="fa fa-key"></i> 退出</a></li>
+					</ul>
+				</li>
+			</ul> 
+		</div>
+	</header>
+	<!--header end-->
+	<aside>
+		<div id="sidebar" class="nav-collapse">
+			<!-- sidebar menu start-->            
+			<div class="leftside-navigation">
+				<ul class="sidebar-menu" id="nav-accordion">
+					<li class="active">
+						<a  data-url="right.html">
+							<i class="fa fa-home"></i>
+							<span>主页</span>
+						</a>
+					</li>
+					<li class="sub-menu" id="managewarp">
+						<a href="javascript:;">
+							<i class="fa fa-male"></i>
+							<span>用户管理</span>
+						</a>
+						<ul class="sub">
+							<li id="addmanager"><a data-url="Manageradd.html" ><i class="fa fa-angle-right"></i>新增用户</a></li>
+							<li><a data-url="ManagerList.html" ><i class="fa fa-angle-right"></i>用户列表</a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-file-text-o"></i>
+							<span>内容管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="contentAdd.html" ><i class="fa fa-angle-right"></i>新增内容&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="contentList.html" ><i class="fa fa-angle-right"></i>内容列表&nbsp;<span class="badge bg-warning" id="allu"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-comment-o"></i>
+							<span>评论管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="comment.html" ><i class="fa fa-angle-right"></i>评论列表&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-bars"></i>
+							<span>分类管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="classifyAdd.html" ><i class="fa fa-angle-right"></i>新增分类&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="classifyList.html" ><i class="fa fa-angle-right"></i>分类列表&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-warning"></i>
+							<span>举报管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="reportList.html" ><i class="fa fa-angle-right"></i>举报列表&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-clipboard"></i>
+							<span>收藏管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="collectList.html" ><i class="fa fa-angle-right"></i>收藏列表&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-chain-broken"></i>
+							<span>来源管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="sourceAdd.html" ><i class="fa fa-angle-right"></i>新增来源&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="sourceList.html" ><i class="fa fa-angle-right"></i>来源列表&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-bar-chart-o"></i>
+							<span>模板管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="templateAdd.html" ><i class="fa fa-angle-right"></i>新增模板&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="templateList.html" ><i class="fa fa-angle-right"></i>模板列表&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-desktop"></i>
+							<span>轮播管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="bannerAdd.html" ><i class="fa fa-angle-right"></i>新增轮播&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="bannerList.html" ><i class="fa fa-angle-right"></i>轮播列表&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;" id="ugment">
+							<i class="fa fa-picture-o"></i>
+							<span>图片管理</span>
+						</a>
+						<ul class="sub" id="ugmentChild">
+							<li><a data-url="picAdd.html" ><i class="fa fa-angle-right"></i>新增图片&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+							<li><a data-url="picList.html" ><i class="fa fa-angle-right"></i>图片列表&nbsp;<span class="badge bg-warning" id="userNum"></span></a></li>
+						</ul>
+					</li>
+					
+					
+				</ul>
+			</div>        
+	<!-- sidebar menu end-->
+		</div>
+	</aside>
+	<!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content">
+		<section class="wrapper">
+		<!-- 	<a href="javascript:;" id="deleteCookie">删除cookie</a>
+			 -->
+			<!-- page start-->
+			<div class="row">
+				<section class="gray panel">
+					<iframe width="100%" border="0" frameborder="0" src="right.html" name="frame" id="frame" title="frame" scrolling="no"  ></iframe>
+				</section>
+			<div>
+			<!-- page end-->
+		</section>
+    </section>
+    <!--main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/jquery.scrollTo.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("[data-url]").on('click',function(){
+		$("[data-url]").parent('li').removeClass('active');
+		$(this).parent('li').addClass('active')
+		$("#frame").attr('src',$(this).attr("data-url"));
+	});
+});
+</script>
+<script type="text/javascript"> 
+setInterval(function(){
+	var ifm= document.getElementById("frame");   
+	var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
+	if(ifm != null && subWeb != null) {
+	   ifm.height = subWeb.body.offsetHeight;
+	} 
+},2000);
+
+</script>
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script type="text/javascript">
+	// window.onload=function(){
+	// 	var oDeleteCookie=document.getElementById('deleteCookie');
+	// 	oDeleteCookie.onclick=function(){
+	// 		Uiho.cookies.removeCookie('userinfo');
+	// 		console.log(Uiho.cookies.getCookie('userinfo'));
+	// 	};
+	// }
+</script>
+</body>
+</html>
