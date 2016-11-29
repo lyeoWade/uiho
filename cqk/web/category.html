@@ -1,0 +1,102 @@
+<!doctype html>
+<html ng-app="cqk">
+<head>
+<meta charset="utf-8">
+<title>商家</title>
+<meta name="aplus-terminal" content="1"> 
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+<meta name="apple-touch-fullscreen" content="no"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+<meta name="format-detection" content="telephone=no"> 
+<!-- 清除微信缓存 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width , initial-scale=1.0 , maximum-scale=1.0 , user-scalabel=no">
+<script type="text/javascript" src="js/angular.js"></script> 
+<link href="css/index.css" rel="stylesheet" />	
+<script src="js/rem.js"></script> 
+<script type="text/javascript">
+    var app=angular.module('cqk',[]);
+    app.controller('shopList',function($scope,$http){
+        $scope.dropListBsys=false;
+        $scope.dropListBsys2=false;
+
+        $scope.shopStreet=['磁器口正街','磁器口东街','磁器口西街','磁器口南街'];
+        $scope.initStreet=$scope.shopStreet[0];
+        
+        $scope.shopArr=['特色小吃','毛血旺','陈麻花','臭豆腐'];
+        $scope.initShop=$scope.shopArr[0];
+        $scope.downList=function(){
+           $scope.dropListBsys=!$scope.dropListBsys;
+           $scope.dropListBsys2=false;
+        }
+        $scope.downList2=function(){
+           $scope.dropListBsys2=!$scope.dropListBsys2;
+           $scope.dropListBsys=false;
+        }
+        $scope.getHtml2=function(street){
+            $scope.initStreet=street;
+        }
+        $scope.getHtml=function(shop){
+            $scope.initShop=shop;
+        }
+    });
+</script>
+</head>
+<body ng-controller="shopList">
+
+<div class="category-wrap clearfix">
+    <div class="cate-list fl" ng-click="downList()">
+        <span>{{initStreet}}</span>
+        <em></em>
+        <div class="cate-drop" ng-show="dropListBsys">
+            <a href="javascript:;" ng-click="getHtml2(street);" ng-repeat="street in shopStreet">{{street}}</a>
+        </div>
+    </div>
+    <div class="cate-list fl" ng-click="downList2()">
+        <span>{{initShop}}</span>
+        <em></em>
+        <div class="cate-drop" ng-show="dropListBsys2">
+            <a href="javascript:;" ng-click="getHtml(shop);" ng-repeat="shop in shopArr">{{shop}}</a>
+           
+        </div>
+    </div>
+    <div class="search fr"><a href="javascript:;">搜索</a></div>
+</div>
+<div class="transitag"></div>
+<section class="category-list">
+    <ul class="category-list-ul">
+        <li><a href="">云南过桥米线1</a></li>
+        <li><a href="">云南过桥米线2</a></li>
+        <li><a href="">云南过桥米线3</a></li>
+        <li><a href="">云南过桥米线4</a></li>
+        <li><a href="">云南过桥米线5</a></li>
+        <li><a href="">云南过桥米线6</a></li>
+        <li><a href="">云南过桥米线7</a></li>
+        <li><a href="">云南过桥米线8</a></li>
+        <li><a href="">云南过桥米线9</a></li>
+        <li><a href="">云南过桥米线0</a></li>
+        <li><a href="">云南过桥米线9</a></li>
+        <li><a href="">云南过桥米线88</a></li>
+        <li><a href="">云南过桥米线77</a></li>
+        <li><a href="">云南过桥米线66</a></li>
+        <li><a href="">云南过桥米线55</a></li>
+        <li><a href="">云南过桥米线44</a></li>
+        <li><a href="">云南过桥米线33</a></li>
+        <li><a href="">云南过桥米线22</a></li>
+        <li><a href="">云南过桥米线11</a></li>
+        <li><a href="">云南过桥米线1111</a></li>
+        <li><a href="">云南过桥米线2222</a></li>
+        <li><a href="">云南过桥米线333</a></li>
+        <li><a href="">云南过桥米线444</a></li>
+        <li><a href="">云南过桥米线555</a></li>
+        <li><a href="">云南过桥米线666</a></li>
+        <li><a href="">云南过桥米线777</a></li>
+        <li><a href="">云南过桥米线888</a></li>
+    </ul>
+</section>
+
+</body>
+</html>

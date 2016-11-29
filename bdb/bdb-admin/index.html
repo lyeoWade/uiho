@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>背篼帮</title>
+    <link href="css/mycss.css" rel="stylesheet">
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet"/>
+    <style type="text/css">
+    .form-control{ color: #333 !important;}
+    </style>
+</head>
+<body>
+<section id="container">
+<!--header start-->
+<header class="header fixed-top clearfix">
+<!--logo start-->
+<div class="brand">
+
+    <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="">
+    </a>
+    <div class="sidebar-toggle-box">
+        <div class="fa fa-bars"></div>
+    </div>
+</div>
+<div class="nav notify-row" id="top_menu">
+    后台管理系统
+</div>
+<!--logo end-->
+<div class="top-nav clearfix">
+    <!--search & user info start-->
+    <ul class="nav pull-right top-menu">
+        <li>
+           <!--  <input type="text" class="form-control search" placeholder=" Search"> -->
+        </li>
+        <!-- user login dropdown start-->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <img alt="" src="images/avatar1_small.jpg">
+                <span class="username"></span>
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu extended logout">
+                <li><a data-url="changepassword.html"><i class=" fa fa-suitcase"></i>修改密码</a></li>
+                <li><a data-url="userInfo.html"><i class="fa fa-cog"></i>个人资料</a></li>
+                <li id="out"><a href="javascript:;"><i class="fa fa-key"></i>退出</a></li>
+                <li class="divider"><a data-url=".html"></a></li>
+                <li><a  data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle"></i>关于</a></li>
+                
+            </ul>
+        </li>
+    </ul>
+    <!--search & user info end-->
+</div>
+</header>
+<!--header end-->
+<!--sidebar start-->
+<aside>
+    <div id="sidebar" class="nav-collapse">
+        <!-- sidebar menu start-->
+        <div class="leftside-navigation">
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a data-url="right.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>控制中心</span>
+                    </a>
+                </li>
+                <li class="sub-menu" id="manage">
+                    <a href="javascript:;">
+                        <i class="fa fa-users"></i>
+                        <span>管理员管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a data-url="managerAdd.html">新增管理员</a></li>
+                        <li class=""><a data-url="managerList.html">管理员列表</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu" id="manage">
+                    <a href="javascript:;">
+                        <i class="fa fa-user"></i>
+                        <span>用户管理</span>
+                    </a>
+                    <ul class="sub">
+                        <!-- <li><a data-url="userAdd.html">新增管理员</a></li> -->
+                        <li class=""><a data-url="userList.html">用户列表</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-laptop"></i>
+                        <span>广告管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a data-url="bannerAdd.html">新增广告</a></li> 
+                        <li><a data-url="bannerList.html">广告列表</a></li>  
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-list-alt"></i>
+                        <span>商户管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li class=""><a data-url="shopAdd.html">新增商户</a></li>
+                        <li class=""><a data-url="shoplist.html">商户入驻列表</a></li>
+                        <li class=""><a data-url="shoplistapply.html">商户申请列表</a></li>
+                        <li class=""><a data-url="shopWillOver.html">即将到期商户</a></li> 
+                        <li class=""><a data-url="shopOver.html">已到期商户</a></li>
+                        <li class=""><a data-url="shopUpdataLog.html">商户更新日志列表</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-pencil"></i>
+                        <span>驻场天数设置</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a data-url="setDay.html">驻场天数设置</a></li>  
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-list-ol"></i>
+                        <span>分类管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a data-url="AddClassfiy.html">新增类别</a></li>
+                        <li><a data-url="classfiy.html">类别列表</a></li>
+                        <li><a data-url="AddSonClassfiy.html">新增子类别</a></li>
+                        <li><a data-url="sonClassfiy.html">子类列表</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-key"></i>
+                        <span>关键词管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a data-url="keywordAdd.html">新增关键词</a></li>
+                        <li><a data-url="keywordList.html">关键词列表</a></li>
+                        <li><a data-url="WXkeywordAdd.html">新增微信关键词</a></li>
+                        <li><a data-url="WXkeywordList.html">微信关键词列表</a></li>  
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-files-o"></i>
+                        <span>纠错管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a data-url="recoveryerrorList.html">纠错信息列表</a></li>  
+                    </ul>
+                </li>
+                
+            </ul>           
+         </div>
+    </div>
+</aside>
+<!--sidebar end-->
+    <section id="main-content">
+        <section id="wrapper " style="padding-top: 90px;">
+            <iframe width="100%" border="0" frameborder="0" src="right.html" name="frame" id="frame" scrolling="no" onLoad="iFrameHeight()"></iframe>
+        </section>
+    </section>
+</section>
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<script src="js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/jquery.scrollTo.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<!--script for this page-->
+
+ <script src="js/tool.js"></script>
+ <script src="js/public.js"></script>
+
+<script src="js/index.js"></script>
+
+<script type="text/javascript">
+$(function(){
+    $("[data-url]").on('click',function(){
+        $("[data-url]").parent('li').removeClass('active');
+        $(this).parent('li').addClass('active')
+        $("#frame").attr('src',$(this).attr("data-url"));
+    });
+});
+
+
+//setIframeHeight('frame');
+
+function setIframeHeight(id){
+  try{
+    var iframe = document.getElementById(id);
+    if(iframe.attachEvent){
+      iframe.attachEvent("onload", function(){
+        if(iframe.load='over'){
+            iframe.height =  iframe.contentWindow.document.documentElement.scrollHeight;
+        }
+      });
+      return;
+    }else{
+      iframe.onload = function(){
+        if(iframe.load='over'){
+           iframe.height = iframe.contentDocument.body.scrollHeight;
+        }
+      };
+      return;                
+    }    
+  }catch(e){
+    throw new Error('setIframeHeight Error');
+  }
+}
+
+
+function iFrameHeight() { 
+   var timer=setInterval(function(){
+        var ifm= document.getElementById("frame");   
+        var subWeb = document.frames ? document.frames["frame"].document : ifm.contentDocument;   
+        if(ifm != null && subWeb != null) {
+           ifm.height = subWeb.body.scrollHeight;
+        } 
+    },3000);
+};  
+</script>
+<div id="parentWrap"></div>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel" style="font-family:'Microsoft Yahei' ">
+               关于
+            </h4>
+         </div>
+         <div class="modal-body" style="line-height: 22px; text-align: center;">
+            <!-- <h2 style="line-height: 22px; text-align: center;">UIHO APIM</h2><br/> -->
+            贵州仁我行旅游咨询服务有限公司 <br/>
+            版本号 1.1 (20160526)<br/><br/>
+            &copy; 贵州仁我行旅游咨询服务有限公司
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">关闭
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+</body>
+</html>

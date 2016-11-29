@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>纠错详情</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/mycss.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<section id="container" class="format">
+    <!--main content start-->
+        <section class="wrapper">
+            <!-- page start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                     <header class="panel-heading title">
+                        <span><i class="fa fa-cog"></i>&nbsp;&nbsp;纠错详情</span>
+                        <span></span>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal ">
+                                     <div class="form-group ">
+                                        <label for="type" class="control-label col-lg-3 col-sm-3">错误类型</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="type" name="type" type="text"  disabled="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="userNickname" class="control-label col-lg-3 col-sm-3">纠错用户</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="userNickname" name="userNickname" type="text"  disabled="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="correctionUserName" class="control-label col-lg-3 col-sm-3">被纠错商家</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="correctionUserName" name="correctionUserName" type="text"  disabled="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="nowPhone">
+                                        <label for="errordesc" class="control-label col-lg-3 col-sm-3">错误描述</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="errordesc" name="errordesc" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group " id="newPhone">
+                                        <label for="email" class="control-label col-lg-3 col-sm-3">邮箱</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="email" name="email" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="mobile" class="control-label col-lg-3 col-sm-3">联系方式</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="mobile" name="mobile" type="text" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group ">
+                                        <label for="isProcess" class="control-label col-lg-3 col-sm-3">是否处理</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="isProcess" name="isProcess" disabled type="text" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    <!--main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript">
+    /* 获取登陆用户信息 */
+
+$(function(){
+
+    var Sid=Uiho.tool.geturldata(window.location.href).id;
+    var errortype=Uiho.tool.geturldata(window.location.href).type;
+
+    var datas='data={"action":"getCorrection","params":'+Sid+',"source":"backstage","target":"correction"}';
+
+    $.ajax({
+        url:requrl,
+        type:"POST",
+        data:datas,
+        success:function(str){
+            var oData=$.parseJSON(str);
+            var obj=oData.object;
+            console.log(obj);
+            if(errortype==1){
+                $('#type').val('地点不存在');
+                $('#correctionUserName').val(obj.correctionUserName);
+                $('#userNickname').val(obj.userNickname);
+                $('#errordesc').val(obj.intor);
+                $('#newPhone').css('display','none')
+            }else if(errortype==2){
+                $('#type').val('位置错误');
+                $('#correctionUserName').val(obj.correctionUserName);
+                $('#userNickname').val(obj.userNickname);
+                $('#errordesc').val(obj.intor);
+                $('#newPhone').find('label').text('经纬度').end().find('input[type=text]').val("经度:"+obj.latitude+'-纬度:'+obj.longitude);
+            }else if(errortype==3){
+                $('#type').val('联系方式错误');
+                $('#correctionUserName').val(obj.correctionUserName);
+                $('#userNickname').val(obj.userNickname);
+                
+                $('#nowPhone').find('label').text('商户当前联系方式').end().find('input[type=text]').val(obj.nowTel);
+                $('#newPhone').find('label').text('商户最新联系方式').end().find('input[type=text]').val(obj.newTel);
+
+            }else if(errortype==4){
+                $('#type').val('其他错误');
+                $('#correctionUserName').val(obj.correctionUserName);
+                $('#userNickname').val(obj.userNickname);
+                $('#errordesc').val(obj.intor);
+                 $('#newPhone').css('display','none')
+            }
+            var isProcessHtml='';
+            if(obj.isProcess==1){
+                isProcessHtml='已处理';
+            }else{
+                isProcessHtml='未处理';
+            };
+            $('#isProcess').val(isProcessHtml);
+            $('#mobile').val(obj.phone);
+        },
+        complete:function(){            
+            
+        }
+    })
+});
+</script>
+</body>
+</html>

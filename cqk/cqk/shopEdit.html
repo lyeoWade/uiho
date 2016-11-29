@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>商户详情</title>
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet"/>
+    <link href="css/mycss.css" rel="stylesheet">
+</head>
+<body>
+<section id="container">
+    <section class="wrapper" style="margin-top: 0 !important;">
+        <!-- page start-->
+        <!-- 项目列表 -->
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading title">
+                        <span><i class="fa fa-inbox"></i>&nbsp;&nbsp;商户详情</span>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    
+                    <div class="panel-body" id="projectwarp">
+                        <div class="childproject">
+                            <div class="form" style="position: relative;">
+                                <form class="cmxform form-horizontal " id="commentForm" method="get" action="" novalidate="novalidate">
+                                    <div class="form-group ">
+                                        <label for="projectList" class="control-label col-lg-2  col-sm-2">商户名称</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="name" name="name" type="text" placeholder="商户名称 (20字以内)">
+                                        </div>
+                                    </div>
+                                       
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2 col-sm-2">所属街区选择</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <select class="form-control" id="getSortList">
+                                                <option value="">黄桷坪一巷</option>
+                                                <option value="">磁正街</option>
+                                                <option value="">聚森茂街</option>
+                                                <option value="">磁横街</option>
+                                                <option value="">磁南街</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2 col-sm-2">所属业态选择</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <select class="form-control" id="getSortList">
+                                                <option value="">特产</option>
+                                                <option value="">餐饮</option>
+                                                <option value="">茶饮</option>
+                                                <option value="">土特产</option>
+                                                <option value="">食品</option>
+                                                <option value="">饮品</option>
+                                                <option value="">小食品</option>
+                                                <option value="">工艺品</option>
+                                                <option value="">鞋服</option>
+                                                <option value="">字画</option>
+                                                <option value="">文博场馆</option>
+                                                <option value="">服饰</option>
+                                                <option value="">小吃</option>
+                                                <option value="">其他</option>
+                                                <option value="">伞／杯</option>
+                                                <option value="">宗教</option>
+                                                <option value="">箱包</option>
+                                                <option value="">住宿</option>
+                                                <option value="">副食</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group ">
+                                        <label for="intor" class="control-label col-lg-2  col-sm-2">商户地址</label>
+                                        <div class="col-sm-5 col-lg-5">
+                                            <input class=" form-control" id="tel" name="tel" type="text" placeholder="商户地址(20字以内)" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="tel" class="control-label col-lg-2  col-sm-2">评选项目</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <div class="field-col">
+                                                <div class="field-list">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="">文化传承
+                                                        </label>
+
+                                                         <label>
+                                                            <input type="checkbox" value="">诚信经营
+                                                        </label>
+                                                        <label>
+                                                            <input type="checkbox" value="">热情服务
+                                                        </label>
+                                                        
+                                                         <label>
+                                                            <input type="checkbox" value="">环境优美
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="bulletin" class="control-label col-lg-2  col-sm-2">商户二维码</label>
+                                        <div class="col-sm-5 col-lg-5">
+                                            <img src="images/crazy-price.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="form-group clearfix" style="margin-top: 20px;">
+                                        <div class="col-lg-offset-2 col-sm-offset-2 col-sm-8 col-lg-8">
+                                            <button class="btn btn-primary noroot" type="button" id="save"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;保存修改&nbsp;&nbsp;&nbsp;</button>
+                                             <span class="addtip"></span>
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+</section>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/tool.js"></script>
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/shopAdd.js"></script>
+<!--script for this page-->
+<script type="text/javascript">
+window.onload=function(){
+    parent.scrollTo(0,0);
+
+    //console.log(window.parent.document.getElementById('ccc').innerHTML);
+};
+</script>
+</body>
+</html>\

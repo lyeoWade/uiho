@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商户入驻</title>
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+	<!-- 清除微信缓存 -->
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<link rel="stylesheet" href="css/mui.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="stylesheet" type="text/css" href="css/feedback-page.css">
+
+	<script type="text/javascript" src="js/weixin.js"></script>
+	<style type="text/css">
+		.endEnterShop{
+			padding: 0.1rem 0 0 0;
+		}
+		.endEnterShop li{
+			width: 28%;
+			float: left;
+			margin: 0 0.08rem 0.16rem 0.08rem;
+		}
+		.endEnterShop li img{
+			width: 100%;
+			height: 0.67rem;
+		}
+		.endEnterShop li span{
+			display: inline-block;
+			width: 100%;
+			white-space:nowrap;
+			color: #333;
+			overflow: hidden;
+			padding: 0 0.04rem;
+			text-align: center;
+		}
+
+		.getfile1 img,.getfile2 img,.getfile3 img{
+			width: 0.73rem !important;
+			height: 0.58rem;
+		}
+	</style>
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5xYtj38G0vQ2vqGvNk66HpBz2GqCZzrY"></script>
+	
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/cropper.css">
+	<link rel="stylesheet" href="css/main.css">
+
+</head>
+<body class="mui-fullscreen" style="width: 100%; overflow-x: hidden; overflow-y: scroll; ">
+<!-- <section id="one"  class="mui-page" style="padding-bottom: 0.2rem;">
+	<ul class="endEnterShop clearfix">
+
+	</ul>
+	<ul class="mui-table-view mui-table-view-chevron m10">
+		<li class="mui-table-view-cell" style="font-size: 0.14rem;">他们都在这里 ，差你不可！</li>
+	</ul>
+	<a href="javascript:;" id="enter1" class="mui-btn mui-btn-primary mui-btn-block sEnter">马上入驻</a>
+	<a href="javascript:;" id="end" class="mui-btn mui-btn-primary mui-btn-block" style="display: none;"></a>
+</section> -->
+
+<div id="offCanvasWrapper" style="padding-bottom: 0.5rem; width: 100%; position: absolute; top: 0; opacity: 1; z-index: 300; overflow-y: scroll; background: #fff;" style="">
+	<!--菜单部分-->
+	<section id="secend"  class="mui-page">
+		<ul class="mui-table-view mui-table-view-chevron selectclassfiy ">
+			<li class="mui-table-view-cell" id="offCanvasShow">
+				<a href="javascript:;" id="shopClassfiy" class="mui-navigate-right"><i class="mui-icon mui-icon-bars"></i><span class="tipfont">请选择商家分类</span><span class="fr" id="selecttype"></span></a>
+			</li>
+		</ul>
+
+	<!-- 	<button id='showCityPicker' class="mui-btn mui-btn-block" type='button'>二级联动示例 ...</button> -->
+		<div class="uplaodpage">
+			<p>上传商户照片<a href="javascript:;" id="desc" class="mui-badge mui-badge-primary fr tipdesc">查看说明</a></p>
+			<div id="image-list" class="image-list shopPhoto clearfix">
+				<div class="image-item space getfile1 fl">
+					<div class="image-close">X</div>
+					<div class="img1 imgWrap" style="display: inline-block; "></div>
+				</div>
+
+				<div class="image-item space getfile2 fl">
+					<div class="image-close">X</div>
+
+					<div class="img2 imgWrap" style="display: inline-block;"></div>
+				</div>
+				<em class="uploadTip cred">*必填项</em>
+			</div>
+			<!-- <div class="imagewrap" id="shopPhoto">
+				<div class="img1" style="display: inline-block; "><img src="image/2.jpg"></div>
+				<div class="img2" style="display: inline-block;"><img src="image/2.jpg"></div>
+			</div> -->
+
+
+			<p>商户封面照片<a href="javascript:;" id="desc" class="mui-badge mui-badge-primary fr tipdesc">查看说明</a></p>
+
+
+			<div id="image-list" class="image-list">
+				<div class="image-item space getfile3">
+					<div class="image-close">X</div>
+					<div class="imagewrap imgWrap" id="shopCover"></div>
+				</div>
+				<em class="uploadTip cred">*必填项</em>
+			</div>
+			
+			<p>商户二维码上传<a href="javascript:;" id="desc" class="mui-badge mui-badge-primary fr tipdesc2">查看说明</a></p>
+			<div id="image-list" class=" image-list bottomline">
+				<div class="image-item space getfile4">
+					<div class="image-close">X</div>
+					<div class="imagewrap imgWrap" id="ewmWrap"></div>
+				</div>
+				<i></i>
+				<em class="uploadTip">*选填项</em>
+			</div>
+			<input type="file" name="file" accept="image/*" style="display: none;" id="file">
+			<input type="file" name="file2" accept="image/*" style="display: none;" id="file2">
+			<button type="button" id="nextstep" class="mui-btn mui-btn-primary mui-btn-block">下一步</button>
+		</div>
+	</section>
+</div>
+
+<div id="addcanal"  style=" width: 100%; overflow-x: hidden; position: absolute; top: 0; opacity: 0; z-index: -300; background: #fff;">
+	<!-- 首次进入 -->
+	<div class="first">
+		<h2 style="font-size: 0.12rem;">您已经入驻到哪些互联网渠道？请点击“+”勾选出它们！</h2>
+		<!-- <p>*最多添加6个渠道</p> -->
+	</div>
+	<!-- 渠道列表 -->
+	
+	<div class="qdList">
+		
+	</div>
+
+	<div class="addIcon">
+		<a href="javascript:;"></a>
+	</div>
+
+	<button type="button" id="nextstep2" style="display: none" class="mui-btn mui-btn-primary mui-btn-block">下一步</button>
+	<p style="padding: 0 0.1rem; text-align: left; color:#f00; margin-top: 0.1rem;">提示一：商家如无渠道，请直接点击下一步</p>
+	<p style="padding: 0 0.1rem; text-align: left; color:#f00; margin-top: 0.1rem;">提示二：渠道选择好后，稍后工作人员将联系您确定渠道地址事宜。请耐心等待！</p>
+	
+
+	<!-- 商户列表 -->
+</div>
+<div class="shopList" id="shlb">
+	<div id="Gallery" class="mui-slider">
+		<div class="mui-slider-group">
+			<div class="mui-slider-item">
+				<ul class="mui-table-view mui-grid-view mui-grid-9" >
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/meituan.png" alt="">
+							<div class="mui-media-body touchbtn">美团团购</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/meituan2.png" alt="">
+							<div class="mui-media-body touchbtn">美团外卖</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/dzdp.png" alt="">
+							<div class="mui-media-body touchbtn">大众点评</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/nuomi.png" alt="">
+							<div class="mui-media-body touchbtn">糯米</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/taobao.png" alt="">
+							<div class="mui-media-body touchbtn">淘宝</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/eleme.png" alt="">
+							<div class="mui-media-body touchbtn">饿了么</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/58.png" alt="">
+							<div class="mui-media-body touchbtn">58同城</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/ganji.png" alt="">
+							<div class="mui-media-body touchbtn">赶集网</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/baiduwaimai.png" alt="">
+							<div class="mui-media-body touchbtn">百度外卖</div>
+						</a>
+					</li>
+
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/koubei.png" alt="">
+							<div class="mui-media-body touchbtn">口碑外卖</div>
+						</a>
+					</li>
+
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/paile.png" alt="">
+							<div class="mui-media-body touchbtn">派乐趣外卖</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/tianmao.png" alt="">
+							<div class="mui-media-body touchbtn">天猫</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/xianyu.png" alt="">
+							<div class="mui-media-body touchbtn">闲鱼</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/youzan.png" alt="">
+							<div class="mui-media-body touchbtn">有赞</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/weidian.png" alt="">
+							<div class="mui-media-body touchbtn">微店</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/home.png" alt="">
+							<div class="mui-media-body touchbtn">官方网站</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+						<a href="javascript:;">
+							<img src="image/shop/other.png" alt="">
+							<div class="mui-media-body touchbtn">其他</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="fixednav"></div>
+</div>
+
+<!-- 入驻商家信息填写 -->
+<div id="shopinfo" class="sellTabBox" style="display: none; width: 98%; padding:0 1%; background: #fff;">
+	<div class="com-list">
+		<ul class="shopInfo">
+			<li class="selectTime">
+			<i class="time"></i>
+				营业时间&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="time" id="startTime" value="08:00" name="">&nbsp;&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="time" id="endTime" value="21:00" name="">
+			</li>
+			<li><i class="tel"></i><input type="tel" id="tel" name="shoptel" placeholder="联系电话"></li>
+			<li class="rel"><i class="homeIcon"></i><input type="text" name="shopname" id="shopname" placeholder="店铺名称"><!-- <span class="shoptip">填写之后,无法修改</span> --></li>
+			<li class="p0" style="margin-top: 0.1rem;"><textarea class="sell-area" id="shopNotice" placeholder="请编辑商户公告(30字以内)"></textarea></li>
+			<li class="p0"><textarea class="sell-area" id="shopIntro" placeholder="请编辑商户介绍(100字以内)"></textarea></li>
+			<!-- <li style="padding: 0;">
+				<div id="maps" style="width:3.2rem; height:3.2rem;"></div>
+			</li> -->
+			<!-- <li><i class="address"></i>选择位置:<a href="javascript:;" id="clickOpenMap">点击选择</a></li> -->
+			<li><i class="address"></i><input type="text" name="shoptel" id="nowShopAddress" value="商户位置:" placeholder=""><a href="javascript:;" id="clickOpenMap">点击选择</a></li>
+
+			<li style="position:relative; padding-left: 0.4rem;"><input type="checkbox" name="1" id="checkbox">我已同意<a href="javascript:;" style="border:none">《商户入驻协议》</a></li>
+
+			<p class="back"><a href="javascript:;" id="applyBtn">提交入驻申请</a><a href="javascript:;" id="subUserInfo" style="display: none;">提交入驻申请</a></p>
+		</ul>
+	</div>
+	<div id="fixednav"></div>
+</div>
+
+
+
+<div class="htmleaf-container cutWrap">
+		<!-- Content -->
+  <div class="container">
+    <div class="row m0">
+      <div class="col-md-9 p0">
+        <!-- <h3 class="page-header">Demo:</h3> -->
+        <div class="img-container">
+          <img src="image/uploadloading.png" alt="Picture">
+        </div>
+      </div>
+      <div class="col-md-3 p0">
+        <!-- <h3 class="page-header">Preview:</h3> -->
+        <div class="docs-preview clearfix">
+          <div class="img-preview preview-lg"></div>
+          <!-- <div class="img-preview preview-md"></div> -->
+          <div class="img-preview preview-sm"></div>
+          <!-- <div class="img-preview preview-xs"></div> -->
+        </div>
+      </div>
+    </div>
+    <div class="row m0">
+      <div class="col-md-12 docs-buttons p0">
+      	<div style="width: 100%;" class="clearfix">
+      		<button class="col-md-3 btn mui-btn-success fl uploadimgBack" id=""  type="button" style=" display:block; width:20%; padding-left: 0; padding-right: 0;">
+	            <span style="width:100%; padding: 0.1rem 0.12rem; display:block; margin:-6px 0;">
+	              返回
+	            </span>
+	        </button>
+          <button class="col-md-9 btn mui-btn-primary fr" data-method="getCroppedCanvas" type="button" style=" display:block; width:78%; padding-left: 0; padding-right: 0;">
+            <span class="docs-tooltip" data-toggle="tooltip" style="width:100%; padding: 0.1rem 0.12rem; display:block; margin:-6px 0;">
+              上传
+            </span>
+          </button>
+          </div>
+          <p id="uploadtip" style="display: none;">图片上传中,请稍后...</p>
+      </div><!-- /.docs-buttons -->
+    </div>
+  </div>
+</div>
+
+
+<div class="maps" >
+	<div id="allmap" style="width: 100%; height: 3.2rem;"></div>
+	<p class="nowAddress"><i class="mui-icon mui-icon-location"></i></p>
+	<p class="back backMaps"><a href="javascript:;">返回</a></p>
+</div>
+
+
+<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+<!-- <section id="nav">
+	<a href="index.html" class="comnav home">首页</a>
+	<a href="nearby.html" class="comnav neary">附近</a>
+	<a href="push.html" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+
+ -->
+
+<script src="js/mui.min.js"></script>
+<script src="js/mui.view.js"></script>
+<script src='js/jquery-1.11.1.js'></script>
+<script src='js/strophe-custom-2.0.0.js'></script>
+<script src='js/json2.js'></script>
+<script src="js/easemob.im-1.0.5.js"></script>
+<script src="js/mui.picker.min.js"></script>
+<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+var desc='提示';
+var descTitle="为保证显示效果，请最好上传小体积图片；上传过程中，请一定耐心等待。";
+var descTitle2="为保证显示效果，请最好上传小体积二维码；上传过程中，请一定耐心等待。";
+
+// document.getElementById("tipdesc").addEventListener('tap', function() {
+// 	mui.alert(descTitle, desc, function() {});
+// });
+
+$('.tipdesc').on('click',function(){
+	mui.alert(descTitle, desc, function() {});
+})
+$('.tipdesc2').on('click',function(){
+	mui.alert(descTitle2, desc, function() {});
+})
+</script>
+<script type="text/javascript">
+
+
+</script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/sellenter.js"></script>
+
+<script src="js/exif.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/cropper.js"></script>
+<!-- <script src="js/cut11.js"></script>
+ -->
+<script src="js/cut43.js"></script>
+
+
+<script type="text/javascript" src="js/location.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+getLocation(function(longitude,latitude){
+	getMap(longitude,latitude);
+});
+
+function getMap(lat,lng){
+
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(lat,lng),15);  //初始化地图,设置城市和地图级别。
+
+	//获取当前地址 
+	var geoc = new BMap.Geocoder();
+	// 根据坐标得到地址描述 
+	geoc.getLocation(new BMap.Point(lat,lng), function(result){ 
+		if(result.address.indexOf('仁怀市')==-1){
+			getMap("106.407701","27.79837");
+		};
+		if (result){ 
+			$('.nowAddress').html('<i class="mui-icon mui-icon-location"></i>商户位置:'+result.address);
+			$('#nowShopAddress').val(result.address);
+		} 
+	});
+	var point = new BMap.Point(lat,lng);  
+	$('body').attr('pos',lat+','+lng);
+	var markerB = new BMap.Marker(point);// 创建标注
+	map.addOverlay(markerB);    
+	markerB.disableDragging();
+
+	function showPoint(e){
+		point = new BMap.Point(map.getCenter().lng,map.getCenter().lat);
+		map.removeOverlay(markerB);
+		markerB = new BMap.Marker(point);  // 创建标注
+		map.addOverlay(markerB);   // 将标注添加到地图中
+
+		var gc = new BMap.Geocoder(); 
+		gc.getLocation(point, function(rs){
+
+			var addComp = rs.addressComponents;
+			var mapAddress = addComp.province+addComp.city + addComp.district
+			+ addComp.street + addComp.streetNumber;
+			$('.nowAddress').html('<i class="mui-icon mui-icon-location"></i>商户位置:'+mapAddress);
+			$('body').attr('pos',map.getCenter().lng+','+map.getCenter().lat);
+			$('#nowShopAddress').val('商户位置:'+mapAddress);
+		});
+	}
+	map.addEventListener("moving", showPoint);
+};
+</script>

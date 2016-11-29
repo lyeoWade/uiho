@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>商户详情</title>
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet"/>
+    <link href="css/mycss.css" rel="stylesheet">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yaDRGoon5YoRzAAwH781yUgn"></script>
+</head>
+<body>
+<section id="container">
+    <section class="wrapper" style="margin-top: 0 !important;">
+        <!-- page start-->
+        <!-- 项目列表 -->
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading title">
+                        <span><i class="fa fa-inbox"></i>&nbsp;&nbsp;商户详情</span>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    
+                    <div class="panel-body" id="projectwarp">
+                        <div class="childproject">
+                            <div class="form" style="position: relative;">
+                                <form class="cmxform form-horizontal " id="commentForm" method="get" action="" novalidate="novalidate">
+                                    <div class="form-group ">
+                                        <label for="projectList" class="control-label col-lg-2  col-sm-2">商家名称</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="name" name="name" type="text">
+                                        </div>
+                                    </div>
+                                   <!--  <div class="form-group ">
+                                            <label for="shoptypename" class="control-label col-lg-2  col-sm-2">商家类型名称</label>
+                                            <div class="col-lg-5 col-sm-5">
+                                                <input class=" form-control" id="shoptypename" name="shoptypename" type="text"  disabled="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="shopchildname" class="control-label col-lg-2  col-sm-2">商家子类名称</label>
+                                            <div class="col-lg-5 col-sm-5">
+                                                <input class=" form-control" id="shopchildname" name="shopchildname" type="text" disabled="">
+                                            </div>
+                                        </div> -->
+                                        <div class="form-group ">
+                                        <label for="name" class="control-label col-lg-2 col-sm-2">商家类型/子类名称</label>
+                                        <div class="col-lg-5 col-sm-6" id="sortListWarpBox">
+                                            <!-- <div class="sortListWarp">
+                                                <input class="form-control col-lg-4" id="residentDay" name="residentDay" type="text" required="">
+                                                <button class="btn btn-warning">删除</button>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2 col-sm-2">新增/修改分类</label>
+                                        <div class="col-lg-2 col-sm-2">
+                                            <select class="form-control" id="getSortList">
+                                                
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-2 col-sm-2">
+                                            <select class="form-control" id="getSonSortList">
+                                                <!-- <option value="">全部</option>
+                                                <option value="2">仁怀商户管理</option>
+                                                <option value="1">驾校服务平台</option> -->
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-1 col-sm-1">
+                                            <a href="javascript:;" id="addSort" class="btn btn-info">添加</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="nickname" class="control-label col-lg-2  col-sm-2">商家微信名称</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="nickname" name="nickname" type="text" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="updateDatetime" class="control-label col-lg-2  col-sm-2">申请时间</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="updateDatetime" name="updateDatetime" type="text" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="tradeBeginTime" class="control-label col-lg-2  col-sm-2">营业开始时间</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="tradeBeginTime" name="tradeBeginTime" type="time">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="tradeEndTime" class="control-label col-lg-2  col-sm-2">营业结束时间</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="tradeEndTime" name="tradeEndTime" type="time">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="settledDatetime" class="control-label col-lg-2  col-sm-2">入驻时间</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="settledDatetime" name="settledDatetime" type="text" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="residentDay" class="control-label col-lg-2  col-sm-2">推广天数</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="residentDay" name="residentDay" type="text" disabled="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="residentBeginDatetime" class="control-label col-lg-2  col-sm-2">推广开始时间</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="residentBeginDatetime" name="residentBeginDatetime" type="text" disabled="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="tel" class="control-label col-lg-2  col-sm-2">联系方式</label>
+                                        <div class="col-lg-5 col-sm-5">
+                                            <input class=" form-control" id="tel" name="tel" type="text" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="intor" class="control-label col-lg-2  col-sm-2">商户介绍</label>
+                                        <div class="col-sm-5 col-lg-5">
+                                            <textarea class="form-control " id="intor" name="intor" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="bulletin" class="control-label col-lg-2  col-sm-2">商家公告</label>
+                                        <div class="col-sm-5 col-lg-5">
+                                            <textarea class="form-control " id="bulletin" name="bulletin" required=""></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div id="ewmwrap">
+                                        <div class="form-group ">
+                                            <label for="phone" class="control-label col-lg-2 col-sm-2">二维码</label>
+                                            <div class="col-lg-5 col-sm-5">
+                                                <input type="file" id="fileInput1" name="fileInput1" class="form-control ewmFile fileInput2 hiddentag">
+                                                <div class="marktag">点击更换二维码</div>
+                                                <button class="btn btn-primary col-sm-3 rt00 uploadOnePic" id="ewmUpload" type="button">上传</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="" class="control-label col-lg-2 col-sm-2">&nbsp;</label>
+                                        <div class="col-lg-6 col-sm-6 coverImgWrap" id="ewm">
+                                            <img src="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="margin: 30px 0;">
+                                        <label for="apiUrl" class="control-label col-lg-2  col-sm-2"  style="margin-top: 30px;">商家渠道</label>
+                                        <div class="col-sm-9 col-lg-9 ">
+                                            <div class="qdchannel oldChannel">
+                                               
+                                            </div>
+                                            <div class="qdchannel newChannel">
+                                                <div class="cheallLine2">
+                                                     <div class="addqds"><i class="fa fa-plus"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="filewarp2">
+                                        <div class="form-group ">
+                                            <label for="coverImg" class="control-label col-lg-2 col-sm-2">商家封面图</label>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <input type="file" id="fileInput1" name="fileInput1" class="form-control fileInput2 hiddentag">
+                                                <div class="marktag">点击上传头像</div>
+                                                <button class="btn btn-primary col-sm-3 rt00 uploadOnePic" id="uploadBanner2" type="button">上传</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="" class="control-label col-lg-2 col-sm-2">&nbsp;</label>
+                                        <div class="col-lg-6 col-sm-6 coverImgWrap" id="coverImgWrap">
+                                            <img src="">
+                                        </div>
+                                    </div>
+
+                                    <div id="filewarp">
+                                        <div class="form-group ">
+                                            <label for="phone" class="control-label col-lg-2 col-sm-2">商家图片集</label>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <input type="file" id="fileInput" name="fileInput" class="form-control fileInput">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-lg-6 col-sm-6">
+                                            <button class="btn btn-warning col-sm-2" type="button" id="addbanner">新增</button>
+                                            <button class="btn btn-primary col-sm-3 col-md-offset-1 col-sm-offset-1" type="button" id="upload">上传</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="thumbnail">
+                                        <div class="form-group ">
+                                            <label for="thumbnail" class="control-label col-lg-2 col-sm-2"><!-- 缩略图 --></label>
+                                            <div class="col-lg-8 col-sm-8">
+                                                <div id="oldthumb"></div>
+                                                <div id="thumbs"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group ">
+                                        <label for="address" class="control-label col-lg-2  col-sm-2">标签</label>
+                                        <div class="col-sm-6 col-lg-6 ">
+                                            <textarea class="form-control" id="shopTag" placeholder="添加商家相关标签(多个标签请用逗号'，'隔开)"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="address" class="control-label col-lg-2  col-sm-2">地址</label>
+                                        <div class="col-sm-6 col-lg-6 ">
+                                            <input class="form-control " id="address" type="text" name="address" disabled="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="apiUrl" class="control-label col-lg-2  col-sm-2">是否推荐</label>
+                                        <div class="col-sm-6 col-lg-6 ">
+                                            <select class="form-control" id="isRecommend">
+                                                <option value="0">不推荐</option>
+                                                <option value="1">推荐</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="mapwrap" style="position:absolute; right: 0; top: 18px; ">
+                                        <div id="allmap" style="width: 340px; height: 340px;"></div>
+                                        <div class="addresspos">
+                                            <p class="nowAddress"></p>
+                                            <p>经度：<input type="text" class="lng"></p>
+                                            <p>纬度：<input type="text" class="lat"></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group clearfix" style="margin-top: 20px;">
+                                        <div class="col-lg-offset-2 col-sm-offset-2 col-sm-8 col-lg-8">
+                                            <button class="btn btn-primary noroot" type="button" id="save"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;保存修改&nbsp;&nbsp;&nbsp;</button>
+                                             <span class="addtip"></span>
+                                           
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+</section>
+
+
+
+<div class="updataChanell">
+    <div class="upWrap">
+        <p class="qdImg"><img src=""></p>
+        <div class="comU">
+            <input type="file" id="fileInput3" name="fileInput3" class="form-control fileInput3 hiddentag">
+            <div class="marktag">点击上传头像</div>
+            <button class="btn btn-primary col-sm-3 rt00" id="updataqd" type="button">上传</button>
+        </div>
+        <div class="comU">
+            <input class="form-control " id="qdName" type="text" name="qdName" placeholder="渠道名称" required="">
+        </div>
+        <div class="comU">
+            <input class="form-control " id="qdLink" type="text" name="qdLink" placeholder="渠道地址" required="">
+        </div>
+        <div class="comU">
+            <button class="btn btn-primary noroot" type="button" id="Usave"  ><i class="fa fa-check-circle"></i>&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;</button>
+            <button class="btn btn-primary noroot" type="button" id="AddUsave"  ><i class="fa fa-check-circle"></i>&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/tool.js"></script>
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/shoplistEdit.js"></script>
+<!-- <script src="js/apigroup.js"></script> -->
+<!--script for this page-->
+<script type="text/javascript">
+    window.onload=function(){
+        parent.scrollTo(0,0);
+    }
+</script>
+</body>
+</html>

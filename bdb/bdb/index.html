@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背篼帮</title>
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+	<!-- 清除微信缓存 -->
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<link rel="stylesheet" href="css/mui.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5xYtj38G0vQ2vqGvNk66HpBz2GqCZzrY"></script>
+	<script type="text/javascript" src="js/weixin.js"></script>
+</head>
+<body style="width: 100%; overflow-x: hidden;">
+<section id="banner">
+	<div id="slider" class="mui-slider">
+		<div class="mui-slider-group mui-slider-loop" id="homebanner">
+			<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) 
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<a href="#">
+					<img src="image/1.jpg">
+				</a>
+			</div>
+			<div class="mui-slider-item">
+				<a href="#">
+					<img src="image/4.jpg">
+				</a>
+			</div>-->
+			<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) 
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<a href="#">
+					<img src="image/3.jpg">
+				</a>
+			</div>-->
+		</div>
+		<div class="mui-slider-indicator" >
+			<!-- <div class="mui-indicator mui-active"></div>
+			<div class="mui-indicator"></div>
+			<div class="mui-indicator"></div>
+			<div class="mui-indicator"></div> -->
+		</div>
+	</div>
+</section>
+
+
+
+<section id="indexSearchWrap">
+	<a href="search.html"><span class="mui-icon mui-icon-search"></span>搜索你喜欢的商家</a>
+</section>
+<section id="classify">
+	<div id="Gallery" class="mui-slider">
+		<div class="mui-slider-group" id="sortListWrap">
+		</div>
+		
+	</div>
+</section>
+
+<div class="hb10"></div>
+
+<section id="fastnav">
+	<ul class="clearfix">
+		<li class="newsell"><a href="newsell.html">
+				<h2>最新入驻</h2>
+				<p>查看最新商家</p>
+			</a></li>
+		<li class="hotsell"><a href="hotsell.html">
+				<h2>热门商家</h2>
+				<p>大家都逛这里</p>
+			</a></li>
+		<li class="like"><a href="guessLike.html">
+				<h2>猜你喜欢</h2>
+				<p>总有你喜欢的</p>
+			</a></li>
+		<li class="history"><a href="history.html">
+				<h2>历史足迹</h2>
+				<p>浏览记录</p>
+			</a>
+		</li>
+	</ul>	
+</section>
+
+<div class="hb10"></div>
+
+<!-- 筛选分类 -->
+<section id="filterClassify">
+	<ul class="filterBar clearfix">
+		<li><span id="sortS" sortid="1">美食</span><i class="downicon"></i>
+			<div class="flterDown sortWrap"></div>
+		</li>
+		<li><span id="truble">最新</span><i class="downicon"></i>
+			<div class="flterDown" style="left: -100%;">
+				<em>最新</em>
+				<em isRecommend="1">最热门</em>
+				<em isRecent="1">最近</em>
+			</div>
+		</li>
+	</ul>
+	<div class="xdtdiv"></div>
+	<!-- 列表 -->
+	<div class="flterList" style="width: 100%; overflow-x: hidden;">
+		<ul id="ListWrap">
+		</ul>
+		<p class="moreWrap"><a href="javascript:;" id="addMore">点击文字加载更多</a></p>
+	</div>
+</section>
+
+<div id="fixednav"></div>
+<section id="nav">
+	<a href="index.html" class="comnav home active"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+	<a href="nearby.html" class="comnav neary">附近</a>
+	<a href="push.html" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+<script type="text/javascript" src="js/public.js"></script>
+
+<script type="text/javascript" src="js/location.js"></script>
+<script type="text/javascript">
+
+</script>
+<!-- 例子 -->
+<script src="js/mui.min.js"></script>
+
+<script type="text/javascript">
+var GetIndexInfo=new UihoForRenhuai();
+var sortid='29',isRecommend='',isrecent=0,subSortId='',pageSize=20,nowPage=1;
+try{
+	getLocation(function(lng,lat){
+		//获取分类
+		GetIndexInfo.GetSortList(function(){
+			flterDown(function(sortid,isRecommend,isrecent){
+				$('#ListWrap').html('');
+				GetIndexInfo.GetOneClassifySortList(sortid,isRecommend,isrecent,subSortId,lat,lng,nowPage,pageSize);
+			});
+			var oS=document.createElement('script');
+			oS.src="js/mui.min.js";
+			document.body.appendChild(oS);
+		});
+		//获取列表 
+		GetIndexInfo.GetOneClassifySortList(sortid,isRecommend,isrecent,subSortId,lat,lng,nowPage,pageSize,function(){
+				setTimeout(function(){
+					GetIndexInfo.xdt();
+				},3000);
+			});
+	})
+
+
+	GetIndexInfo.GetHomeBannerList(1,function(){
+		var slider = mui("#slider");
+		slider.slider({
+			interval: 5000
+		});
+	});
+
+}catch(e){
+	console.log(e)
+}
+
+
+
+function  flterDown(Ajaxfn){
+	var oLi=document.getElementsByClassName('filterBar')[0].getElementsByTagName('li');
+	var oIcon=document.getElementsByClassName('filterBar')[0].getElementsByTagName('i');
+	for(var i=0; i<oLi.length; i++){
+		oLi[i].index=i;
+		oLi[i].btn=true;
+		oLi[i].addEventListener('click',function(e){
+			if(this.btn){
+				for(var j=0; j<oLi.length; j++){
+					var oflterDown=oLi[j].getElementsByClassName('flterDown')[0];
+					oflterDown.style.display='none';
+					oIcon[j].style.transform='rotateZ(0)';
+					oLi[j].btn=true;
+				};
+				var flterDown=this.getElementsByClassName('flterDown')[0];
+				flterDown.style.display='block';
+				oIcon[this.index].style.transform='rotateZ(180deg)';
+				e.cancelBubble=true;
+				this.btn=false;
+			}else{
+				for(var j=0; j<oLi.length; j++){
+					var oflterDown=oLi[j].getElementsByClassName('flterDown')[0];
+					oflterDown.style.display='none';
+					oIcon[j].style.transform='rotateZ(0)';
+					oLi[j].btn=true;
+				};
+				this.btn=true;
+			}
+			
+		},false);
+	}
+	var truble=document.getElementById('truble');
+	var sortS=document.getElementById('sortS');
+	
+	var oFlterDown=document.getElementsByClassName('flterDown');
+	for(var ii=0; ii<oFlterDown.length; ii++){
+		var aBtn=oFlterDown[ii].getElementsByTagName('em');
+		for(var i=0; i<aBtn.length; i++){
+			aBtn[i].index=i;
+			aBtn[i].addEventListener('click',function(e){
+				e.stopPropagation();
+				var oSpan=this.parentNode.parentNode.getElementsByTagName('span')[0];
+
+				var oIcon=this.parentNode.parentNode.getElementsByTagName('i')[0];
+
+				this.parentNode.parentNode.btn=true;
+				oIcon.style.transform='rotateZ(0)';
+
+				var _this=this;
+				oSpan.innerHTML=this.innerHTML;
+				if(this.getAttribute('typeC')==1){
+
+					var sortid=this.getAttribute('sortid');
+					oSpan.setAttribute('sortid',sortid);
+					setTimeout(function(){
+						_this.parentNode.style.display='none';
+
+						if(truble.innerHTML=="最新"){
+
+						}else if(truble.innerHTML=="最热门"){
+							isRecommend=1;
+						}else if(truble.innerHTML=="最近"){
+							isrecent=1;
+						};
+						//选择之后发送请求
+						Ajaxfn&&Ajaxfn(sortid,isRecommend,isrecent);
+					},300);
+				}else{
+					sortid=sortS.getAttribute('sortid');
+					if(truble.innerHTML=="最新"){
+						isRecommend='';
+						isrecent=0;
+					}else if(truble.innerHTML=="最热门"){
+						isRecommend=1;
+					}else if(truble.innerHTML=="最近"){
+						isrecent=1;
+					};
+					//alert(isrecent)
+					setTimeout(function(){
+						_this.parentNode.style.display='none';
+						//选择之后发送请求
+						Ajaxfn&&Ajaxfn(sortid,isRecommend,isrecent);
+					},300);
+				}
+				e.cancelBubble=true;
+			},false);
+		}
+	}
+
+
+	document.addEventListener('click',function(){
+		for(var ii=0; ii<oFlterDown.length; ii++){
+			oFlterDown[ii].style.display="none";
+		}
+	},false);
+}
+
+</script>
+
+
+</body>
+</html>
+

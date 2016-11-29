@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>新增banner</title>
+
+    <!--Core CSS -->
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- 自己添加的样式文件 -->
+    <link rel="stylesheet" type="text/css" href="css/mycss.css">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+<section id="container" class="format">
+        <section class="wrapper">
+            <!-- page start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading lh30" >
+                            
+                            <span><i class="fa fa-code"></i>&nbsp;&nbsp;新增广告</span>
+                            <a href="javascript:history.go(-1);" class="btn btn-primary btn-sm pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal " id="signupForm" method="get" action="">
+
+                                    <div class="form-group ">
+                                        <label for="bannertit" class="control-label col-lg-3 col-sm-3">标题</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control " id="bannertit" type="text" placeholder="广告标题" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="lastname" class="control-label col-lg-3 col-sm-3">广告类型</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <select class="form-control input-sm" id="bannertype">
+
+                                                <option value="1">主页</option>
+                                                <option value="2">搜索页面</option>
+                                                <option value="3">最新入驻页面</option>
+                                                <option value="4">热门商家页面</option>
+                                                <option value="5">猜你喜欢页面</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="targeturl" class="control-label col-lg-3 col-sm-3">跳转地址</label>
+                                        <div class="col-lg-6 col-sm-6">
+                                            <input class="form-control" id="targeturl" type="text" placeholder="广告跳转地址" />
+                                        </div>
+                                    </div>
+
+                                    <div id="filewarp2">
+                                        <div class="form-group ">
+                                            <label for="phone" class="control-label col-lg-3 col-sm-3">封面图</label>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <input type="file" id="fileInput1" name="fileInput1" class="form-control fileInput1 hiddentag">
+                                                <div class="marktag">点击添加封面图</div>
+                                                <button class="btn btn-primary col-sm-3 rt00" id="uploadBanner" type="button">上传</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="thumbnail">
+                                        <div class="form-group " id="thumb">
+                                            <label for="thumbnail" class="control-label col-lg-3 col-sm-3"><!-- 封面缩略图 --></label>
+                                            <div class="col-lg-8 col-sm-8" id="thumb2">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-lg-6 col-sm-6">
+                                            <button class="btn btn-primary col-sm-3" id="bannerAddBtn" type="button">提交</button>
+                                            <span class="addtip"></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    <!--main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/tool.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/bannerAdd.js"></script>
+</body>
+</html>

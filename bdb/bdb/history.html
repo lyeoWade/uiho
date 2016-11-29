@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>历史记录</title>
+
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+	<!-- 清除微信缓存 -->
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<!-- <script type="text/javascript" src="js/weixin.js"></script> -->
+</head>
+<body>
+
+<section id="historyWrap" >
+	<ul class="mui-table-view" id="historyListWrap"><!-- 
+		<li class="mui-table-view-cell mui-media">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="image/1.jpg">
+				<div class="mui-media-body">
+					好吃嘴~~~~
+					<p class='mui-ellipsis'>浏览时间:2016-12-25</p>
+				</div>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="image/2.jpg">
+				<div class="mui-media-body">
+					我让鸭脑壳飞起来
+					<p class='mui-ellipsis'>浏览时间:2016-12-25</p>
+				</div>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="image/3.jpg">
+				<div class="mui-media-body">
+					think  less 
+					<p class='mui-ellipsis'>浏览时间:2016-12-25</p>
+				</div>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="image/1.jpg">
+				<div class="mui-media-body">
+					好吃嘴~~~~
+					<p class='mui-ellipsis'>浏览时间:2016-12-25</p>
+				</div>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="image/2.jpg">
+				<div class="mui-media-body">
+					我让鸭脑壳飞起来
+					<p class='mui-ellipsis'>浏览时间:2016-12-25</p>
+				</div>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="image/3.jpg">
+				<div class="mui-media-body">
+					think  less 
+					<p class='mui-ellipsis'>浏览时间:2016-12-25</p>
+				</div>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="image/1.jpg">
+				<div class="mui-media-body">
+					好吃嘴~~~~
+					<p class='mui-ellipsis'>浏览时间:2016-12-25</p>
+				</div>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="image/2.jpg">
+				<div class="mui-media-body">
+					我让鸭脑壳飞起来
+					<p class='mui-ellipsis'>浏览时间:2016-12-25</p>
+				</div>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<a href="javascript:;">
+				<img class="mui-media-object mui-pull-left" src="image/3.jpg">
+				<div class="mui-media-body">
+					think  less 
+					<p class='mui-ellipsis'>浏览时间:2016-12-25</p>
+				</div>
+			</a>
+		</li> -->
+	</ul>
+	<!-- <a href="javascript:;" style="display: none;" id="clearHistory">清空浏览记录</a> -->
+</section>
+<style type="text/css">
+	.div body{
+		width: 100px;
+	}
+</style>
+<section id="nocontent" style="display: none;">
+	<p class="nocontentTip">您暂时还没有历史足迹！</p>
+	<p class="gohome"><a href="index.html">去首页</a></p>
+</section>
+
+<div id="fixednav"></div>
+
+<div id="fixednav"></div>
+<section id="nav">
+	<a href="index.html" class="comnav home"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+	<a href="nearby.html" class="comnav neary">附近</a>
+	<a href="javascript:;" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+<script src="js/mui.min.js"></script>
+
+<script src="js/public.js"></script>
+<script type="text/javascript">
+var Uiho=new UihoForRenhuai();
+
+var UserId=Uiho.getCookie('userIdByWeixin'); 
+Uiho.GetHistory(UserId,function(){
+	document.getElementById("clearHistory").addEventListener('tap', function() {
+		var btnArray = ['否', '是'];
+		mui.confirm('', '是否清空历史足迹?', btnArray, function(e) {
+			if (e.index == 1) {
+				Uiho.deleteHistory(UserId);
+			}
+		});
+	});
+});
+
+//获取历史记录
+
+
+
+</script>
+</body>
+</html>

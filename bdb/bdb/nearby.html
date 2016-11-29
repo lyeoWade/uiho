@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的附近</title>
+	<meta name="aplus-terminal" content="1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
+	<meta name="apple-touch-fullscreen" content="no"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+	<meta name="format-detection" content="telephone=no"> 
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/rem.js"></script>
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5xYtj38G0vQ2vqGvNk66HpBz2GqCZzrY"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body style="overflow-x:hidden; width:100%;">
+<!-- 筛选分类 -->
+<section id="filterClassify">
+	<!-- 列表 -->
+	<ul class="mui-table-view mui-table-view-chevron selectclassfiy ">
+		<li class="mui-table-view-cell" id="offCanvasShow" style="background: #fefefe;">
+			<a href="javascript:;" id="addressBtn" class="mui-navigate-right"><i class="mui-icon mui-icon-location"></i><span class="tipfont">当前位置</span><span class="fr" id="selecttype"><!-- 贵州省仍坏事茅台镇 --></span></a>
+		</li>
+	</ul>
+	<div class="flterList">
+		<ul id="ListWrap">
+		</ul>
+		<!-- <a href="javascript:;" class="loadmore">加载更多</a> -->
+	</div>
+</section>
+
+
+<section id="mapwrap">
+	<div id="allmap" style="width: 100%; height: 3.2rem;">
+		
+	</div>
+	<p id="nowaddress"><i class="mui-icon mui-icon-location"></i>当前位置:XXXXXXXXXXXXXX</p>
+
+	<p class="back"><a href="javascript:;">返回</a></p>
+</section>
+
+
+<div id="fixednav"></div>
+<section id="nav">
+	<a href="index.html" class="comnav home"><!-- <i class="fa fa-home"></i><br/> -->首页</a>
+	<a href="nearby.html" class="comnav neary active ">附近</a>
+	<a href="push.html" class="comnav xq">发布需求</a>
+	<a href="shopcenter.html" class="comnav sell">入驻中心</a>
+</section>
+
+<script src="js/mui.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+	var geolocation = new BMap.Geolocation();
+	geolocation.getCurrentPosition(function(r){
+		console.log(r);
+		if(this.getStatus() == BMAP_STATUS_SUCCESS){
+			var mk = new BMap.Marker(r.point);
+			//alert('您的位置：'+r.point.lng+','+r.point.lat);
+			var lng=r.point.lng,lat=r.point.lat;
+			var map = new BMap.Map("allmap");
+			map.centerAndZoom(new BMap.Point(lng,lat),17);  //初始化地图,设置城市和地图级别。
+			//获取当前地址 
+			var myGeo = new BMap.Geocoder(); 
+			// 根据坐标得到地址描述 
+			myGeo.getLocation(new BMap.Point(lng,lat), function(result){ 
+				if (result){ 
+					//alert(result.address); 
+					$('#selecttype').html(result.address);
+					$('#nowaddress').html('<i class="mui-icon mui-icon-location"></i>当前位置:'+result.address);
+				} 
+			});
+			var point = new BMap.Point(lng,lat);  
+			var markerB = new BMap.Marker(point);// 创建标注
+			
+			map.addOverlay(markerB);             // 将标注添加到地图中
+
+			markerB.disableDragging();
+			function showPoint(e){
+				point = new BMap.Point(map.getCenter().lng,map.getCenter().lat);
+				map.removeOverlay(markerB);
+				markerB = new BMap.Marker(point);  // 创建标注
+				map.addOverlay(markerB);   // 将标注添加到地图中
+				
+				var gc = new BMap.Geocoder(); 
+				gc.getLocation(point, function(rs){
+					try{
+						GetNearbysss(map.getCenter().lng,map.getCenter().lat);
+					}catch(e){
+						alert(e)
+					}
+					var addComp = rs.addressComponents;
+					var mapAddress = addComp.province+addComp.city + addComp.district
+					+ addComp.street + addComp.streetNumber;
+					$('#nowaddress').html('<i class="mui-icon mui-icon-location"></i>当前位置:'+mapAddress);
+					$('#selecttype').html(mapAddress);
+				});
+			};
+			map.addEventListener("moving", showPoint);
+			try{
+				GetNearbysss(lng,lat);
+			}catch(e){
+				alert(e)
+			}
+		}else {
+			alert('failed'+this.getStatus());
+		}        
+	},function (error) {
+        switch (error.code) {
+            case 1:
+                alert("位置服务被拒绝。");
+                break;
+            case 2:
+                alert("暂时获取不到位置信息。");
+                break;
+            case 3:
+                alert("获取位置信息超时。");
+                break;
+            default:
+                alert("未知错误。");
+                break;
+        }
+        if (errorFunc != undefined)errorFunc(error);
+    },{enableHighAccuracy: true})
+}
+
+
+
+function GetNearbysss(longitude,latitude,fnCall){
+
+	var urlr='http://bdbbiz.wego58.com/info/InfoServlet';
+	
+	var datas='data={"action":"getUserList","params":{"isRecent":"1","latitude":"'+latitude+'","longitude":"'+longitude+'","nowPage":1,"pageSize":20},"source":"mobileweb","target":"user"}';
+	//alert(datas);
+	$.ajax({
+		url:urlr,
+		type:"POST",
+		data:datas,
+		beforeSend:function(){
+			$('#ListWrap').html("<p style='line-height:50px; text-align:center;'>加载中,请稍后...</p>");
+		},
+		success:function(str){
+			console.log(str)
+			var oData=$.parseJSON(str);
+			//alert(str);
+			if(oData.responseCode==0){
+				$('#ListWrap').html("<p style='line-height:50px; text-align:center;'>暂无数据</p>");
+			}else{
+				console.log(oData)
+				var SortListHtml='';
+				for(var i=0; i<oData.object.length; i++){
+					var channelListHtml='';
+					var len=0;
+					var cHtml='';
+					if(oData.object[i].channelList==undefined){
+						console.log(oData.object[i].channelList);
+						cHtml=channelListHtml;
+					}else{
+						if(oData.object[i].channelList.length>=3){
+							len=3;
+						}else{
+							len=oData.object[i].channelList.length;
+						}
+						for(var j=0; j<len; j++){
+							channelListHtml+='<a href="'+oData.object[i].channelList[j].linkUrl+'"><img src="'+oData.object[i].channelList[j].note+'"></a>';
+						}
+						cHtml='本店已入驻'+channelListHtml;
+					} 
+
+
+					var targetUri='';
+					if(oData.object[i].isExpiration==1){
+						targetUri='href="javascript:;" isEnd="end"';
+					}else{
+						targetUri='href="seller.html?id='+oData.object[i].userId+'"';
+					}
+					
+					
+					SortListHtml+='<li><div class="listdetail clearfix">\
+							<a '+targetUri+' class="imgwrap fl"><img src="'+oData.object[i].coverImg+'"></a>\
+							<div class="fl"><h3><a '+targetUri+'>'+oData.object[i].name+'</a></h3>\
+								<p>'+cHtml+'</p></div></div><span class="km ">'+oData.object[i].distance+'km</span>\
+						<div class="marquee">\
+						<i></i><div class="scrollNote"><div class="marqueeWrap"><span>'+oData.object[i].bulletin+'</span></div></div></div></li>';
+				}
+				$('#ListWrap').html(SortListHtml);
+
+				$('a[isEnd="end"]').parents('li').find('a').attr('href','javascript:;').end().on('click',function(){
+					alert("您查看的商家未续费！");
+				});
+				fnCall&&fnCall(oData);
+				noteScroll();
+			}
+		}
+	})
+}
+
+
+
+
+function noteScroll(){
+	var scrollNote=document.getElementsByClassName('scrollNote');
+
+	var len=scrollNote.length;
+	//alert(len)
+	for(var i=0; i<len; i++){
+		(function(index){
+			var oMarqueeWrap=scrollNote[index].getElementsByClassName('marqueeWrap')[0];
+			var oSpan=scrollNote[index].getElementsByTagName('span');
+
+			if(scrollNote[index].offsetWidth<=oMarqueeWrap.offsetWidth){
+
+				var W=oSpan[0].offsetWidth*oSpan.length;
+
+				oMarqueeWrap.innerHTML+=oMarqueeWrap.innerHTML;
+				oMarqueeWrap.style.width=W+'px';
+
+				setInterval(function(){
+					var left=oMarqueeWrap.offsetLeft-1; // 
+					oMarqueeWrap.style.left=left%W+'px';
+				}, 30);
+			}
+		})(i)
+		
+	}
+}
+
+</script>
+
+<script type="text/javascript">
+	var filterClassify=document.getElementById('filterClassify');
+	var oMapWrap=document.getElementById('mapwrap');
+
+	//filterClassify.style.height=document.documentElement.clientHeight+'px';
+	document.getElementById("addressBtn").addEventListener('touchend',function(){
+		oMapWrap.style.opacity='1';
+		oMapWrap.style.zIndex='300';
+	},false);
+
+	document.getElementsByClassName('back')[0].getElementsByTagName('a')[0].addEventListener('touchend',function(){
+		oMapWrap.style.opacity='0';
+		oMapWrap.style.zIndex='-300';
+	},false);
+</script>
+</body>
+</html>
