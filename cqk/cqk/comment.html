@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>评论列表</title>
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet"/>
+    <link href="css/mycss.css" rel="stylesheet">
+</head>
+<body>
+<section id="container">
+    <section class="wrapper ">
+        <!-- page start-->
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel table-set">
+                    <header class="panel-heading title">
+                       
+                        <span><i class="fa fa-code"></i>&nbsp;&nbsp;评论列表</span>
+                        <span></span>
+
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    <div class="panel-body toggle-heading">
+                        <section id="unseen">
+
+                            <table class="table table-bordered table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>评论用户</th>
+                                        <th>评论内容</th>
+                                        <th>评论时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                    <!-- <tr>
+                                        <td>1</td>
+                                        <td>大写的FUCK</td>
+                                        <td class="w50">获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情获得一个会员详情</td>
+                                        <td>2016-05-12 21:22:10</td>
+                                        <td> <a href="commentEdit.html" class="btn btn-primary btn-sm backpage">编辑&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a></td>
+                                    </tr> -->
+                                   
+                                </tbody>
+                            </table>
+                            <div class="box-footer clearfix" id="pagination">
+
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script src="js/tool.js"></script>
+<script src="js/public.js"></script>
+<script>
+var Shop=new Cqk();
+Shop.getCommentList();
+
+</script>
+<!--script for this page-->
+</body>
+</html>

@@ -34,12 +34,27 @@
                         <div class="pull-left col-sm-11  col-lg-11">
                           
                             <div class="form-group pull-left col-lg-3 col-sm-3" style="padding: 0;" >
-                                <label for="name" class="control-label col-lg-3 col-sm-3">昵称</label>
+                                <label for="userName" class="control-label col-lg-4 col-sm-4">联系姓名</label>
                                 <div class="col-lg-8 col-sm-8">
-                                    <input type="text" class="form-control" id="name" placeholder="姓名">
+                                    <input type="text" class="form-control" id="userName" placeholder="联系姓名">
                                 </div>
                             </div>
-                           
+                            <div class="form-group pull-left col-lg-3 col-sm-3" style="padding: 0;" >
+                                <label for="phone" class="control-label col-lg-4 col-sm-4">手机号码</label>
+                                <div class="col-lg-8 col-sm-8">
+                                    <input type="text" class="form-control" id="phone" placeholder="手机号码">
+                                </div>
+                            </div>
+                            <div class="form-group pull-left col-lg-3 col-sm-3" style="padding: 0;" >
+                                <label for="tel" class="control-label col-lg-3 col-sm-4">排序方式</label>
+                                <div class="col-lg-8 col-sm-8">
+                                    <select class="form-control" id="orderParam">
+                                        <option value="">全部</option>
+                                        <option value="countGood">点赞数</option>
+                                        <option value="countContent">评论内容数</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="pull-right">
                             <input type="button" id="SelectQueryBtn" class="btn btn-success" value="查询">
@@ -52,20 +67,24 @@
                                 <thead>
                                     <tr>
                                         <th>序号</th>
-                                        <th>昵称</th>
-                                        <th>头像</th>
-                                        <th>最近登录时间</th>
-                                       
+                                        <th>用户唯一识别</th>
+                                        <th>联系姓名</th>
+                                        <th>手机号码</th>
+                                        <th>联系地址</th>
+                                        <th>为商户点赞数</th>
+                                        <th>填写更多评价数</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody">
-                                   <!--  <tr>
+                                    <tr>
                                         <td>1</td>
                                         <td>007</td>
                                         <td>获得一个会员详情</td>
                                         <td>2016-05-12 21:22:10</td>
-                                       
-                                    </tr> -->
+                                         <td>007</td>
+                                         <td>007</td>
+                                         <td>007</td>
+                                    </tr>
                                     
                                 </tbody>
                             </table>
@@ -88,7 +107,13 @@
 <!--common script init for all pages-->
 <script src="js/scripts.js"></script>
 <script src="js/tool.js"></script>
-<script src="js/userList.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript">
+    
+var Shop=new Cqk();
+Shop.getUserList();
+
+</script>
 <!--script for this page-->
 </body>
 </html>

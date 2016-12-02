@@ -499,34 +499,6 @@ header label[class*="col-"]{
 	line-height: 34px;
 }
 
-
-
-.status1{ background: #000000;  }
-.status2{ background: #1fb5ad;  }
-.status3{ background: #53bee6;  }
-.status4{ background: red;  }
-.status5{ background: red;  }
-.status6{ background: red;  }
-.status7{ background: red;  }
-.status8{ background: #0511ff;  }
-.status9{ background: orange;  }
-.status10{ background: #00d240;  }
-.status11{ background: #cccccc;  }
-
-
-.colorstatus1{ color: #000000;  }
-.colorstatus2{ color: #1fb5ad;  }
-.colorstatus3{ color: #53bee6;  }
-.colorstatus4{ color: red;  }
-.colorstatus5{ color: red;  }
-.colorstatus6{ color: red;  }
-.colorstatus7{ color: red;  }
-.colorstatus8{ color: #0511ff;  }
-.colorstatus9{ color: orange;  }
-.colorstatus10{ color: #00d240;  }
-.colorstatus11{ color: #cccccc;  }
-
-
 .lh30{ line-height: 30px !important;   }
 
 
@@ -564,4 +536,22 @@ header label[class*="col-"]{
 .field-list label{
 	display: inline-block !important;
 	margin-right: 30px; 
+}
+
+
+
+.w50{
+	width: 50%;
+	font-size: 0;
+}
+
+.commentPic{
+	padding-top: 7px;
+}
+.commentPic img{
+	border: 1px solid #ccc;
+	margin: 0 10px 10px 0;
+	font-size: 14px;
+	max-width: 150px;
+	height: 120px;
 }

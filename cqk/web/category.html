@@ -10,24 +10,29 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
 <meta name="format-detection" content="telephone=no"> 
 <!-- 清除微信缓存 -->
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <meta name="viewport" content="width=device-width , initial-scale=1.0 , maximum-scale=1.0 , user-scalabel=no">
-<script type="text/javascript" src="js/angular.js"></script> 
-<link href="css/index.css" rel="stylesheet" />	
 <script src="js/rem.js"></script> 
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.js"></script> 
+
+<link href="css/index.css" rel="stylesheet" />	
+
 <script type="text/javascript">
     var app=angular.module('cqk',[]);
     app.controller('shopList',function($scope,$http){
         $scope.dropListBsys=false;
         $scope.dropListBsys2=false;
 
-        $scope.shopStreet=['磁器口正街','磁器口东街','磁器口西街','磁器口南街'];
-        $scope.initStreet=$scope.shopStreet[0];
+        $scope.shopStreet={"黄桷坪一巷":"1","磁正街":"2","聚森茂街":"3","磁横街":"4","磁南街":"5"};
+       // $scope.initStreet=$scope.shopStreet[0];
         
-        $scope.shopArr=['特色小吃','毛血旺','陈麻花','臭豆腐'];
-        $scope.initShop=$scope.shopArr[0];
+        $scope.shopArr={"特产":"1","餐饮":"2","茶饮":"3","土特产":"4","食品":"5","饮品":"6","小食品":"7","工艺品":"8","鞋服":"9","字画":"10","文博场馆":"11","服饰":"12","小吃":"13","伞／杯":"14","宗教":"15","箱包":"16","住宿":"17","副食":"18","其他":"19"};
+
+        //$scope.initShop=$scope.shopArr[0];
         $scope.downList=function(){
            $scope.dropListBsys=!$scope.dropListBsys;
            $scope.dropListBsys2=false;
@@ -36,67 +41,115 @@
            $scope.dropListBsys2=!$scope.dropListBsys2;
            $scope.dropListBsys=false;
         }
-        $scope.getHtml2=function(street){
+        $scope.getHtml2=function(street,initStreetId){
             $scope.initStreet=street;
+            $scope.initStreetId=initStreetId;
         }
-        $scope.getHtml=function(shop){
+        $scope.getHtml=function(shop,initShopId){
             $scope.initShop=shop;
+            $scope.initShopId=initShopId;
         }
+
+        var transform = function(data){
+            return $.param(data);
+        }
+        $scope.format='';
+        $scope.street='';
+        $scope.nowPage='1';
+        $scope.pageSize='6';
+        $scope.shopListArr=[];
+        $http.post('http://app.uiho.com/pxb_ciqikou/InfoServlet',{
+            "data":'{"action":"getBusinessList","params":{"format":"'+$scope.format+'","queryParam":{"ascOrDesc":"desc","nowPage":'+$scope.nowPage+',"orderParam":"","pageSize":'+$scope.pageSize+'},"street":"'+$scope.street+'"},"source":"web","target":"business"}'
+        },{
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
+        }).success(function(res){
+            console.log(res)
+            if(res.object.length<5){ 
+                $scope.initloadingHtml="没有更多数据了";
+            };
+            res.object.forEach(function(str){
+               //console.log(str);
+               $scope.shopListArr.push(str);
+            });
+            console.log($scope.shopListArr)
+        }).error(function(){
+            alert('失败;');
+        });
     });
 </script>
 </head>
-<body ng-controller="shopList">
+<body  ng-controller="shopList">
 
 <div class="category-wrap clearfix">
     <div class="cate-list fl" ng-click="downList()">
-        <span>{{initStreet}}</span>
+        <span initStreetId="{{initStreetId}}">{{initStreet}}</span>
         <em></em>
         <div class="cate-drop" ng-show="dropListBsys">
-            <a href="javascript:;" ng-click="getHtml2(street);" ng-repeat="street in shopStreet">{{street}}</a>
+            <a href="javascript:;" ng-click="getHtml2(value,key);" ng-repeat="(value, key) in shopStreet">{{value}}</a>
         </div>
     </div>
     <div class="cate-list fl" ng-click="downList2()">
-        <span>{{initShop}}</span>
+        <span initShopId="{{initShopId}}">{{initShop}}</span>
         <em></em>
         <div class="cate-drop" ng-show="dropListBsys2">
-            <a href="javascript:;" ng-click="getHtml(shop);" ng-repeat="shop in shopArr">{{shop}}</a>
-           
+            <a href="javascript:;" ng-click="getHtml(value,key);" ng-repeat="(value, key) in shopArr">{{value}}</a>
         </div>
     </div>
     <div class="search fr"><a href="javascript:;">搜索</a></div>
 </div>
+
 <div class="transitag"></div>
 <section class="category-list">
-    <ul class="category-list-ul">
-        <li><a href="">云南过桥米线1</a></li>
-        <li><a href="">云南过桥米线2</a></li>
-        <li><a href="">云南过桥米线3</a></li>
-        <li><a href="">云南过桥米线4</a></li>
-        <li><a href="">云南过桥米线5</a></li>
-        <li><a href="">云南过桥米线6</a></li>
-        <li><a href="">云南过桥米线7</a></li>
-        <li><a href="">云南过桥米线8</a></li>
-        <li><a href="">云南过桥米线9</a></li>
-        <li><a href="">云南过桥米线0</a></li>
-        <li><a href="">云南过桥米线9</a></li>
-        <li><a href="">云南过桥米线88</a></li>
-        <li><a href="">云南过桥米线77</a></li>
-        <li><a href="">云南过桥米线66</a></li>
-        <li><a href="">云南过桥米线55</a></li>
-        <li><a href="">云南过桥米线44</a></li>
-        <li><a href="">云南过桥米线33</a></li>
-        <li><a href="">云南过桥米线22</a></li>
-        <li><a href="">云南过桥米线11</a></li>
-        <li><a href="">云南过桥米线1111</a></li>
-        <li><a href="">云南过桥米线2222</a></li>
-        <li><a href="">云南过桥米线333</a></li>
-        <li><a href="">云南过桥米线444</a></li>
-        <li><a href="">云南过桥米线555</a></li>
-        <li><a href="">云南过桥米线666</a></li>
-        <li><a href="">云南过桥米线777</a></li>
-        <li><a href="">云南过桥米线888</a></li>
+    <ul class="category-list-ul" >
+        <li ng-repeat="info in shopListArr"><a href="business.html?id={{info.businessId}}">{{info.businessName}}</a></li>
+        <li><a href="javascript:;">加载更多</a></li> 
     </ul>
 </section>
 
+<script type="text/javascript">
+
+    // var format='',pageSize=20,nowPage=1,orderParam='',street='';
+    // getShopList(format,street,orderParam,pageSize,nowPage)
+
+    // $('#SelectQueryBtn').on('click',function(){
+    //     //alert(nowPage)
+    //     format=$('#format').val();
+    //     street=$('#street').val();
+    //     //选择查询
+    //     getShopList(format,street,orderParam,pageSize,nowPage)
+    // });
+
+    // function getShopList(format,street,orderParam,pageSize,nowPage){
+    //     var datas='data={"action":"getBusinessList","params":{"format":"'+format+'","queryParam":{"ascOrDesc":"desc","nowPage":'+nowPage+',"orderParam":"'+orderParam+'","pageSize":'+pageSize+'},"street":"'+street+'"},"source":"web","target":"business"}';
+    //     $.ajax({
+    //         url:'http://app.uiho.com/pxb_ciqikou/InfoServlet',
+    //         type:"POST",
+    //         data:datas,
+    //         beforeSend :function(){
+    //             $('.category-list-ul').html('<tr><td colspan="16" align="center">加载中，请稍后...</td></tr>');
+    //         },
+    //         success:function(str){
+    //             var oData=eval('('+str+')');
+    //             console.log(oData)
+    //             if(oData.responseCode==1){
+    //                 var sHtml='';
+    //                 for(var i=0; i<oData.object.length; i++){
+    //                     var streetName='';
+    //                     sHtml+='<li><a href="shopEdit.html?id='+oData.object[i].businessId+'" >'+oData.object[i].businessName+'</a></li>';
+    //                 }
+
+    //                 $('.category-list-ul').html(sHtml);
+                   
+    //             }else{
+                    
+    //                 $('.category-list-ul').html('<tr><td colspan="16" align="center">'+oData.responseMsg+'</td></tr>');
+    //             }
+    //             //console.log(oData)
+    //         }
+    //     });
+    // }
+
+</script>
 </body>
 </html>

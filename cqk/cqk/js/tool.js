@@ -1,6 +1,6 @@
 
 //ajax请求地址
-var requrl='http://m.wego58.com/info/InfoServlet';
+
 //var requrl='http://rhbiz.dev.uiho.com/info/InfoServlet'; //测试
 var Uiho={}
 /* 验证  正则匹配 */ 

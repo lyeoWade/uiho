@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="images/favicon.png">
-    <title>管理员详情</title>
+    <title>评论详情</title>
     <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
     <link href="js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
     <link href="css/bootstrap-reset.css" rel="stylesheet">
@@ -24,7 +24,7 @@
             <div class="col-md-12">
                 <section class="panel">
                     <header class="panel-heading title">
-                        <span><i class="fa fa-code"></i>&nbsp;&nbsp;管理员详情</span>
+                        <span><i class="fa fa-code"></i>&nbsp;&nbsp;评论详情</span>
                         <span></span>
                         <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
                     </header>
@@ -33,48 +33,41 @@
                             <form class="cmxform form-horizontal " id="commentForm" method="get" action="" novalidate="novalidate">
                               
                                <div class="form-group ">
-                                    <label for="managerNo" class="control-label col-lg-2 col-sm-2">编号</label>
+                                    <label for="userName" class="control-label col-lg-2 col-sm-2">评论用户</label>
                                     <div class="col-lg-6 col-sm-6">
-                                        <input class=" form-control" id="managerNo" name="managerNo" type="text" disabled="" required="">
+                                        <input class=" form-control" id="userName" name="userName" type="text" placeholder="评论用户" disabled="" required="">
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="username" class="control-label col-lg-2 col-sm-2">姓名</label>
+                                    <label for="createDatetime" class="control-label col-lg-2 col-sm-2">评论时间</label>
                                     <div class="col-lg-6 col-sm-6">
-                                        <input class=" form-control" id="username" name="username" type="text" required="">
+                                        <input class=" form-control" id="createDatetime" name="createDatetime" type="text" disabled="" placeholder="评论时间" required="">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group ">
-                                    <label for="phone" class="control-label col-lg-2 col-sm-2">联系手机</label>
+                                    <label for="content" class="control-label col-lg-2 col-sm-2">评论内容</label>
                                     <div class="col-lg-6 col-sm-6">
-                                        <input class=" form-control" id="phone" name="phone" type="text" required="" disabled="">
+                                        <textarea class="form-control" id="content" placeholder="评论内容" disabled=""></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="tel" class="control-label col-lg-2 col-sm-2">联系电话</label>
-                                    <div class="col-lg-6 col-sm-6">
-                                        <input class=" form-control" id="tel" name="tel" type="text" required="">
+                                    <label for="tel" class="control-label col-lg-2 col-sm-2">评论图片</label>
+                                    <div class="col-lg-10 col-sm-10 commentPic" id="commentPic">
+                                        <!-- <img src="images/crazy-price.jpg" alt="">
+                                        <img src="images/crazy-price.jpg" alt="">
+                                        <img src="images/crazy-price.jpg" alt="">
+                                        <img src="images/crazy-price.jpg" alt="">
+                                        <img src="images/crazy-price.jpg" alt="">
+                                        <img src="images/crazy-price.jpg" alt=""> -->
                                     </div>
                                 </div>
-                                <div class="form-group ">
-                                    <label for="email" class="control-label col-lg-2 col-sm-2">联系邮箱</label>
-                                    <div class="col-lg-6 col-sm-6">
-                                        <input class="form-control " id="email" type="text" name="email" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="updateDatetime" class="control-label col-lg-2 col-sm-2">创建时间</label>
-                                    <div class="col-lg-6 col-sm-6">
-                                        <input class="form-control " id="updateDatetime" type="text" name="updateDatetime"  disabled="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-8 col-sm-offset-2 col-sm-8">
                                         <button class="btn btn-primary" type="button" id="saves"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;</button>
                                         <span class="addtip"></span>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </form>
                         </div>
@@ -91,7 +84,12 @@
 <!--common script init for all pages-->
 <script src="js/scripts.js"></script>
 <script src="js/tool.js"></script>
-<script src="js/managerEdit.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript">
+var Shop=new Cqk();
+Shop.getComment();
+
+</script>
 <!--script for this page-->
 </body>
 </html>
