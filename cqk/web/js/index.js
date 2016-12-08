@@ -1,114 +1,114 @@
 // JavaScript Document
 
 
-function fnLoad()
-{
-	var iTime=new Date().getTime();
-	var oW=id("welcome");
-	var arr=[""];
-	var bImgLoad=true;
-	var bTime=false;
-	var oTimer=0;
-	bind(oW,"webkitTransitionEnd",end);
-	bind(oW,"transitionend",end);
-	oTimer=setInterval(function(){
-		if(new Date().getTime()-iTime>=5000)
-		{
-			bTime=true;
-		}	
-		if(bImgLoad&&bTime)
-		{
-			clearInterval(oTimer);
-			oW.style.opacity=0;
+
+var shopId=geturldata(window.location.href).businessId;
+//得到商户详情
+
+// if(confirm('确定要清空数据吗？')){
+
+// }
+	
+
+getBusiness(shopId);
+function getBusiness(shopId){
+	var str='data={"action":"getBusiness","params":'+shopId+',"source":"web","target":"business"}';
+	$.ajax({
+		url:reqUrl,
+		type:"POST",
+		data:str,
+		success:function(str){
+			var oData=eval('('+str+')');
+			//console.log(oData.object)
+			if(oData.responseCode==1){
+				$('.shopName').html('商家名称：'+oData.object.businessName);
+			 	$('.shopAddress').html('商家地址：'+oData.object.address);
+			 	$('.zan').html('<em></em>已'+oData.object.countGood+'人点赞');
+
+				var tagliHtml='';
+				for(var i=0;i<oData.object.busAssessList.length; i++){
+					tagliHtml+='<li><label>\
+                        <input type="radio" name="tags" value="'+oData.object.busAssessList[i].assessId+'" />\
+                        <span>'+oData.object.busAssessList[i].assessContent+'</span></label><em>'+oData.object.busAssessList[i].countNum+'人选择</em></li>';
+				};
+			    $('.tagli').html(tagliHtml);
+			}else{
+				alert("数据获取失败,返回上一页");
+				history.go(-1);
+			}
 		}
-	},1000);
-	function end()
-	{
-		removeClass(oW,"pageShow");
-		fnTab();
-	}
-	/*for(var i=0;i<arr.length;i++)
-	{
-		var oImg=new Image();
-		oImg.src=arr[i];
-		oImg.onload=function()
-		{
-			
+	});
+
+}
+//点赞
+function addComment(shopId,assessId){
+
+	//图片集
+	var oImageUrl=$('.imgWrap img');
+	var imgArr=[];
+	var a='';
+	if(oImageUrl.length!=0){
+		for(var i=0; i<oImageUrl.length; i++){
+			a='{"imgUrl":"'+oImageUrl.eq(i).attr('src')+'"}';
+			imgArr.push(a);
 		}
-		
-	}*/
+	};
+	var c='['+imgArr+',]';
+	var imagesList=c.replace(c.substring(c.lastIndexOf(',')),']');
+	var textareas=$('#textareas').val();
+	var str='data={"action":"addComment","params":{"assessId":'+assessId+',"businessId":'+shopId+',"imageList":'+imagesList+',"content":"'+textareas+'","score":'+$('.scoreSelect').val()+',"userId":'+parseInt(getCookie('userId'))+'},"source":"web","target":"comment"}';
+	//alert(str);
+	$.ajax({
+		url:reqUrl,
+		type:"POST",
+		data:str,
+		success:function(str){
+			var oData=eval('('+str+')');
+			if(oData.responseCode==1){
+				if(geturldata(window.location.href).list==1){
+					alert("为商户点赞成功");
+					history.go(-1);
+				}else{
+					alert("为商户点赞成功");
+					$('.submitData').css('display','none');
+					$('.hiddenBtn').css({
+						'background':'#ccc',
+						'display':'block'
+					});
+				}
+			}else{
+				alert("已为商家点赞");
+			}
+		}
+	});
 }
 
+//图片上传 
 
-function fnTab(){
-	var oTab=id("tabPic");
-	var oList=id("picList");
-	var aNav=oTab.getElementsByTagName("nav")[0].children;
-	var iNow=0;
-	var iX=0;
-	var iW=view().w;
-	var oTimer=0;
-	var iStartTouchX=0;
-	var iStartX=0;
-	bind(oTab,"touchstart",fnStart);
-	bind(oTab,"touchmove",fnMove);
-	bind(oTab,"touchend",fnEnd);
-	auto();
-	if(!window.BfnScore)
-	{
-		fnScore();
-		window.BfnScore=true;
+//http://bdbbiz.wego58.com/resx/StroageServlet
+
+
+
+
+
+function geturldata(url){
+	var urldata=url.split('?')[1].split('&');
+	var result=[];
+	var c=[];
+	for(var i=0; i<urldata.length; i++){
+		a=urldata[i].split('=');
+		c+=result.concat('"'+urldata[i]+'",')
+	};
+	var laststr=c.replace(/=/g,'":"');//;
+	var aaa='{'+laststr.substring(0,laststr.lastIndexOf(','))+'}';
+	var obj=JSON.parse(aaa);
+
+	if(obj.id){
+		obj.id=parseInt(obj.id);
 	}
-	function auto()
-	{
-		oTimer=setInterval(function(){
-			iNow++;	
-			iNow=iNow%aNav.length;
-			tab();
-		},2000);
-	}
-	function fnStart(ev)
-	{
-		oList.style.transition="none";
-		ev=ev.changedTouches[0];
-		iStartTouchX=ev.pageX;
-		iStartX=iX;
-		clearInterval(oTimer);
-	}
-	function fnMove(ev)
-	{
-		ev=ev.changedTouches[0];
-		var iDis=ev.pageX-iStartTouchX;
-		iX=iStartX+iDis;
-		oList.style.WebkitTransform=oList.style.transform="translateX("+iX+"px)";
-	}
-	function fnEnd()
-	{
-		iNow=iX/iW;
-		iNow=-Math.round(iNow);
-		if(iNow<0)
-		{
-			iNow=0;
-		}
-		if(iNow>aNav.length-1)
-		{
-			iNow=aNav.length-1;
-		}
-		tab();
-		auto();
-	}
-	function tab()
-	{
-		iX=-iNow*iW;
-		oList.style.transition="0.5s";
-		oList.style.WebkitTransform=oList.style.transform="translateX("+iX+"px)";
-		for(var i=0;i<aNav.length;i++)
-		{
-			removeClass(aNav[i],"active");
-		}
-		addClass(aNav[iNow],"active");
-	}
-}
+	return obj;
+};
+
 
 
 window.onload=function(){
@@ -146,7 +146,7 @@ function fnScore()
 						removeClass(aNav[i],"active");
 					}
 				}
-				oInput.value=arr[this.index];
+				oInput.value=(this.index+1);
 			});
 		}
 	}
@@ -166,9 +166,10 @@ function fnInfo(oInfo,sInfo)
 function fnIndex()
 {
 	var oIndex=id("index");
-	var oBtn=oIndex.getElementsByClassName("btn")[0];
+	var oBtn=oIndex.getElementsByClassName("submitData")[0];
 	var oInfo=oIndex.getElementsByClassName("info")[0];
 	var bScore=false;
+	var assessId=0;
 	bind(oBtn,"touchend",fnEnd);
 	function fnEnd()
 	{
@@ -177,15 +178,16 @@ function fnIndex()
 		{
 			if(bTag())
 			{
-				fnIndexOut();		
+
+				addComment(shopId,assessId);
+				//fnIndexOut();		
 			}
 			else
 			{
 				fnInfo(oInfo,"具体评价请选择");	
 			}
 		}
-		else
-		{
+		else{
 			fnInfo(oInfo,"请打综合印象分");
 		}
 	}
@@ -210,106 +212,12 @@ function fnIndex()
 		{
 			if(aInput[i].checked)
 			{
+				assessId=aInput[i].value;//oTag.setAttribute('jtpj',aInput[i].value)
 				return true;
 			}
 		}
 		return false;
 	}
 }
-function fnIndexOut()
-{
-	var oMask=id("mask");
-	var oIndex=id("index");
-	var oNew=id("news");
-	addClass(oMask,"pageShow");
-	addClass(oNew,"pageShow");
-		fnNews();
-	setTimeout(function(){
-		oMask.style.opacity=1;	
-		oIndex.style.WebkitFilter=oIndex.style.filter="blur(5px)";
-	},14);
-	setTimeout(function(){
-		oNew.style.transition="0.5s";
-		oMask.style.opacity=0;	
-		oIndex.style.WebkitFilter=oIndex.style.filter="blur(0px)";	
-		oNew.style.opacity=1;
-		removeClass(oMask,"pageShow");
-	},3000);
-}
-function fnNews()
-{
-	var oNews=id("news");
-	var oInfo=oNews.getElementsByClassName("info")[0];
-	var aInput=oNews.getElementsByTagName("input");
-	aInput[0].onchange=function()
-	{
-		if(this.files[0].type.split("/")[0]=="video")
-		{
-			fnNewsOut();
-			this.value="";
-		}
-		else
-		{
-			fnInfo(oInfo,"请上传视频");
-		}
-	};
-	aInput[1].onchange=function()
-	{
-		if(this.files[0].type.split("/")[0]=="image")
-		{
-			fnNewsOut();
-			this.value="";
-		}
-		else
-		{
-			fnInfo(oInfo,"请上传图片");
-		}
-	};
-}
-function fnNewsOut()
-{
-	var oNews=id("news");
-	var oForm=id("form");
-	addClass(oForm,"pageShow");
-	oNews.style.cssText="";
-	removeClass(oNews,"pageShow");
-		formIn();
-}
-function formIn()
-{
-	var oForm=id("form");
-	var oOver=id("over");
-	var aFormTag=id("formTag").getElementsByTagName("label");
-	var oBtn=oForm.getElementsByClassName("btn")[0];
-	var bOff=false;
-	for(var i=0;i<aFormTag.length;i++)
-	{
-		bind(aFormTag[i],"touchend",function(){
-			bOff=true;
-			addClass(oBtn,"submit");
-		});
-	}
-	bind(oBtn,"touchend",function(){
-		if(bOff)
-		{
-			for(var i=0;i<aFormTag.length;i++)
-			{
-				aFormTag[i].getElementsByTagName("input")[0].checked=false;
-			}
-			bOff=false;
-			addClass(oOver,"pageShow");
-			removeClass(oForm,"pageShow");
-			removeClass(oBtn,"submit");
-			over();
-		}
-	});
-}
-function over()
-{
-	var oOver=id("over");
-	var oBtn=oOver.getElementsByClassName("btn")[0];
-	bind(oBtn,"touchend",function()
-	{
-		removeClass(oOver,"pageShow");
-	});
-}
+
+

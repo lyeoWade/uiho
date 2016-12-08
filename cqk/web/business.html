@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>无标题文档</title>
+<title>重庆磁器口古镇</title>
 <meta name="aplus-terminal" content="1"> 
 <meta name="apple-mobile-web-app-capable" content="yes"> 
 <!-- 这meta的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no” -->
@@ -15,8 +15,33 @@
 <meta http-equiv="Expires" content="0" />
 <meta name="viewport" content="width=device-width , initial-scale=1.0 , maximum-scale=1.0 , user-scalabel=no">
 <link href="css/index.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/rem.js"></script>     
-<script src="js/index.js"></script>		
+<script type="text/javascript">
+    setCookie('sourcePage',window.location.href,1);
+</script>
+<script src="js/weixin.js"></script>
+<script type="text/javascript">
+
+if(getCookie('userId')!=''){
+    var Uid=parseInt(getCookie('userId'));
+}else{
+    var Uid=getCookie('userId');
+}
+
+var isLoginNum=getCookie('isLogin');
+if(getCookie('ccccc')==10000){
+    isLoginNum=1;
+}
+
+if(Uid!='' && isLoginNum==0){
+    window.location.href='reg.html';
+}
+
+
+</script>
+
+<script src="js/index.js" type="text/javascript"></script>
 </head>
 <body>
 <script>
@@ -27,8 +52,13 @@
 	<section class="scrollWrap">
         <h2 class="tc AllTitle">积极参与将有机会获得奖励喔！</h2>
         <div class="clearfix shoptitle">
-            <p class="fl">商家名称：陈麻花</p>
-            <p class="fr zan"><em></em>已40人点赞</p>
+            <div class="shoptitleLine clearfix">
+                <p class="fl shopName"></p>
+                <p class="fr zan"></p>
+            </div>
+            <div class="shoptitleLine">
+                <p class="shopAddress"></p>
+            </div>
         </div>
         <section id="score">
             <h2>综合印象(必选)</h2>
@@ -41,14 +71,14 @@
                         <a href="javascript:;"></a>
                         <a href="javascript:;"></a>
                     </nav>
-                    <input type="hidden" value="0" />
+                    <input type="hidden" class="scoreSelect" value="0" />
                 </li>
             </ul>
         </section>
         <section class="tags " id="indexTag">
             <h2>具体评价(单选)</h2>
             <ul class="tagli clearfix">
-                <li>
+                <!-- <li>
                     <label>
                         <input type="radio" name="tags" value="文化传承" />
                         <span>文化传承</span>
@@ -75,7 +105,7 @@
                         <span>环境优美</span>
                     </label>
                     <em>10人选择</em>
-                </li>
+                </li> -->
             </ul>
         </section>
 
@@ -83,24 +113,117 @@
             <h2>更多评价</h2>
             <p class="tips">积极参与更多评价，有机会获得额外奖励喔！</p>
             <div class="textareas">
-                <textarea rows="4" placeholder="请输入更多评价内容(选填)"></textarea>
+                <textarea rows="2" id="textareas" placeholder="请输入更多评价内容(选填)"></textarea>
             </div>
         </section>
         <section class="clearfix uploadImg">
             
             
-            <ul class="fl">
+            <ul class="fl imgWrap">
+                <li class="loading">上传中...</li>
+                <!-- <li><img src="img/2.jpg"><em>x</em></li>
                 <li><img src="img/1.jpg"><em>x</em></li>
                 <li><img src="img/2.jpg"><em>x</em></li>
-                <li><img src="img/1.jpg"><em>x</em></li>
-                <li><img src="img/2.jpg"><em>x</em></li>
-                <li><img src="img/1.jpg"><em>x</em></li>
-                <li class="fr uploadBtnWrap"><input type="file" name="" class="hide"><span>+</span></li>
+                <li><img src="img/1.jpg"><em>x</em></li> -->
+                <li class="fr uploadBtnWrap"><input type="file" name="fileInput" class="inputfile hide"><span class="inputfileBtn">+</span></li>
             </ul>
         </section>
         <p class="info"></p>
-        <div class="subWrap"><input type="button" value="点赞提交" class="btn submit" /></div>
+        <div class="subWrap">
+            <div class="btn submit submitData">点赞提交</div>
+            <div class="btn submit hiddenBtn" style="display: none;">已经点赞成功</div>
+        </div>
+        <!--<input type="button" value="点赞提交" class="btn submit submitData hiddenBtn" /> <input type="button" value="点赞提交" class="btn submit hiddenBtn" style="display: none; background: #ccc !important;" /> -->
     </section>
 </section>
+<script type="text/javascript">
+    $(".inputfileBtn").on("click", function() {
+        $('.inputfile').click();
+    });
+    $('.inputfile').change(function(){
+        if($('.imgWrap li').length>=6){
+           alert('最多上传5张图片');
+           return false;
+        }
+        $('.loading').css('display','block');
+        var thumbs=''; 
+        var f=$('.inputfile').get(0).files[0];
+       // alert(JSON.stringify(f));
+        if(f){
+            uploadFile(f,function(evt){
+                /* */
+                var info = evt.target.responseText;
+                var data=eval('('+info+')'); 
+                $('.loading').css('display','none');
+                thumbs='<li><img src="'+data.objectURL+'"><em class="deleteBtn"></em></li>';
+                $('.imgWrap').prepend(thumbs);
+                deleteFile();
+            });
+        }else{
+            alert('请选择图片！');
+            return false;
+        }
+    });
+
+
+    function convertBase64UrlToBlob(urlData){
+        var bytes=window.atob(urlData.split(',')[1]);        //去掉url的头，并转换为byte
+        
+        //处理异常 , 将ascii码小于0的转换为大于0
+        var ab = new ArrayBuffer(bytes.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < bytes.length; i++) {
+            ia[i] = bytes.charCodeAt(i);
+        }
+        return new Blob( [ab] , {type : 'image/png'});
+    }
+
+
+
+
+    function deleteFile(){
+        $('.deleteBtn').on('click',function(){
+            $(this).parents('li').remove();
+        })
+    };
+
+    // 选择文件
+    function fileSelected(obj,fn) {
+      var file = obj.get(0).files[0];
+      var fileSize = 0;
+      if (file) {
+        if (file.size > 1024 * 1024)
+         {fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+            alert("文件太大," + fileSize);
+            return false;
+        }else{
+          fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+        }
+        fn&&fn(file.name);
+      }
+    };
+    // 文件上传
+    function uploadFile(f,fnsuc) {
+      var fd = new FormData();
+      //alert(123)
+      fd.append("fileInput", f);
+      var xhr = new XMLHttpRequest();
+      xhr.addEventListener("load", fnsuc, false);
+      xhr.addEventListener("error", uploadFailed, false);
+      xhr.addEventListener("abort", uploadCanceled, false);
+      xhr.open("POST", "http://app.uiho.com/resx/StroageServlet");
+      xhr.send(fd);
+    }
+
+    // 上传失败后执行方法
+    function uploadFailed(evt) {
+      alert("上传失败；");
+      $('.loading').css('display','none');
+    }
+    // 上传异常中断后执行方法
+    function uploadCanceled(evt) {
+      alert("异常中断!");
+    }
+</script>
 </body>
 </html>

@@ -316,7 +316,7 @@ UihoForRenhuai.prototype.GetOneClassifySortList=function(sortId,isRecommend,isre
 					for(var j=0; j<len; j++){
 						channelListHtml+='<a href="'+oData.object[i].channelList[j].linkUrl+'"><img src="'+oData.object[i].channelList[j].note+'"></a>';
 					}
-					cHtml='本店已入驻'+channelListHtml;
+					cHtml='本店已接入'+channelListHtml;
 				}
 				
 
@@ -388,7 +388,7 @@ UihoForRenhuai.prototype.GetNearbySSS=function(nowPage,pageSize,name,lat,lng,fnC
 					for(var j=0; j<len; j++){
 						channelListHtml+='<a href="'+oData.object[i].channelList[j].linkUrl+'"><img src="'+oData.object[i].channelList[j].note+'"></a>';
 					}
-					cHtml='本店已入驻'+channelListHtml;
+					cHtml='本店已接入'+channelListHtml;
 				}
 				for(var j=0; j<len; j++){
 					channelListHtml+='<a href="'+oData.object[i].channelList[j].linkUrl+'"><img src="'+oData.object[i].channelList[j].note+'"></a>';
@@ -437,7 +437,7 @@ UihoForRenhuai.prototype.getRandomUserList=function(lat,lng,fnCall){
 					for(var j=0; j<len; j++){
 						channelListHtml+='<a href="'+oData.object[i].channelList[j].linkUrl+'"><img src="'+oData.object[i].channelList[j].note+'"></a>';
 					}
-					cHtml='本店已入驻'+channelListHtml;
+					cHtml='本店已接入'+channelListHtml;
 				} 
 				var targetUri='';
 				if(oData.object[i].isExpiration==1){

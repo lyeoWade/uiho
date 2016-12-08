@@ -1,7 +1,7 @@
 $(function(){
 
     getSubSortList(1);
-    var lat="27.79837",lng="106.407701";
+    var lat="26.605131",lng="106.713044";
     
     getSortList();
     uploadPic();

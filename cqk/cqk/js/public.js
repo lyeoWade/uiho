@@ -63,9 +63,6 @@ function uploadFile(f,fnsuc) {
   xhr.addEventListener("error", uploadFailed, false);
   xhr.addEventListener("abort", uploadCanceled, false);
   xhr.open("POST", "http://m.wego58.com/resx/StroageServlet");
-  //xhr.open("POST", "http://dev.oss.uiho.com/resx/StroageServlet");
-  //xhr.open("POST", "http://rhbiz.dev.uiho.com/resx/StroageServlet");
-
   xhr.send(fd);
 }
 
@@ -189,7 +186,7 @@ function Cqk(){
 
 	this.street={"黄桷坪一巷":"1","磁正街":"2","聚森茂街":"3","磁横街":"4","磁南街":"5"};
 
-	this.format={"特产":"1","餐饮":"2","茶饮":"3","土特产":"4","食品":"5","饮品":"6","小食品":"7","工艺品":"8","鞋服":"9","字画":"10","文博场馆":"11","服饰":"12","小吃":"13","伞／杯":"14","宗教":"15","箱包":"16","住宿":"17","副食":"18","其他":"19"};
+	this.format={"特产":"1","餐饮":"2","茶饮":"3","土特产":"4","食品":"5","饮品":"6","小食品":"7","工艺品":"8","鞋服":"9","字画":"10","文博场馆":"11","服饰":"12","小吃":"13","伞／杯":"14","宗教":"15","箱包":"16","住宿":"17","副食":"18","其他":"19","饰品":"20","娱乐":"21"};
 }
 
 //新增商户
@@ -381,8 +378,9 @@ Cqk.prototype.getBusiness=function(){
 			console.log(oData.object)
 			if(oData.responseCode==1){
 				$('#shopname').val(oData.object.businessName);
-				$('#getstreet').val(oData.object.getstreet);
-				$('#getformat').val(oData.object.getformat);
+				$('#getstreet').val(oData.object.street);
+				console.log(oData.object.format);
+				$('#getformat').val(oData.object.format);
 				$('#address').val(oData.object.address);
 				var oInput=$('#checkbox input');
 
@@ -395,6 +393,8 @@ Cqk.prototype.getBusiness=function(){
 						}
 					}
 				};
+
+
 
 				$('#ewm').attr('src',oData.object.qrCode)
 			}else{
@@ -541,7 +541,7 @@ Cqk.prototype.getComment=function(){
 			console.log(oData.object)
 			if(oData.responseCode==1){
 				$('#userName').val(oData.object.userName);
-				$('#createDatetime').val(oData.object.createDatetime);
+				$('#createDatetime').val(Uiho.tool.DetailTimesTamp(oData.object.createDatetime));
 				$('#content').val(oData.object.content);
 				var picHtml='';
 				if(oData.object.imageList.length==0){

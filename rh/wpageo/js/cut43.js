@@ -287,7 +287,7 @@ $(function () {
 	            canvas = document.createElement('canvas');  
 	            canvas.setAttribute('id', 'pic_' + pid);  
 	            img.parentNode.appendChild(canvas);  
-	        }  */
+	        }*/
 	        //旋转角度以弧度值为参数  
 	        var degree = step * 90 * Math.PI / 180;  
 	        var ctx = canvas.getContext('2d');  

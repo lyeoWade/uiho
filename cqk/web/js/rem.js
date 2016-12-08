@@ -51,3 +51,33 @@ function removeClass(obj, sClass) {
         }
     }
 }
+var reqUrl='http://app.uiho.com/pxb_ciqikou/InfoServlet';
+
+function getCookie(cookiename){
+    var result;
+    var mycookie = document.cookie;
+    var start2 = mycookie.indexOf(cookiename + "=");
+    if (start2 > -1) {
+        start = mycookie.indexOf("=", start2) + 1;
+        var end = mycookie.indexOf(";", start);
+
+        if (end == -1) {
+            end = mycookie.length;
+        }
+
+        result = unescape(mycookie.substring(start, end));
+    }
+    return result;
+}
+function setCookie(name, value, Hours){
+    var oDate=new Date();
+    var oh=oDate.getHours()+Hours;
+    oDate.setHours(oh);
+    document.cookie=name+'='+value+';expires='+oDate;
+}
+
+function removeCookie(name)
+{
+    Uiho.cookies.setCookie(name, 'undefined', -10);
+}
+

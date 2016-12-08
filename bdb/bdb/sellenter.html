@@ -417,8 +417,11 @@ function getMap(lat,lng){
 	var geoc = new BMap.Geocoder();
 	// 根据坐标得到地址描述 
 	geoc.getLocation(new BMap.Point(lat,lng), function(result){ 
-		if(result.address.indexOf('仁怀市')==-1){
-			getMap("106.407701","27.79837");
+		// if(result.address.indexOf('仁怀市')==-1){
+		// 	getMap("106.407701","27.79837");
+		// };
+		if(result.address.indexOf('贵阳市')==-1){
+			getMap("106.713044","26.605131");
 		};
 		if (result){ 
 			$('.nowAddress').html('<i class="mui-icon mui-icon-location"></i>商户位置:'+result.address);
