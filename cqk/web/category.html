@@ -42,11 +42,17 @@ if(Uid!='' && getCookie('isLogin')==0){
     app.controller('shopList',function($scope,$http){
         $scope.dropListBsys=false;
         $scope.dropListBsys2=false;
+
+
         $scope.shopStreet={"全部":"","黄桷坪一巷":"1","磁正街":"2","聚森茂街":"3","磁横街":"4","磁南街":"5"};
         $scope.initStreet="全部";
         $scope.initStreetId="";
 
-        $scope.shopArr={"全部":"","特产":"1","餐饮":"2","茶饮":"3","土特产":"4","食品":"5","饮品":"6","小食品":"7","工艺品":"8","鞋服":"9","字画":"10","文博场馆":"11","服饰":"12","小吃":"13","伞／杯":"14","宗教":"15","箱包":"16","住宿":"17","副食":"18","其他":"19","饰品":"20","娱乐":"21"};
+        //$scope.shopArr={"全部":"","特产":"1","餐饮":"2","茶饮":"3","土特产":"4","食品":"5","饮品":"6","小食品":"7","工艺品":"8","鞋服":"9","字画":"10","文博场馆":"11","服饰":"12","小吃":"13","伞／杯":"14","宗教":"15","箱包":"16","住宿":"17","副食":"18","其他":"19","饰品":"20","娱乐":"21"};
+
+
+        $scope.shopArr={"全部":"","餐饮":"2","茶饮":"3","土特产":"4","小食品":"7","工艺品":"8","鞋服":"9","字画":"10","文博场馆":"11","宗教":"15","住宿":"17","副食":"18","其他":"19","娱乐":"21"};
+
         $scope.initShop="全部";
         $scope.initShopId="";
         $scope.downList=function(){
@@ -157,7 +163,7 @@ if(Uid!='' && getCookie('isLogin')==0){
     <ul class="category-list-ul" >
         <div style="text-align: center; line-height: 0.5rem;" ng-show="isShow">暂无数据</div>
         <li ng-repeat="info in shopListArr"><a href="business.html?businessId={{info.businessId}}&list=1">{{info.businessName}}</a></li>
-        <li><a href="javascript:;" ng-click="showMore(initStreetId,initShopId);">{{initloadingHtml}}</a></li> 
+        <li><a href="javascript:;" ng-click="showMore(initStreetId,initShopId);" style="border: 0.01rem solid #86CDED; margin-bottom: 0.06rem;">{{initloadingHtml}}</a></li> 
     </ul>
 </section>
 

@@ -24,25 +24,24 @@ function getBusiness(shopId){
 				$('.shopName').html('商家名称：'+oData.object.businessName);
 			 	$('.shopAddress').html('商家地址：'+oData.object.address);
 			 	$('.zan').html('<em></em>已'+oData.object.countGood+'人点赞');
-
 				var tagliHtml='';
 				for(var i=0;i<oData.object.busAssessList.length; i++){
 					tagliHtml+='<li><label>\
                         <input type="radio" name="tags" value="'+oData.object.busAssessList[i].assessId+'" />\
                         <span>'+oData.object.busAssessList[i].assessContent+'</span></label><em>'+oData.object.busAssessList[i].countNum+'人选择</em></li>';
 				};
-			    $('.tagli').html(tagliHtml);
+			    $('.taglipj').html(tagliHtml);
 			}else{
 				alert("数据获取失败,返回上一页");
 				history.go(-1);
 			}
 		}
 	});
-
 }
 //点赞
 function addComment(shopId,assessId){
 
+	var scoreNum=parseInt($('#serverBox input:checked').length)+parseInt($('.scoreSelect').val());
 	//图片集
 	var oImageUrl=$('.imgWrap img');
 	var imgArr=[];
@@ -56,7 +55,7 @@ function addComment(shopId,assessId){
 	var c='['+imgArr+',]';
 	var imagesList=c.replace(c.substring(c.lastIndexOf(',')),']');
 	var textareas=$('#textareas').val();
-	var str='data={"action":"addComment","params":{"assessId":'+assessId+',"businessId":'+shopId+',"imageList":'+imagesList+',"content":"'+textareas+'","score":'+$('.scoreSelect').val()+',"userId":'+parseInt(getCookie('userId'))+'},"source":"web","target":"comment"}';
+	var str='data={"action":"addComment","params":{"assessId":'+assessId+',"businessId":'+shopId+',"imageList":'+imagesList+',"content":"'+textareas+'","score":'+scoreNum+',"userId":'+parseInt(getCookie('userId'))+'},"source":"web","target":"comment"}';
 	//alert(str);
 	$.ajax({
 		url:reqUrl,
@@ -173,12 +172,13 @@ function fnIndex()
 	bind(oBtn,"touchend",fnEnd);
 	function fnEnd()
 	{
+		//getServerSocre();
 		bScore=fnScoreChecked();
 		if(bScore)
 		{
 			if(bTag())
 			{
-
+				
 				addComment(shopId,assessId);
 				//fnIndexOut();		
 			}
@@ -220,4 +220,6 @@ function fnIndex()
 	}
 }
 
-
+function getServerSocre(){
+	alert($('#serverBox input:checked').length);
+}

@@ -170,7 +170,7 @@ em{ font-style:normal;  }
 
 
 
-#score{padding:0.06rem 0 0.06rem 0.1rem; }
+#score{padding:0.06rem 0.1rem 0.06rem 0.1rem; }
 #score h2{ line-height:0.4rem; font-size:0.16rem; font-weight: normal; text-align: center; color: #000;}
 #score li{height:0.4rem; position:relative;}
 #score nav{ width: 100%; text-align: center; height: 0.4rem;}
@@ -179,16 +179,18 @@ em{ font-style:normal;  }
 #score nav a{display: inline-block; background:url(../img/star1.png) no-repeat center center;  background-size: contain; width:0.36rem;height:0.36rem; margin-right:0.1rem; transition:.3s;}
 #score nav .active{  background:url(../img/star2.png) no-repeat center center; background-size: contain;}
 
-
 .tags{padding:0.1rem 0.1rem 0;}
 .tags h2{ font-size:0.16rem;  font-weight: normal; text-align: center; margin-bottom: 0.1rem;color: #000;}
 .tags label{float:left; line-height:0.22rem; margin:0rem 0.08rem 0rem 0.03rem;}
 .tags label input{ display:none;}
-.tags label span{float:left;border:0.01rem solid #cdd6e1;padding:0 0.14rem; border-radius:0.26rem;}
+.tags label span{ display: inline-block; float:left;border:0.01rem solid #cdd6e1;padding:0 0.14rem; border-radius:0.26rem;}
 .tags input:checked+span{ border-color:#3c9bbb; background-color:#3c9bbb;color:#fff;}
 #mask{background:rgba(0,0,0,0.7) url(../img/mask.png) no-repeat center 300px; transition:1s; opacity:0;}
 .newsBtn{position:absolute;top:20px;right:20px;width:56px;height:56px;padding:11px 11px; font-size:22px; line-height:28px; letter-spacing:2px; text-align:center; background:rgba(230,0,18,0.6);color:#fff; text-decoration:none; border-radius:39px; font-size:21px; -webkit-animation:newsBtn 2s alternate infinite;}
 
+.tags2 label{ float: none !important;  }
+.tags2 li { text-align: center;  }
+.tags2 span{ float: none !important;  }
 
 /* news */
 #news{opacity:0; background:#eee;}

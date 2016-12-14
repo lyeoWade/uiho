@@ -448,6 +448,7 @@ Cqk.prototype.getUserList=function(){
                                 </tr>";
 					}
 
+					
 					$('#tbody').html(sHtml);
 
 					$('#pagination').attr('count',oData.count);

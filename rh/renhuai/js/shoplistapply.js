@@ -42,7 +42,7 @@ function getUserList(nowPage,pageSize,name){
 						settledStatus='<a href="javascript:;" class="btn btn-default btn-sm">待审核</a>';
 					}
 					tableHtml+='<tr><td>'+(i+1)+'</td><td>'+sData.name+'</td>\
-						<td>'+sData.nickname+'</td><td>'+Uiho.tool.DetailTimesTamp(sData.updateDatetime)+'</td>\
+						<td>'+sData.nickname+'</td><td>'+Uiho.tool.DetailTimesTamp(sData.createDatetime)+'</td>\
 						<td>'+settledStatus+'</td>\
                         <td><div class="btn-group"><a href="shoplistapplyEdit.html?id='+sData.userId+'" class="btn btn-primary btn-sm"><i class="fa-gear fa"></i>&nbsp;查看</a>\
                         <a href="javascript:;" userid="'+sData.userId+'" class="btn btn-warning btn-sm deleteuser"><i class="fa-times fa"></i>&nbsp;删除</a></div></td>\

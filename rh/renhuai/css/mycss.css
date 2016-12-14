@@ -24,7 +24,7 @@ textarea:-ms-input-placeholder {
 }
 
 
-
+.pushGzh{ color: #fff !important; text-decoration: none; }
 
 header label[class*="col-"],
 header div[class*="col-"]{
@@ -38,6 +38,7 @@ header label[class*="col-"]{
 
 .success{ color: green !important; }
 .error{ color: #f00 !important;  }
+.borderred{ border: 1px solid #f00;  }
 #tip{
 	font-size: 14px;
 	line-height: 24px;
@@ -46,6 +47,13 @@ header label[class*="col-"]{
 .addtip {
 	line-height: 34px;
 	padding-left: 8px;
+	font-size: 12px !important;
+}
+
+.dTip{
+	line-height: 34px;
+	padding-left: 8px;
+	font-size: 12px !important;
 }
 #unseen .pagination {
     margin: 0 0;
@@ -557,4 +565,42 @@ header label[class*="col-"]{
 .sortListWarp input{
 	width: 68.66%;
 	margin-right: 20px;
+}
+
+
+.add-nav-wrap{
+	border-bottom: 1px dashed #ccc;
+}
+.add-nav-wrap:nth-last-of-type(2){
+	border-bottom: none;
+}
+.maintitle{
+	padding-left: 18%;
+	margin-bottom: 10px;
+}
+.maintitle h2{
+	display: inline-block;
+	font-size: 18px;
+}
+.maintitle span{
+	font-size: 12px;
+	padding-left: 20px;
+	color: #ccc;
+}
+
+.sontitle{
+	margin-bottom: 0 !important;
+	
+}
+.sontitle h2{
+	font-size: 14px !important;
+}
+
+.son-nav-wrap{
+	margin-bottom: 10px;
+}
+
+
+.pzgzhSonWrap{
+	display: none;
 }

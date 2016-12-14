@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>公众号列表</title>
+    <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet"/>
+    <link href="css/mycss.css" rel="stylesheet">
+</head>
+<body>
+<section id="container">
+    <section class="wrapper ">
+        <!-- page start-->
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel table-set">
+                    <header class="panel-heading title">
+                       
+                        <span><i class="fa fa-code"></i>&nbsp;&nbsp;托管公众号列表</span>
+                        <span></span>
+
+                        <a href="javascript:history.go(-1);" class="btn btn-primary pull-right backpage"><i class="fa  fa-chevron-circle-left"></i>&nbsp;&nbsp;返回上一页</a>
+                    </header>
+                    <header class="panel-heading clearfix searchpanel" style="padding-bottom: 0;">
+                        <div class="pull-left col-sm-11  col-lg-11">
+                          
+                            <div class="form-group pull-left col-lg-4 col-sm-4" style="padding: 0;" >
+                                <label for="name" class="control-label col-lg-4 col-sm-4">公众号名称</label>
+                                <div class="col-lg-8 col-sm-8">
+                                    <input type="text" class="form-control" id="name" placeholder="公众号名称" />
+                                </div>
+                            </div>
+                           
+                        <div class="pull-right">
+                            <input type="button" id="SelectQueryBtn" class="btn btn-success" value="查询">
+                        </div>
+                    </header>
+                    <div class="panel-body toggle-heading">
+                        <section id="unseen">
+
+                            <table class="table table-bordered table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>公众号名称</th>
+                                        <th>微信唯一appid</th>
+                                        <th>托管时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   <!--  <tr>
+                                        <td>1</td>
+                                        <td>007</td>
+                                        <td>猎师计划</td>
+                                        <td>2016-05-12 21:22:10</td>
+                                        <td> 
+                                            <div class="btn-group">
+                                                <a href="peizhigzhEdit.html" class="btn btn-primary btn-sm backpage">修改&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a>
+                                                <a href="javascript:;" class="btn btn-warning btn-sm backpage">删除管理权限&nbsp;&nbsp;<i class="fa  fa-times-circle"></i></a>
+                                            </div> 
+                                        </td>
+                                    </tr> -->
+                                   
+                                </tbody>
+                            </table>
+                            <div class="box-footer clearfix" id="pagination">
+
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+<script src="js/tool.js"></script>
+
+<!--script for this page-->
+
+<script type="text/javascript">
+
+var gzhRqUrl='http://rhbiz.dev.uiho.com/rh_cdtg/InfoServlet';
+$(function(){
+    var nowPage=1,pageSize=20,name='',wxAppid='';
+
+    //获取默认的列表
+    getAppList(nowPage,pageSize,name,wxAppid)
+
+    //选择查询
+    $('#SelectQueryBtn').on('click',function(){
+        name=$('#name').val();
+        getAppList(nowPage,pageSize,name,wxAppid)
+    });
+
+
+});
+//获取用户列表
+function getAppList(nowPage,pageSize,name,wxAppid){
+
+    var datas='data={"action":"getAppList","params":{"appName":"'+name+'","queryParam":{"nowPage":'+nowPage+',"pageSize":'+pageSize+'},"wxAppid":"'+wxAppid+'"},"source":"web","target":"app"}'
+    $.ajax({
+        url:gzhRqUrl,
+        type:"POST",
+        data:datas,
+        success:function(str){
+            var oData=$.parseJSON(str);
+            
+            if(oData.responseCode==1){
+                var tableHtml='';
+                for(var i=0; i<oData.object.length; i++){
+                    var sData=oData.object[i];
+                    var role='';
+                    console.log(sData);
+                    tableHtml+='<tr><td>'+(i+1)+'</td><td>'+sData.appName+'</td><td>'+sData.wxAppid+'</td>\
+                        <td>'+Uiho.tool.DetailTimesTamp(sData.createDatetime)+'</td><td>\
+                        <div class="btn-group">\
+                        <a href="peizhigzhEdit.html?id='+sData.appId+'" class="btn btn-primary btn-sm backpage">修改&nbsp;&nbsp;<i class="fa  fa-chevron-circle-right"></i></a>\
+                        <a href="javascript:;" appId="'+sData.appId+'" class="btn btn-warning btn-sm backpage deleteApp">删除管理权限&nbsp;&nbsp;<i class="fa  fa-times-circle"></i></a>\
+                                            </div></td></tr>';
+                }
+                $('tbody').html(tableHtml);
+            
+                $('#pagination').attr('count',oData.count);
+                //页码选择 分页
+                var allNum=$('#pagination').attr('count');
+                Uiho.effect.pagination(allNum,pageSize,nowPage,function(nowPage){
+                    getAppList(nowPage,pageSize,name,wxAppid)
+                });
+                deleteApp(function(){
+                    getAppList(nowPage,pageSize,name,wxAppid)
+                });
+            }else{
+                $('tbody').html('<tr><td colspan="10" align="center">'+oData.responseMsg+'</td></tr>');
+            }
+        },
+        complete:function(){
+            
+        }
+    })
+};
+
+
+//删除公众号
+
+//{"action":"deleteApp","datetime":1481538410724,"params":1,"source":"web","target":"app"}
+
+function deleteApp(fn){
+    $('.deleteApp').on('click',function(){
+        var Appid=$(this).attr('appId');
+        if(confirm("确定要删除本条数据?")){
+           
+            var datas='data={"action":"deleteApp","params":'+Appid+',"source":"web","target":"app"}';
+            $.ajax({
+                url:gzhRqUrl,
+                type:"POST",
+                data:datas,
+                success:function(str){
+                    console.log(str)
+                    var oData=eval('('+str+')');
+                    if(oData.responseCode==1){
+                        alert(oData.responseMsg);
+                        fn&&fn();
+                    }else{
+                        alert(oData.responseMsg);
+                    }
+                }
+            });
+        }
+    });
+}
+</script>
+</body>
+</html>

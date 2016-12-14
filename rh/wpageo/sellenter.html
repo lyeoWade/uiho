@@ -439,7 +439,6 @@ function getMap(lat,lng){
 
 		var gc = new BMap.Geocoder(); 
 		gc.getLocation(point, function(rs){
-
 			var addComp = rs.addressComponents;
 			var mapAddress = addComp.province+addComp.city + addComp.district
 			+ addComp.street + addComp.streetNumber;
